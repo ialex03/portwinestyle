@@ -39,6 +39,6 @@ $utilizador=db_query($query);
     }else{
         
         checkUnlocked();
-        header('Location: login.php?success=false');
+        header('Location: index.php?success=false');
     }
 ?>
