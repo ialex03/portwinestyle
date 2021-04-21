@@ -1,0 +1,31 @@
+INSERT INTO `menu_idiomas` (`id`, `idioma`, `nome`) VALUES
+(1, 'ru', 'Главная'),
+(2, 'ru', 'продукты'),
+(3, 'ru', 'партнеры'),
+(4, 'ru', 'клиенты'),
+(5, 'ru', 'о нас'),
+(6, 'ru', 'контакты'),
+(7, 'ru', 'Игристые вина'),
+(8, 'ru', 'Белое вино'),
+(9, 'ru', 'Портвейн'),
+(10, 'ru', 'Розовое вино'),
+(11, 'ru', 'Красное вино),
+(12, 'ru', 'Vinho Verde');
+
+CREATE TABLE `produtos_idiomas` (
+  `id` int(11) NOT NULL,
+  `idioma` varchar(2), NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `produtor` varchar(150) NOT NULL,
+  `cor` varchar(100) NOT NULL,
+  `designacao_origem` varchar(150) NOT NULL,
+  `pais` varchar(100) NOT NULL,
+  `regiao` varchar(150) NOT NULL,
+  `castas` varchar(200) NOT NULL,
+  `solo` varchar(50) NOT NULL,
+  `processo_vinificacao` text NOT NULL,
+  `notas_prova` text NOT NULL,
+  `id_categoria` int(11) NOT NULL,
+  `id_fornecedor` int(11) NOT NULL,
+  `is_active` tinyint(1) NOT NULL
+)
