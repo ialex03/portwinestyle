@@ -20,7 +20,7 @@ $arrCampos= array (
                       "Notas de Prova",
                       "Informação Adicional",
                   );
-$query="SELECT * FROM produtos P INNER JOIN produtos_idiomas PI ON P.id=PI.id WHERE PI.idioma='$_SESSION[idioma]' ORDER BY P.id";
+$query="SELECT * FROM produtos P INNER JOIN produtos_idiomas PI ON P.id=PI.id WHERE PI.idioma='$_SESSION[idioma]' AND P.is_active=1 ORDER BY P.id";
 $arrCamposProdutos=db_query($query);
 ?>
 
@@ -103,12 +103,42 @@ if (isset($_GET['img'])
 
 
   <?php
-    if (isset($_GET['success']) && $_GET['success']=="true") {
+    if (isset($_GET['success']) 
+    || isset($_GET['removesuccess']) 
+    || isset($_GET['deletesuccess']) 
+    || isset($_GET['returnsuccess'])) {
     ?>
   <div class="alert alert-success" role="alert">
     <h4 class="alert-heading">Sucesso</h4>
+    <?php
+    if (isset($_GET['success']) && $_GET['success']=="true") {
+    ?>
     
     <p class="mb-0">Editou o produto com sucesso!</p>
+    <?php
+    }
+    if (isset($_GET['removesuccess'])) {
+    ?>
+    
+    
+    <p class="mb-0">Removeu o produto com sucesso! Se não tiver a certeza e quiser voltar atrás, clique no botão "Voltar Atrás". Para eliminar permanentemente clique em "Remover Produto"</p>
+    <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.retornar.php?id='.$_GET['removesuccess']?>" class="btn btn-success">Voltar Atrás</a>
+    <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.eliminar.php?id='.$_GET['removesuccess']?>" class="btn btn-danger">Remover Produto</a>
+    <?php
+    }
+    if (isset($_GET['deletesuccess'])) {
+    ?>
+    
+    <p class="mb-0">Removeu o produto permanentemente com sucesso!</p>
+    <?php
+    }
+    if (isset($_GET['returnsuccess'])) {
+    ?>
+    
+    <p class="mb-0">Voltou atrás e o produto não foi eliminado!</p>
+    <?php
+    }
+    ?>
     
   </div>
   <?php
@@ -199,14 +229,16 @@ if (isset($_GET['img'])
                 <td>'.FormatField($produto['processo_vinificacao'],$id).'</td>
                 <td>'.FormatField($produto['notas_prova'],$id).'</td>
                 <td>'.FormatField($produto['info_adicional'],$id).'</td>
-                <th>
+                <th>';
+
+                //editar
                   
-                  <button type="button" data-toggle="modal" data-target="#modal'.$id.'" class="btn btn-primary"><div data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></div></button>
+             echo '<button type="button" data-toggle="modal" data-target="#modal'.$id.'" class="btn btn-primary"><div data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></div></button>
 
                   <div id="modal'.$id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
                       <div role="document" class="modal-dialog">
                         <div class="modal-content">
-                          <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Editar registo</strong>
+                          <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Editar Produto</strong>
                             <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                           </div>
                           <div class="modal-body">
@@ -340,13 +372,13 @@ if (isset($_GET['img'])
                           </div>
                           <div class="modal-footer">
                           <?php
-                          $url=$_SERVER['REQUEST_URI'];//left off here
+                          $url=$_SERVER['REQUEST_URI'];
                           $arrUrl=explode("&",$url);
                           $url=$arrUrl[0];
                           ?>
                             <input type="hidden" name="id" value="<?php echo $id?>">
                             <input type="hidden" name="url" value="<?php echo $url?>">
-                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Fechar</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
                             <button type="submit" class="btn btn-primary" name="submit">Salvar Mudanças</button>
                           </div>
                           </form>
@@ -354,9 +386,36 @@ if (isset($_GET['img'])
                       </div>
                     </div>
 
-                  <button class="btn btn-primary">
-                    <div data-toggle="tooltip" data-placement="bottom" title="Remover"><i class="fa fa-remove"></i></button>
-                  </button>
+                    <?php
+                    //editar end
+                    ?>
+
+                  
+                    <button type="button" data-toggle="modal" data-target="#modal<?php echo $id+999999?>" class="btn btn-primary"><div data-toggle="tooltip" data-placement="bottom" title="Remover"><i class="fa fa-remove"></i></div></button>
+                      <div id="modal<?php echo $id+999999?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                        <div role="document" class="modal-dialog modal-sm">
+                          <div class="modal-content">
+                            <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Remover Produto</strong>
+                              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                            </div>
+                            <div class="modal-body">
+                              <p>De certeza que deseja remover o produto "<?php echo $produto['nome'] ?>"?</p>
+                              <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.remover.php" method="POST" enctype="multipart/form-data">
+                              <?php
+                          $url=$_SERVER['REQUEST_URI'];
+                          $arrUrl=explode("&",$url);
+                          $url=$arrUrl[0];
+                          ?>
+                              <input type="hidden" name="id" value="<?php echo $id?>">
+                              <input type="hidden" name="url" value="<?php echo $url?>">
+                              <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+                            <button type="submit" class="btn btn-primary" name="submit">Remover Produto</button>
+                              </form>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                  
                   </th>
               </tr>
               <?php
