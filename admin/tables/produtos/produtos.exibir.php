@@ -240,6 +240,8 @@ $arrCamposProdutos=db_query($query);
                           <div class="modal-footer">
                           <?php
                           $url=$_SERVER['REQUEST_URI'];//left off here
+                          $arrUrl=explode("&",$url);
+                          $url=$arrUrl[0];
                           ?>
                             <input type="hidden" name="url" value="<?php echo $url?>">
                             <button type="button" data-dismiss="modal" class="btn btn-secondary">Fechar</button>

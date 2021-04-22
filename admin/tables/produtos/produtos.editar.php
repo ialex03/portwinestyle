@@ -6,7 +6,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 if(isset($_POST["submit"])) {
-$target_dir= $arrSETTINGS['dir_site_admin']."/img/shop/";
+$target_dir= $arrSETTINGS['dir_site']."/img/shop/";
 $target_file = $target_dir . basename($_FILES["imagem"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -43,6 +43,7 @@ $errorstring="";
     } else {
         if (move_uploaded_file($_FILES["imagem"]["tmp_name"], $target_file)) {
             echo "The file ". htmlspecialchars( basename( $_FILES["imagem"]["name"])). " has been uploaded.";
+            $errorstring.="&fileerror=false";
         } else {
             echo "Sorry, there was an error uploading your file.";
             $errorstring.="&fileerror=true";
