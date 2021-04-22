@@ -1,20 +1,28 @@
 <?php
 require '/Applications/MAMP/htdocs/portwinestyle/includes/settings.inc.php';
 @include $arrSETTINGS['dir_site'].'/includes/db.inc.php';
+if(!isset($_SESSION['idioma'])) {
+        $_SESSION['idioma'] = $idioma_default;
+}  
 db_connect();
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 if(isset($_POST["submit"])) {
-$target_dir= $arrSETTINGS['dir_site']."/img/shop/";
-$target_file = $target_dir . basename($_FILES["imagem"]["name"]);
-$uploadOk = 1;
-$imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-$errorstring="";
-// Check if image file is a actual image or fake image
+
+    //imagem
+
+    $target_dir= $arrSETTINGS['dir_site']."/img/shop/";
+    $target_file = $target_dir . basename($_FILES["imagem"]["name"]);
+    $uploadOk = 1;
+    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+    $errorstring="";
+    // Check if image file is a actual image or fake image
 
     $check = getimagesize($_FILES["imagem"]["tmp_name"]);
+
+
     if(basename($_FILES["imagem"]["name"])){
 
         if($check !== false) {
@@ -52,10 +60,37 @@ $errorstring="";
             }
         }
     }
+    //imagem END
 
+    //tabela produtos
     if(strlen($_POST['castas'])>200){
         $errorstring.="&castastoolong=true";
     }
+    //tabela produtos END
+
+    //tabela produtos_idiomas
+    if(strlen($_POST['nome'])>100){
+        $errorstring.="&nometoolong=true";
+    }
+    if(strlen($_POST['produtor'])>150){
+        $errorstring.="&produtortoolong=true";
+    }
+    if(strlen($_POST['desginacao_origem'])>150){
+        $errorstring.="&desginacao_origemtoolong=true";
+    }
+    if(strlen($_POST['regiao'])>150){
+        $errorstring.="&regiaotoolong=true";
+    }
+    if(strlen($_POST['pais'])>100){
+        $errorstring.="&paistoolong=true";
+    }
+    if(strlen($_POST['solo'])>50){
+        $errorstring.="&solotoolong=true";
+    }
+    //tabela produtos_idiomas END
+
+    //Tabela produtos
+
     if($errorstring == ""){
 
         $query = "UPDATE produtos SET ";
@@ -87,6 +122,51 @@ $errorstring="";
         $string=substr($string, 0, strlen($string) - 1);
 
         $query.=$string." WHERE id=".$_POST['id'].";";
+
+        if($string!=""){
+            $confirm=db_query($query);
+        }
+
+        //Tabela produtos END
+
+        //tabela produtos_idiomas
+        $query = "UPDATE produtos_idiomas SET ";
+        $string="";
+        if($_POST['nome']!= ""){
+            $string.="nome=".$_POST['nome'].",";
+        }
+        if($_POST['produtor']!= ""){
+            $string.="castas='".$_POST['castas']."',";
+        }
+        if($_POST['cor']!= ""){
+            $string.="cor='".$_POST['cor']."',";
+        }
+        if($_POST['designacao_origem']!= ""){
+            $string.="designacao_origem='".$_POST['designacao_origem']."',";
+        }
+        if($_POST['pais']!= ""){
+            $string.="pais='".$_POST['pais']."',";
+        }
+        if($_POST['regiao']!= ""){
+            $string.="regiao='".$_POST['regiao']."',";
+        }
+        if($_POST['solo']!= ""){
+            $string.="solo=".$_POST['solo'].",";
+        }
+        if($_POST['processo_vinificacao']!= ""){
+            $string.="processo_vinificacao=".$_POST['processo_vinificacao'].",";
+        }
+        if($_POST['notas_prova']!= ""){
+            $string.="notas_prova=".$_POST['notas_prova'].",";
+        }
+        if($_POST['info_adicional']!= ""){
+            $string.="info_adicional=".$_POST['info_adicional'].",";
+        }
+        $string=substr($string, 0, strlen($string) - 1);
+
+        $query.=$string." WHERE idioma='".$_SESSION['idioma']."' AND id=".$_POST['id'].";";
+
+        //tabela produtos_idiomas END
 
         if($string!=""){
             $confirm=db_query($query);

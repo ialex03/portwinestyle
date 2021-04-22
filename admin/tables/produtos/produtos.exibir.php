@@ -60,6 +60,32 @@ if (isset($_GET['img']) || isset($_GET['format']) || isset($_GET['fileerror']) |
     <p class="mb-0">O campo "Castas" é demasiado comprido! Experimente escrever algo mais curto....</p>
     <?php
     }
+    if (isset($_GET['nometoolong']) && $_GET['nometoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Nome" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }if (isset($_GET['produtortoolong']) && $_GET['produtortoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Produtor" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }if (isset($_GET['designacao_origemtoolong']) && $_GET['designacao_origemtoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Designação de origem" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }if (isset($_GET['regiaotoolong']) && $_GET['regiaotoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Região" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }
+    if (isset($_GET['paistoolong']) && $_GET['paistoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "País" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }if (isset($_GET['solotoolong']) && $_GET['solostoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Solo" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }
     ?>
   </div>
   <?php
@@ -117,6 +143,7 @@ if (isset($_GET['img']) || isset($_GET['format']) || isset($_GET['fileerror']) |
             <th>Categoria</th>
             <th>Designação de Origem</th>
             <th>Região</th>
+            <th>País</th>
             <th>Ano de Colheita</th>
             <th>Castas</th>
             <th>Graduação Alcoólica</th>
@@ -126,6 +153,7 @@ if (isset($_GET['img']) || isset($_GET['format']) || isset($_GET['fileerror']) |
             <th>Favoritados</th>
             <th>Visualizações</th>
             <th>Solo</th>
+            <th>Cor</th>
             <th>Processo de vinificação</th>
             <th>Notas de Prova</th>
             <th>Informação Adicional</th>
@@ -148,6 +176,7 @@ if (isset($_GET['img']) || isset($_GET['format']) || isset($_GET['fileerror']) |
           echo '<td>'.$categoria[0]['nome'].'</td>
                 <td>'.FormatField($produto['designacao_origem'],$id).'</td>
                 <td>'.FormatField($produto['regiao'],$id).'</td>
+                <td>'.FormatField($produto['pais'],$id).'</td>
                 <td>'.FormatField($produto['ano_colheita'],$id).'</td>
                 <td>'.FormatField($produto['castas'],$id).'</td>
                 <td>'.FormatField($produto['graduacao_alcoolica'],$id).'</td>
@@ -157,6 +186,7 @@ if (isset($_GET['img']) || isset($_GET['format']) || isset($_GET['fileerror']) |
                 <td>'.FormatField($produto['n_likes'],$id).'</td>
                 <td>'.FormatField($produto['views'],$id).'</td>
                 <td>'.FormatField($produto['solo'],$id).'</td>
+                <td>'.FormatField($produto['cor'],$id).'</td>
                 <td>'.FormatField($produto['processo_vinificacao'],$id).'</td>
                 <td>'.FormatField($produto['notas_prova'],$id).'</td>
                 <td>'.FormatField($produto['info_adicional'],$id).'</td>
@@ -201,12 +231,16 @@ if (isset($_GET['img']) || isset($_GET['format']) || isset($_GET['fileerror']) |
                                   </select>
                               </div>
                               <div class="form-group">
-                                <label>Desginação de origem</label>
+                                <label>Designação de origem</label>
                                 <input type="text" placeholder="<?php echo FormatField($produto['designacao_origem'],$id)?>" class="form-control" name="designacao_origem">
                               </div>
                               <div class="form-group">
                                 <label>Região</label>
                                 <input type="text" placeholder="<?php echo FormatField($produto['regiao'],$id)?>" class="form-control" name="regiao">
+                              </div>
+                              <div class="form-group">
+                                <label>País</label>
+                                <input type="text" placeholder="<?php echo FormatField($produto['pais'],$id)?>" class="form-control" name="pais">
                               </div>
                               <div class="form-group">
                                 <label>Ano de colheita</label>
@@ -276,6 +310,10 @@ if (isset($_GET['img']) || isset($_GET['format']) || isset($_GET['fileerror']) |
                               <div class="form-group">
                                 <label>Solo</label>
                                 <input type="text" placeholder="<?php echo FormatField($produto['solo'],$id)?>" class="form-control" name="solo">
+                              </div>
+                              <div class="form-group">
+                                <label>Cor</label>
+                                <textarea placeholder="<?php echo $produto['cor']?>" class="form-control" name="cor"></textarea>
                               </div>
                               <div class="form-group">
                                 <label>Processo de Vinificação</label>
