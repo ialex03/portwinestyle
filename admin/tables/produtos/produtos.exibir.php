@@ -25,7 +25,61 @@ $arrCamposProdutos=db_query($query);
 ?>
 
 <!--produtos-->
+
 <div class="col-lg-12">
+<?php
+if (isset($_GET['img']) || isset($_GET['format']) || isset($_GET['fileerror']) || isset($_GET['castastoolong'])){
+?>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Algo foi mal preenchido!</h4>
+    <p>A edição do produto não foi realizada porque um ou mais campos estão preenchidos de forma errada!</p>
+    <hr>
+    <?php
+    if (isset($_GET['img']) && $_GET['image']=="false") {
+    ?>
+    <p class="mb-0">O ficheiro anexado não é uma imagem!</p>
+    <?php
+    }
+    if (isset($_GET['img']) && $_GET['image']=="exists") {
+    ?>
+    <p class="mb-0">Essa imagem já existe! Experimente colocar outra imagem...</p>
+    <?php
+    }
+    if (isset($_GET['format']) && $_GET['format']=="false") {
+    ?>
+    <p class="mb-0">A imagem não é do formato pedido!</p>
+    <?php
+    }
+    if (isset($_GET['fileerror']) && $_GET['fileerror']=="true") {
+    ?>
+    <p class="mb-0">Ocorreu um erro ao transferir o ficheiro!</p>
+    <?php
+    }
+    if (isset($_GET['castastoolong']) && $_GET['castastoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Castas" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }
+    ?>
+  </div>
+  <?php
+}
+  ?>
+
+
+  <?php
+    if (isset($_GET['success']) && $_GET['success']=="true") {
+    ?>
+  <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Sucesso</h4>
+    
+    <p class="mb-0">Editou o produto com sucesso!</p>
+    
+  </div>
+  <?php
+    }
+    ?>
+
   <div class="block margin-bottom-sm">
     <div class="row">
       <div class="col-sm-8">
@@ -141,7 +195,7 @@ $arrCamposProdutos=db_query($query);
                               echo "<option value='0'>Não alterar categoria</option>";
 
                               foreach ($categorias as $categoria) {
-                                echo "<option value='".$categoria['id']."'>".$categoria['nome']."</option>";
+                                echo '<option value="'.$categoria['id'].'">'.$categoria['nome'].'</option>';
                               }
                               ?>
                                   </select>
@@ -156,7 +210,7 @@ $arrCamposProdutos=db_query($query);
                               </div>
                               <div class="form-group">
                                 <label>Ano de colheita</label>
-                                <input type="number" placeholder="<?php echo FormatField($produto['ano_colheita'],$id)?>" class="form-control" name="ano_colheita" max="<?php echo date("Y")+10?>">
+                                <input type="number" placeholder="<?php echo FormatField($produto['ano_colheita'],$id)?>" class="form-control" name="ano_colheita" min ="1000"max="<?php echo date("Y")+10?>">
                               </div>
                               <div class="form-group">
                                 <label>Castas</label>
@@ -166,7 +220,7 @@ $arrCamposProdutos=db_query($query);
                                 <label>Graduação Alcoólica</label>
                                 <div class="row">
                                   <div class="col-3">
-                                    <input type="number" step="0.01" placeholder="<?php echo FormatField($produto['graduacao_alcoolica'],$id)?>" class="form-control" name="graduacao_alcoolica" min="0">
+                                    <input type="number" step="0.01" placeholder="<?php echo FormatField($produto['graduacao_alcoolica'],$id)?>" class="form-control" name="graduacao_alcoolica" min="0" max="99">
                                   </div>
                                   <div class="col-2">
                                   <p>% vol</p>
@@ -179,7 +233,7 @@ $arrCamposProdutos=db_query($query);
                                 <label>Acidez</label>
                                 <div class="row">
                                   <div class="col-3">
-                                    <input type="number" step="0.01" placeholder="<?php echo FormatField($produto['acidez'],$id)?>" class="form-control" name="acidez" min="0">
+                                    <input type="number" step="0.01" placeholder="<?php echo FormatField($produto['acidez'],$id)?>" class="form-control" name="acidez" min="0" max="99">
                                   </div>
                                   <div class="col-2">
                                   <p>g/l</p>
@@ -192,7 +246,7 @@ $arrCamposProdutos=db_query($query);
                                 <label>Açucar</label>
                                 <div class="row">
                                   <div class="col-3">
-                                    <input type="number" step="0.01" placeholder="<?php echo FormatField($produto['acucar'],$id)?>" class="form-control" name="acucar" min="0">
+                                    <input type="number" step="0.01" placeholder="<?php echo FormatField($produto['acucar'],$id)?>" class="form-control" name="acucar" min="0" max="999">
                                   </div>
                                   <div class="col-2">
                                   <p>g/l</p>
@@ -206,13 +260,13 @@ $arrCamposProdutos=db_query($query);
                                 <div class="row">
                                   <div class="col-3">
                                   <?php $temp=explode("-",FormatField($produto['temperatura_consumo'],$id));?>
-                                    <input type="number" placeholder="<?php echo $temp[0]?>" class="form-control" name="acucarmin" min="-20" max="80">
+                                    <input type="number" placeholder="<?php echo $temp[0]?>" class="form-control" name="tempmin" min="-20" max="80">
                                   </div>
                                   <div class="col-1">
                                   <p>-</p>
                                   </div>
                                   <div class="col-3">
-                                    <input type="number" placeholder="<?php echo $temp[1]?>" class="form-control" name="acucarmax" min="-20" max="80">
+                                    <input type="number" placeholder="<?php echo $temp[1]?>" class="form-control" name="tempmax" min="-20" max="80">
                                   </div>
                                   <div class="col-5">
                                   <p>°C</p>
@@ -243,6 +297,7 @@ $arrCamposProdutos=db_query($query);
                           $arrUrl=explode("&",$url);
                           $url=$arrUrl[0];
                           ?>
+                            <input type="hidden" name="id" value="<?php echo $id?>">
                             <input type="hidden" name="url" value="<?php echo $url?>">
                             <button type="button" data-dismiss="modal" class="btn btn-secondary">Fechar</button>
                             <button type="submit" class="btn btn-primary" name="submit">Salvar Mudanças</button>
