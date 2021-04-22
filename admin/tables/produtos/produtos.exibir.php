@@ -28,7 +28,16 @@ $arrCamposProdutos=db_query($query);
 
 <div class="col-lg-12">
 <?php
-if (isset($_GET['img']) || isset($_GET['format']) || isset($_GET['fileerror']) || isset($_GET['castastoolong'])){
+if (isset($_GET['img']) 
+|| isset($_GET['format']) 
+|| isset($_GET['fileerror']) 
+|| isset($_GET['castastoolong']) 
+|| isset($_GET['nometoolong'])
+|| isset($_GET['produtortoolong'])
+|| isset($_GET['designacao_origemtoolong'] )
+|| isset($_GET['regiaotoolong'])
+|| isset($_GET['paistoolong'])
+|| isset($_GET['solotoolong'])){
 ?>
   <div class="alert alert-danger" role="alert">
     <h4 class="alert-heading">Algo foi mal preenchido!</h4>
@@ -81,7 +90,7 @@ if (isset($_GET['img']) || isset($_GET['format']) || isset($_GET['fileerror']) |
     ?>
     <p class="mb-0">O campo "País" é demasiado comprido! Experimente escrever algo mais curto....</p>
     <?php
-    }if (isset($_GET['solotoolong']) && $_GET['solostoolong']=="true") {
+    }if (isset($_GET['solotoolong']) && $_GET['solotoolong']=="true") {
     ?>
     <p class="mb-0">O campo "Solo" é demasiado comprido! Experimente escrever algo mais curto....</p>
     <?php
