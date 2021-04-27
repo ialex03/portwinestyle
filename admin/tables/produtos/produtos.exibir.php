@@ -33,8 +33,8 @@ $arrCamposProdutos=db_query($query);
 
 <div class="col-lg-12">
 <?php
-if (isset($_GET['img']) 
-|| isset($_GET['format']) 
+if ( 
+isset($_GET['format']) 
 || isset($_GET['fileerror']) 
 || isset($_GET['castastoolong']) 
 || isset($_GET['nometoolong'])
@@ -74,36 +74,6 @@ if (isset($_GET['img'])
     ?>
     <p class="mb-0">O campo "Castas" é demasiado comprido! Experimente escrever algo mais curto....</p>
     <?php
-    }elseif($_GET['castas']=="null")
-    if (isset($_GET['nometoolong']) && $_GET['nometoolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "Nome" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
-    }if (isset($_GET['produtortoolong']) && $_GET['produtortoolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "Produtor" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
-    }if (isset($_GET['designacao_origemtoolong']) && $_GET['designacao_origemtoolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "Designação de origem" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
-    }if (isset($_GET['cortoolong']) && $_GET['cortoolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "Cor" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
-    }if (isset($_GET['regiaotoolong']) && $_GET['regiaotoolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "Região" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
-    }
-    if (isset($_GET['paistoolong']) && $_GET['paistoolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "País" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
-    }if (isset($_GET['solotoolong']) && $_GET['solotoolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "Solo" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
     }
     foreach ($arrlinguas as $abrv=>$lingua) {
       if (isset($_GET['nome'.$abrv.'toolong']) && $_GET['nome'.$abrv.'toolong']=="true") {
@@ -132,11 +102,12 @@ if (isset($_GET['img'])
       <?php
       }
       if (isset($_GET['solo'.$abrv.'toolong']) && $_GET['solo'.$abrv.'toolong']=="true") {
-      ?>
-      <p class="mb-0">O campo "Solo" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-      <?php
-      }
+        ?>
+        <p class="mb-0">O campo "Solo" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
+        <?php
+    
     }
+  }
     ?>
   </div>
   <?php
