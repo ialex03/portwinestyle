@@ -154,14 +154,17 @@ if(isset($_POST["submit"])) {
             $string.="'".basename($_FILES["imagem"]["name"])."',";
         }else{
             $string.="NULL,";
+            $nullstring.="&img=null";
         }
         if($_POST['ano_colheita']!= ""){
             $string.=$_POST['ano_colheita'].",";
         }else{
             $string.="NULL,";
+            $nullstring.="&ano_colheita=null";
         }
         if($_POST['castas']!= ""){
             $string.="'".$_POST['castas']."',";
+            $nullstring.="&castas=null";
         }else{
             $string.="NULL,";
         }
@@ -169,21 +172,26 @@ if(isset($_POST["submit"])) {
             $string.="'".$_POST['graduacao_alcoolica']." % vol',";
         }else{
             $string.="NULL,";
+            $nullstring.="&graduacao_alcoolica=null";
         }
         if($_POST['acidez']!= ""){
             $string.="'".$_POST['acidez']." g/l',";
         }else{
             $string.="NULL,";
+            $nullstring.="&acidez=null";
         }
         if($_POST['acucar']!= ""){
             $string.="'".$_POST['acucar']." g/l',";
+            
         }else{
             $string.="NULL,";
+            $nullstring.="&acucar=null";
         }
-        if($_POST['temperatura_consumo']!= ""){
+        if($_POST['temp_min']!= "" || $_POST['temp_max']!= "" ){
             $string.="'".$_POST['tempmin']."-".$_POST['tempmax']." °C',";
         }else{
             $string.="NULL,";
+            $nullstring.="&temperatura_consumo=null";
         }
         $string.="0,0,";
         if($_POST['categoria']!= ""){
@@ -218,53 +226,53 @@ if(isset($_POST["submit"])) {
         
             $string.=$confirm.",";
             $string.="'".$abrv."',";
-        if($_POST['nome']!= ""){
-            $string.=$_POST['nome'].",";
+        if($_POST['nome'.$abrv]!= ""){
+            $string.=$_POST['nome'.$abrv].",";
         }else{
             $string.="NULL,";
         }
-        if($_POST['produtor']!= ""){
-            $string.="'".$_POST['castas']."',";
+        if($_POST['produtor'.$abrv]!= ""){
+            $string.="'".$_POST['castas'.$abrv]."',";
         }else{
             $string.="NULL,";
         }
         if($_POST['cor']!= ""){
-            $string.="'".$_POST['cor']."',";
+            $string.="'".$_POST['cor'.$abrv]."',";
         }else{
             $string.="NULL,";
         }
-        if($_POST['designacao_origem']!= ""){
-            $string.="'".$_POST['designacao_origem']."',";
+        if($_POST['designacao_origem'.$abrv]!= ""){
+            $string.="'".$_POST['designacao_origem'.$abrv]."',";
         }else{
             $string.="NULL,";
         }
-        if($_POST['pais']!= ""){
-            $string.="'".$_POST['pais']."',";
+        if($_POST['pais'.$abrv]!= ""){
+            $string.="'".$_POST['pais'.$abrv]."',";
         }else{
             $string.="NULL,";
         }
-        if($_POST['regiao']!= ""){
-            $string.="'".$_POST['regiao']."',";
+        if($_POST['regiao'.$abrv]!= ""){
+            $string.="'".$_POST['regiao'.$abrv]."',";
         }else{
             $string.="NULL,";
         }
-        if($_POST['solo']!= ""){
-            $string.="".$_POST['solo'].",";
+        if($_POST['solo'.$abrv]!= ""){
+            $string.="".$_POST['solo'.$abrv].",";
         }else{
             $string.="NULL,";
         }
-        if($_POST['processo_vinificacao']!= ""){
-            $string.="'".$_POST['processo_vinificacao']."',";
+        if($_POST['processo_vinificacao'.$abrv]!= ""){
+            $string.="'".$_POST['processo_vinificacao'.$abrv]."',";
         }else{
             $string.="NULL,";
         }
-        if($_POST['notas_prova']!= ""){
-            $string.="'".$_POST['notas_prova']."',";
+        if($_POST['notas_prova'.$abrv]!= ""){
+            $string.="'".$_POST['notas_prova'.$abrv]."',";
         }else{
             $string.="NULL,";
         }
-        if($_POST['info_adicional']!= ""){
-            $string.="'".$_POST['info_adicional']."',";
+        if($_POST['info_adicional'.$abrv]!= ""){
+            $string.="'".$_POST['info_adicional'.$abrv]."',";
         }else{
             $string.="NULL,";
         }
@@ -277,11 +285,11 @@ if(isset($_POST["submit"])) {
         //tabela produtos_idiomas END
 
         if($string!=""){
-            $confirm=db_query($query);
+            db_query($query);
             
         }
     }
-    header('Location:'.$_POST['url'].'&success=true'.$nullstring);
+    header('Location:'.$_POST['url'].'&insertsuccess=true'.$nullstring);
     
 
     }else{
