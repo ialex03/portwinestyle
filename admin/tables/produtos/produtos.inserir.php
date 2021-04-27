@@ -279,7 +279,7 @@ if(isset($_POST["submit"])) {
         $string=substr($string, 0, strlen($string) - 1);
 
         echo $query.=$string.");";
-        echo $nullstring;
+        $nullstring;
         
 
         //tabela produtos_idiomas END
