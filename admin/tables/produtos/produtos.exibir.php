@@ -105,6 +105,38 @@ if (isset($_GET['img'])
     <p class="mb-0">O campo "Solo" é demasiado comprido! Experimente escrever algo mais curto....</p>
     <?php
     }
+    foreach ($arrlinguas as $abrv=>$lingua) {
+      if (isset($_GET['nome'.$abrv.'toolong']) && $_GET['nome'.$abrv.'toolong']=="true") {
+      ?>
+      <p class="mb-0">O campo "Nome" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
+      <?php
+      }
+      if (isset($_GET['produtor'.$abrv.'toolong']) && $_GET['produtor'.$abrv.'toolong']=="true") {
+      ?>
+      <p class="mb-0">O campo "Produtor" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
+      <?php
+      }
+      if (isset($_GET['cor'.$abrv.'toolong']) && $_GET['cor'.$abrv.'toolong']=="true") {
+      ?>
+      <p class="mb-0">O campo "Cor" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
+      <?php
+      }
+      if (isset($_GET['regiao'.$abrv.'toolong']) && $_GET['regiao'.$abrv.'toolong']=="true") {
+      ?>
+      <p class="mb-0">O campo "Região" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
+      <?php
+      }
+      if (isset($_GET['pais'.$abrv.'toolong']) && $_GET['pais'.$abrv.'toolong']=="true") {
+      ?>
+      <p class="mb-0">O campo "País" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
+      <?php
+      }
+      if (isset($_GET['solo'.$abrv.'toolong']) && $_GET['solo'.$abrv.'toolong']=="true") {
+      ?>
+      <p class="mb-0">O campo "Solo" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
+      <?php
+      }
+    }
     ?>
   </div>
   <?php
@@ -181,31 +213,19 @@ if (isset($_GET['img'])
     <p class="mb-0">O campo "Nome" no idioma "<?php echo $lingua?>" não foi preenchido</p>
     <?php
     }
-    if (isset($_GET['nome'.$abrv.'toolong']) && $_GET['nome'.$abrv.'toolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "Nome" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
-    }
+    
     if (isset($_GET['produtor'.$abrv]) && $_GET['produtor'.$abrv]=="null") {
     ?>
     <p class="mb-0">O campo "Produtor" no idioma "<?php echo $lingua?>" não foi preenchido</p>
     <?php
     }
-    if (isset($_GET['produtor'.$abrv.'toolong']) && $_GET['produtor'.$abrv.'toolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "Produtor" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
-    }
+    
     if (isset($_GET['cor'.$abrv]) && $_GET['cor'.$abrv]=="null") {
     ?>
     <p class="mb-0">O campo "Cor" no idioma "<?php echo $lingua?>" não foi preenchido</p>
     <?php
     }
-    if (isset($_GET['cor'.$abrv.'toolong']) && $_GET['cor'.$abrv.'toolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "Cor" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
-    }
+    
     if (isset($_GET['designacao_origem'.$abrv]) && $_GET['designacao_origem'.$abrv]=="null") {
     ?>
     <p class="mb-0">O campo "Designação de origem" no idioma "<?php echo $lingua?>" não foi preenchido</p>
@@ -221,31 +241,19 @@ if (isset($_GET['img'])
     <p class="mb-0">O campo "Região" no idioma "<?php echo $lingua?>" não foi preenchido</p>
     <?php
     }
-    if (isset($_GET['regiao'.$abrv.'toolong']) && $_GET['regiao'.$abrv.'toolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "Região" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
-    }
+    
     if (isset($_GET['pais'.$abrv]) && $_GET['pais'.$abrv]=="null") {
     ?>
     <p class="mb-0">O campo "País" no idioma "<?php echo $lingua?>" não foi preenchido</p>
     <?php
     }
-    if (isset($_GET['pais'.$abrv.'toolong']) && $_GET['pais'.$abrv.'toolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "País" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
-    }
+    
     if (isset($_GET['solo'.$abrv]) && $_GET['solo'.$abrv]=="null") {
     ?>
     <p class="mb-0">O campo "Solo" no idioma "<?php echo $lingua?>" não foi preenchido</p>
     <?php
     }
-    if (isset($_GET['solo'.$abrv.'toolong']) && $_GET['solo'.$abrv.'toolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "Solo" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
-    }
+    
     
   }
     ?>
