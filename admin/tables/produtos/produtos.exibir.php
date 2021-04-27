@@ -1,4 +1,9 @@
 <?php
+$arrlinguas= array (
+                      "pt"=>"Português",
+                      "en"=>"Inglês",
+                      "ru"=>"Russo",
+                  );
 $arrCampos= array (
                       "#",
                       "Nome",
@@ -68,7 +73,7 @@ if (isset($_GET['img'])
     ?>
     <p class="mb-0">O campo "Castas" é demasiado comprido! Experimente escrever algo mais curto....</p>
     <?php
-    }
+    }elseif($_GET['castas']=="null")
     if (isset($_GET['nometoolong']) && $_GET['nometoolong']=="true") {
     ?>
     <p class="mb-0">O campo "Nome" é demasiado comprido! Experimente escrever algo mais curto....</p>
@@ -165,11 +170,176 @@ if (isset($_GET['img'])
 
       </div>
 
+
       <div class="col-sm-1">
-        <button class="btn btn-primary">
+        <button type="button" data-toggle="modal" data-target="#modal<?php echo $id+9999999999?>" class="btn btn-primary">
             <div data-toggle="tooltip" data-placement="bottom" title="Inserir"><i class="fa fa-plus"></i></button>
         </button>
       </div>
+
+      <div id="modal<?php echo $id+9999999999?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+        <div role="document" class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Inserir Produto</strong>
+              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+              <p>Aqui pode inserir um produto. Se não quiser inserir nada feche o modal.</p>
+              <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.inserir.php" method="POST" enctype="multipart/form-data">
+              <h2>Informação geral</h2>
+              <div class="form-group">
+                <label>Foto</label>
+                <input type="file" name="imagem" id="imagem">
+              </div>
+              <div class="form-group">
+                <label>Categoria</label>
+                  <select class="form-control" name="categoria" required>';
+                    <?php
+                      $query="SELECT * FROM categorias_idiomas WHERE idioma='".$_SESSION[idioma]."' ORDER BY id";
+                      $categorias=db_query($query);
+                      echo "<option value=''>Categoria</option>";
+
+                      foreach ($categorias as $categoria) {
+                        echo '<option value="'.$categoria['id'].'">'.$categoria['nome'].'</option>';
+                      }
+                    ?>
+                  </select>
+              </div>
+               <div class="form-group">
+                      <label>Ano de colheita</label>
+                      <input type="number" placeholder="Ano de colheita" class="form-control" name="ano_colheita" min ="1000"max="<?php echo date("Y")+10?>">
+                    </div>
+                    <div class="form-group">
+                      <label>Castas</label>
+                      <textarea placeholder="Castas" class="form-control" name="castas"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>Graduação Alcoólica</label>
+                      <div class="row">
+                        <div class="col-3">
+                          <input type="number" step="0.01" placeholder="Graduação Alcoólica" class="form-control" name="graduacao_alcoolica" min="0" max="99">
+                        </div>
+                        <div class="col-2">
+                        <p>% vol</p>
+                        </div>
+                        <div class="col-7">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Acidez</label>
+                      <div class="row">
+                        <div class="col-3">
+                          <input type="number" step="0.01" placeholder="Acidez" class="form-control" name="acidez" min="0" max="99">
+                        </div>
+                        <div class="col-2">
+                        <p>g/l</p>
+                        </div>
+                        <div class="col-7">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Açúcar</label>
+                      <div class="row">
+                        <div class="col-3">
+                          <input type="number" step="0.01" placeholder="Açúcar" class="form-control" name="acucar" min="0" max="999">
+                        </div>
+                        <div class="col-2">
+                        <p>g/l</p>
+                        </div>
+                        <div class="col-7">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label>Temperatura de consumo</label>
+                      <div class="row">
+                        <div class="col-3">
+                        <?php $temp=explode("-",FormatField($produto['temperatura_consumo'],$id));?>
+                          <input type="number" placeholder="Temp. Mín." class="form-control" name="tempmin" min="-20" max="80">
+                        </div>
+                        <div class="col-1">
+                        <p>-</p>
+                        </div>
+                        <div class="col-3">
+                          <input type="number" placeholder="Temp. Máx." class="form-control" name="tempmax" min="-20" max="80">
+                        </div>
+                        <div class="col-5">
+                        <p>°C</p>
+                        </div>
+                      </div>
+                    </div>
+              <?php 
+              foreach ($arrlinguas as $abrv=>$lingua) {
+               
+              ?>
+              <h2>Idioma <?php echo $lingua?></h2>
+                    
+                    <div class="form-group">
+                      <label>Nome</label>
+                      <input type="text" placeholder="Nome" class="form-control" name="nome<?php echo $abrv?>">
+                    </div>
+                    <div class="form-group">
+                      <label>Produtor</label>
+                      <input type="text" placeholder="Produtor" class="form-control" name="produtor<?php echo $abrv?>">
+                    </div>
+                    
+                    <div class="form-group">
+                      <label>Designação de origem</label>
+                      <input type="text" placeholder="Designação de origem" class="form-control" name="designacao_origem<?php echo $abrv?>">
+                    </div>
+                    <div class="form-group">
+                      <label>Região</label>
+                      <input type="text" placeholder="Região" class="form-control" name="regiao<?php echo $abrv?>">
+                    </div>
+                    <div class="form-group">
+                      <label>País</label>
+                      <input type="text" placeholder="País" class="form-control" name="pais<?php echo $abrv?>">
+                    </div>
+                   
+                    <div class="form-group">
+                      <label>Solo</label>
+                      <input type="text" placeholder="Solo" class="form-control" name="solo<?php echo $abrv?>">
+                    </div>
+                    <div class="form-group">
+                      <label>Cor</label>
+                      <textarea placeholder="Cor" class="form-control" name="cor<?php echo $abrv?>"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>Processo de Vinificação</label>
+                      <textarea placeholder="Processo de vinificação" class="form-control" name="processo_vinificacao<?php echo $abrv?>"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>Notas de Prova</label>
+                      <textarea placeholder="Notas de Provas" class="form-control" name="notas_prova<?php echo $abrv?>"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>Informação Adicional</label>
+                      <textarea placeholder="Informação Adicional" class="form-control" name="info_adicional<?php echo $abrv?>"></textarea>
+                    </div>
+                <?php
+              }
+                ?>
+                </div>
+                
+                <div class="modal-footer">
+                <?php
+                $url=$_SERVER['REQUEST_URI'];
+                $arrUrl=explode("&",$url);
+                $url=$arrUrl[0];
+                ?>
+                  <input type="hidden" name="id" value="<?php echo $id?>">
+                  <input type="hidden" name="url" value="<?php echo $url?>">
+                  <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+                  <button type="submit" class="btn btn-primary" name="submit">Inserir Produto</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+
     </div>
     <div class="table-responsive"> 
       <table class="table table-striped table-hover">
@@ -243,6 +413,7 @@ if (isset($_GET['img'])
                           </div>
                           <div class="modal-body">
                             <p>Aqui pode editar o produto. Se não quiser alterar nada feche o modal. Se quiser alterar apenas alguns, simplesmente altere os campos que quiser e não preencha os outros.</p>
+                            <p>Atenção! Editar informação neste modal, apenas altera a informação relativa a esta língua!</p>
                             <form action="'.$arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.editar.php" method="POST" enctype="multipart/form-data">
                             
                             <div class="form-group">

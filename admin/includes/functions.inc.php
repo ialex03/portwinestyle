@@ -34,5 +34,25 @@ function FormatField($fieldname,$id){
     }
 
 }
+function MinLength($field,$numchar,$errorstring){
+    if(strlen($field)>$numchar){
+        $errorstring.="&".$field."toolong=true";
+        return $errorstring;
+    }
+}
+function IsFieldSet($field,$nullstring){
+    if($field==""){
+            $nullstring.="&".$field."=null";
+            return $nullstring;
+
+    }
+}
+function NullOrNot(){
+    if($_POST['nome']!= ""){
+        $string.=$_POST['nome'].",";
+    }else{
+        $string.="NULL,";
+    }
+}
 
 ?>

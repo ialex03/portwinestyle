@@ -136,7 +136,7 @@ if(isset($_POST["submit"])) {
             $string.="nome=".$_POST['nome'].",";
         }
         if($_POST['produtor']!= ""){
-            $string.="castas='".$_POST['castas']."',";
+            $string.="produtor='".$_POST['produtor']."',";
         }
         if($_POST['cor']!= ""){
             $string.="cor='".$_POST['cor']."',";
@@ -154,13 +154,13 @@ if(isset($_POST["submit"])) {
             $string.="solo=".$_POST['solo'].",";
         }
         if($_POST['processo_vinificacao']!= ""){
-            $string.="processo_vinificacao=".$_POST['processo_vinificacao'].",";
+            $string.="processo_vinificacao='".$_POST['processo_vinificacao']."',";
         }
         if($_POST['notas_prova']!= ""){
-            $string.="notas_prova=".$_POST['notas_prova'].",";
+            $string.="notas_prova='".$_POST['notas_prova']."',";
         }
         if($_POST['info_adicional']!= ""){
-            $string.="info_adicional=".$_POST['info_adicional'].",";
+            $string.="info_adicional='".$_POST['info_adicional']."',";
         }
         $string=substr($string, 0, strlen($string) - 1);
 

@@ -91,6 +91,8 @@ if(!isset($_SESSION['idioma'])) {
               include $arrSETTINGS['dir_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.exibir.php';
               ?>
 
+              <!--
+
               <div class="col-lg-12">
                 <div class="block margin-bottom-sm">
                   <div class="row">
@@ -119,7 +121,7 @@ if(!isset($_SESSION['idioma'])) {
                       <tbody>
                         <tr>
                           <th scope="row">1</th>
-                          <td><?php $arrCamposProdutos['nome']?></td>
+                          <td></td>
                           
                           <td>Otto</td>
                           <td>@mdo</td>
@@ -236,7 +238,7 @@ if(!isset($_SESSION['idioma'])) {
                   </div>
                 </div>
               </div>
-            </div>
+            </div>-->
 
 
 
