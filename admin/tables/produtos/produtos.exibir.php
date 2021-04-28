@@ -82,6 +82,7 @@ $arrTabelasIdiomas=array('produtos'=>array(
 if ( 
 isset($_GET['format']) 
 || isset($_GET['fileerror']) 
+|| isset($_GET['img']) 
 || isset($_GET['castastoolong']) 
 
 || isset($_GET['nomepttoolong'])
@@ -119,6 +120,11 @@ isset($_GET['format'])
     if (isset($_GET['img']) && $_GET['img']=="exists") {
     ?>
     <p class="mb-0">Essa imagem já existe! Experimente colocar outra imagem...</p>
+    <?php
+    }
+    if (isset($_GET['img']) && $_GET['img']=="toobig") {
+    ?>
+    <p class="mb-0">Essa imagem é demasiado grande! Experimente colocar outra imagem...</p>
     <?php
     }
     if (isset($_GET['format']) && $_GET['format']=="false") {

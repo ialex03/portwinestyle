@@ -70,6 +70,7 @@ $arrTabelasIdiomas=array('parceiros'=>array(
 if ( 
 isset($_GET['format']) 
 || isset($_GET['fileerror']) 
+|| isset($_GET['img']) 
 || isset($_GET['pdf']) 
 || isset($_GET['pdferror'])
 || isset($_GET['pdfformat'])

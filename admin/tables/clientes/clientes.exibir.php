@@ -48,7 +48,8 @@ $arrTabelasIdiomas=array('clientes'=>array(
 
 //algo correu mal
 if ( 
-isset($_GET['format']) 
+isset($_GET['format'])
+|| isset($_GET['img'])  
 || isset($_GET['fileerror']) 
 || isset($_GET['pdf']) 
 || isset($_GET['pdferror'])

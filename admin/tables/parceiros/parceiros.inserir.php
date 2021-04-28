@@ -151,6 +151,6 @@ if(isset($_POST["submit"])) {
     
 
 }else{
-    header('Location:'.$_POST['url']."&img=toobig");
+    header('Location:/portwinestyle/admin/tables.php?table=parceiros&img=toobig');
 }
 ?>
