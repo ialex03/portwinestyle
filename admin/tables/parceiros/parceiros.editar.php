@@ -74,6 +74,7 @@ if(isset($_POST["submit"])) {
 
     $file_type=$_FILES['anexo']['type'];
 
+    if(basename($_FILES["anexo"]["name"])){
     if ($file_type=="application/pdf") {
     if (file_exists($targetfolder)) {
             echo "Sorry, file already exists.";
@@ -102,6 +103,7 @@ if(isset($_POST["submit"])) {
     $errorstring.="&pdfformat=false";
 
     }
+}
 
     
 
@@ -121,7 +123,7 @@ if(isset($_POST["submit"])) {
             $string.="foto='".basename($_FILES["imagem"]["name"])."',";
         }
         if($_POST['nome']!= ""){
-            $string.="nome=".$_POST['nome'].",";
+            $string.="nome='".$_POST['nome']."',";
         }
         if(basename($_FILES["anexo"]["name"])!= ""){
             $string.="anexo='".basename($_FILES["anexo"]["name"])."',";

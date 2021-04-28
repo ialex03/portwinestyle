@@ -309,7 +309,7 @@ isset($_GET['format'])
                             
                             <div class="form-group">
                                 <label>Nome</label>
-                                <input type="text" placeholder="'.$produto['nome'].'" class="form-control name="nome">
+                                <input type="text" placeholder="'.$produto['nome'].'" class="form-control" name="nome">
                               </div>
                             <div class="form-group">
                                 <label>Foto</label>
