@@ -83,13 +83,28 @@ if (
 isset($_GET['format']) 
 || isset($_GET['fileerror']) 
 || isset($_GET['castastoolong']) 
-|| isset($_GET['nometoolong'])
-|| isset($_GET['produtortoolong'])
-|| isset($_GET['cortoolong'])
-|| isset($_GET['designacao_origemtoolong'] )
-|| isset($_GET['regiaotoolong'])
-|| isset($_GET['paistoolong'])
-|| isset($_GET['solotoolong'])){
+
+|| isset($_GET['nomepttoolong'])
+|| isset($_GET['nomeentoolong'])
+|| isset($_GET['nomerutoolong'])
+|| isset($_GET['produtorpttoolong'])
+|| isset($_GET['produtorentoolong'])
+|| isset($_GET['produtorrutoolong'])
+|| isset($_GET['corpttoolong'])
+|| isset($_GET['corentoolong'])
+|| isset($_GET['corrutoolong'])
+|| isset($_GET['designacao_origempttoolong'])
+|| isset($_GET['designacao_origementoolong'])
+|| isset($_GET['designacao_origemrutoolong'])
+|| isset($_GET['regiaopttoolong'])
+|| isset($_GET['regiaoentoolong'])
+|| isset($_GET['regiaorutoolong'])
+|| isset($_GET['paispttoolong'])
+|| isset($_GET['paisentoolong'])
+|| isset($_GET['paisrutoolong'])
+|| isset($_GET['solopttoolong'])
+|| isset($_GET['soloentoolong'])
+|| isset($_GET['solorutoolong'])){
 ?>
   <div class="alert alert-danger" role="alert">
     <h4 class="alert-heading">Algo foi mal preenchido!</h4>
@@ -137,6 +152,11 @@ isset($_GET['format'])
       <p class="mb-0">O campo "Cor" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
       <?php
       }
+      if (isset($_GET['designacao_origem'.$abrv.'toolong']) && $_GET['designacao_origem'.$abrv.'toolong']=="true") {
+      ?>
+      <p class="mb-0">O campo "Designação de origem" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
+      <?php
+      }
       if (isset($_GET['regiao'.$abrv.'toolong']) && $_GET['regiao'.$abrv.'toolong']=="true") {
       ?>
       <p class="mb-0">O campo "Região" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
@@ -163,17 +183,28 @@ isset($_GET['format'])
 <!--aviso de algo-->
   <div class="col-lg-12">
     <?php
-    if (isset($_GET['img']) 
-    || isset($_GET['format']) 
-    || isset($_GET['fileerror']) 
-    || isset($_GET['castastoolong']) 
-    || isset($_GET['nometoolong'])
-    || isset($_GET['produtortoolong'])
-    || isset($_GET['cortoolong'])
-    || isset($_GET['designacao_origemtoolong'] )
-    || isset($_GET['regiaotoolong'])
-    || isset($_GET['paistoolong'])
-    || isset($_GET['solotoolong'])){
+    if (isset($_GET['img'])
+    || isset($_GET['nomept'])
+    || isset($_GET['nomeen'])
+    || isset($_GET['nomeru'])
+    || isset($_GET['produtorpt'])
+    || isset($_GET['produtoren'])
+    || isset($_GET['produtorru'])
+    || isset($_GET['corpt'])
+    || isset($_GET['coren'])
+    || isset($_GET['corru'])
+    || isset($_GET['designacao_origempt'])
+    || isset($_GET['designacao_origemen'])
+    || isset($_GET['designacao_origemru'])
+    || isset($_GET['regiaopt'])
+    || isset($_GET['regiaoen'])
+    || isset($_GET['regiaoru'])
+    || isset($_GET['paispt'])
+    || isset($_GET['paisen'])
+    || isset($_GET['paisru'])
+    || isset($_GET['solopt'])
+    || isset($_GET['soloen'])
+    || isset($_GET['soloru'])){
     ?>
   <div class="alert alert-warning" role="alert">
     <h4 class="alert-heading">Aviso!</h4>
@@ -193,11 +224,6 @@ isset($_GET['format'])
     if (isset($_GET['castas']) && $_GET['castas']=="null") {
     ?>
     <p class="mb-0">O campo "Castas" não foi preenchido</p>
-    <?php
-    }
-    if (isset($_GET['castastoolong']) && $_GET['castastoolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "Castas" é demasiado comprido! Experimente escrever algo mais curto....</p>
     <?php
     }
     if (isset($_GET['graduacao_alcoolica']) && $_GET['graduacao_alcoolica']=="null") {
@@ -248,11 +274,7 @@ isset($_GET['format'])
     <p class="mb-0">O campo "Designação de origem" no idioma "<?php echo $lingua?>" não foi preenchido</p>
     <?php
     }
-    if (isset($_GET['designacao_origem'.$abrv.'toolong']) && $_GET['designacao_origem'.$abrv.'toolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "Designação de origem" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
-    }
+    
     if (isset($_GET['regiao'.$abrv]) && $_GET['regiao'.$abrv]=="null") {
     ?>
     <p class="mb-0">O campo "Região" no idioma "<?php echo $lingua?>" não foi preenchido</p>

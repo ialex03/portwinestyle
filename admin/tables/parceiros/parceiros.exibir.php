@@ -70,14 +70,10 @@ $arrTabelasIdiomas=array('parceiros'=>array(
 if ( 
 isset($_GET['format']) 
 || isset($_GET['fileerror']) 
-|| isset($_GET['castastoolong']) 
-|| isset($_GET['nometoolong'])
-|| isset($_GET['produtortoolong'])
-|| isset($_GET['cortoolong'])
-|| isset($_GET['designacao_origemtoolong'] )
-|| isset($_GET['regiaotoolong'])
-|| isset($_GET['paistoolong'])
-|| isset($_GET['solotoolong'])){
+|| isset($_GET['pdf']) 
+|| isset($_GET['pdferror'])
+|| isset($_GET['pdfformat'])
+|| isset($_GET['nometoolong'])){
 ?>
   <div class="alert alert-danger" role="alert">
     <h4 class="alert-heading">Algo foi mal preenchido!</h4>
@@ -101,47 +97,30 @@ isset($_GET['format'])
     }
     if (isset($_GET['fileerror']) && $_GET['fileerror']=="true") {
     ?>
-    <p class="mb-0">Ocorreu um erro ao transferir o ficheiro!</p>
+    <p class="mb-0">Ocorreu um erro ao transferir o ficheiro da imagem!</p>
     <?php
     }
-    if (isset($_GET['castastoolong']) && $_GET['castastoolong']=="true") {
+    if (isset($_GET['pdf']) && $_GET['pdf']=="exists") {
     ?>
-    <p class="mb-0">O campo "Castas" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <p class="mb-0">Esse anexo já existe! Experimente colocar outro ficheiro...</p>
     <?php
     }
-    foreach ($arrlinguas as $abrv=>$lingua) {
-      if (isset($_GET['nome'.$abrv.'toolong']) && $_GET['nome'.$abrv.'toolong']=="true") {
-      ?>
-      <p class="mb-0">O campo "Nome" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-      <?php
-      }
-      if (isset($_GET['produtor'.$abrv.'toolong']) && $_GET['produtor'.$abrv.'toolong']=="true") {
-      ?>
-      <p class="mb-0">O campo "Produtor" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-      <?php
-      }
-      if (isset($_GET['cor'.$abrv.'toolong']) && $_GET['cor'.$abrv.'toolong']=="true") {
-      ?>
-      <p class="mb-0">O campo "Cor" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-      <?php
-      }
-      if (isset($_GET['regiao'.$abrv.'toolong']) && $_GET['regiao'.$abrv.'toolong']=="true") {
-      ?>
-      <p class="mb-0">O campo "Região" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-      <?php
-      }
-      if (isset($_GET['pais'.$abrv.'toolong']) && $_GET['pais'.$abrv.'toolong']=="true") {
-      ?>
-      <p class="mb-0">O campo "País" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-      <?php
-      }
-      if (isset($_GET['solo'.$abrv.'toolong']) && $_GET['solo'.$abrv.'toolong']=="true") {
-        ?>
-        <p class="mb-0">O campo "Solo" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-        <?php
-    
+    if (isset($_GET['pdferror']) && $_GET['pdferror']=="exists") {
+    ?>
+    <p class="mb-0">Ocorreu um erro ao transferir o anexo pdf!</p>
+    <?php
     }
-  }
+    if (isset($_GET['pdfformat']) && $_GET['pdfformat']=="false") {
+    ?>
+    <p class="mb-0">O anexo não é do formato pdf!</p>
+    <?php
+    }
+    if (isset($_GET['nometoolong']) && $_GET['nometoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Nome" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }
+    
     ?>
   </div>
   <?php

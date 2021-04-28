@@ -77,7 +77,7 @@ if(isset($_POST["submit"])) {
     if ($file_type=="application/pdf") {
     if (file_exists($targetfolder)) {
             echo "Sorry, file already exists.";
-            $errorstring.="&ipdf=exists";
+            $errorstring.="&pdf=exists";
             $ok = 0;
     }elseif(move_uploaded_file($_FILES['anexo']['tmp_name'], $targetfolder))
 
