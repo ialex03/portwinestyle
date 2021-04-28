@@ -29,12 +29,13 @@ $arrCampos= array (
 $query="SELECT * FROM parceiros WHERE is_active=1 ORDER BY id DESC";
 $arrCamposProdutos=db_query($query);
 
-if(isset($_POST['query'])){
+if(isset($_GET['query'])){
 $strSearch="";
 $arrSearch=explode(" ",$_GET['query']);
 
 $arrTabelasIdiomas=array('parceiros'=>array(
                                     'nome',
+                                    'foto',
                                     'anexo',
                                     ));
                                     
@@ -53,11 +54,10 @@ $arrTabelasIdiomas=array('parceiros'=>array(
         
         
         
-        $strSearch.=' ORDER BY A.id DESC';
+        $strSearch.=' ORDER BY id DESC';
 
     }
     $arrCamposProdutos=db_query($strSearch);
-    echo $strSearch;
 }
 ?>
 
