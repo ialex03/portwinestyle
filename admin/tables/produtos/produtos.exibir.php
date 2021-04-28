@@ -371,42 +371,44 @@ isset($_GET['format'])
             <option value="ru">русский</option>
           </select>
         </form>
-
       </div>
       <div class="col-sm-2">
-        <button type="button" data-toggle="modal" data-target="#modalsearch" class="btn btn-primary">
-            <div data-toggle="tooltip" data-placement="bottom" title="Pesquisar"><i class="fa fa-search"></i></button>
-        </button>
-        <div id="modalsearch" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-          <div role="document" class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Pesquisar por um produto</strong>
-                <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-              </div>
-              <div class="modal-body">
-                <p>Aqui pode pesquisar por um produto, insira um ou vários termos de pesquisa</p>
-                <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.pesquisa.php" method="POST">
-                  <div class="form-group">
-                    <input type="text" placeholder="Pesquisar..." class="form-control" name="query">
-                  </div>
-                  <?php
-                          $url=$_SERVER['REQUEST_URI'];
-                          $arrUrl=explode("&",$url);
-                          $url=$arrUrl[0];
-                          ?>
-                  <input type="hidden" name="url" value="<?php echo $url?>">
-                  <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-                  <button type="submit" class="btn btn-primary" name="submit">Pesquisar</button>
-                  
-                </form>
+        <div class="float-right">
+        
+          <button type="button" data-toggle="modal" data-target="#modalsearch" class="btn btn-primary">
+              <div data-toggle="tooltip" data-placement="bottom" title="Pesquisar"><i class="fa fa-search"></i></button>
+          </button>
+          <div id="modalsearch" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+            <div role="document" class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Pesquisar por um produto</strong>
+                  <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                  <p>Aqui pode pesquisar por um produto, insira um ou vários termos de pesquisa</p>
+                  <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.pesquisa.php" method="POST">
+                    <div class="form-group">
+                      <input type="text" placeholder="Pesquisar..." class="form-control" name="query">
+                    </div>
+                    <?php
+                            $url=$_SERVER['REQUEST_URI'];
+                            $arrUrl=explode("&",$url);
+                            $url=$arrUrl[0];
+                            ?>
+                    <input type="hidden" name="url" value="<?php echo $url?>">
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" name="submit">Pesquisar</button>
+                    
+                  </form>
+                </div>
               </div>
             </div>
           </div>
+          <button type="button" data-toggle="modal" data-target="#modalinsert" class="btn btn-primary">
+              <div data-toggle="tooltip" data-placement="bottom" title="Inserir"><i class="fa fa-plus"></i></button>
+          </button>
+          </div>
         </div>
-        <button type="button" data-toggle="modal" data-target="#modalinsert" class="btn btn-primary">
-            <div data-toggle="tooltip" data-placement="bottom" title="Inserir"><i class="fa fa-plus"></i></button>
-        </button>
-      </div>
 
       <div id="modalinsert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
         <div role="document" class="modal-dialog">
@@ -634,7 +636,9 @@ isset($_GET['format'])
 
                 //editar
                   
-             echo '<button type="button" data-toggle="modal" data-target="#modal'.$id.'" class="btn btn-primary"><div data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></div></button>
+             echo '
+             <button type="button" data-toggle="modal" data-target="#modal'.$id.'" class="btn btn-primary"><div data-toggle="tooltip" data-placement="bottom" title="Editar"><i class="fa fa-edit"></i></div></button>
+             
 
                   <div id="modal'.$id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
                       <div role="document" class="modal-dialog">

@@ -10,7 +10,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 
-    $query="DELETE FROM produtos WHERE id=".$_GET['id'];
+    $query="DELETE FROM parceiros WHERE id=".$_GET['id'];
     db_query($query);
     $query="DELETE FROM produtos_idiomas WHERE id=".$_GET['id']." AND idioma=".$_SESSION['idioma'];
     db_query($query);

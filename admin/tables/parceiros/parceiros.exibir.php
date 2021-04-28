@@ -187,86 +187,86 @@ isset($_GET['format'])
 
   <div class="block margin-bottom-sm">
     <div class="row">
-      <div class="col-sm-7">
+      <div class="col-sm-10">
         <div class="title"><strong><a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=parceiros'?>">Parceiros</a></strong></div>
       </div>
 
-      <div class="col-sm-3">
-      </div>
       <div class="col-sm-2">
-        <button type="button" data-toggle="modal" data-target="#modalsearch" class="btn btn-primary">
-            <div data-toggle="tooltip" data-placement="bottom" title="Pesquisar"><i class="fa fa-search"></i></button>
-        </button>
-        <div id="modalsearch" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-          <div role="document" class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Pesquisar por um parceiro</strong>
-                <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-              </div>
-              <div class="modal-body">
-                <p>Aqui pode pesquisar por um parceiro, insira um ou vários termos de pesquisa</p>
-                <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.pesquisa.php" method="POST">
-                  <div class="form-group">
-                    <input type="text" placeholder="Pesquisar..." class="form-control" name="query">
-                  </div>
-                  <?php
-                          $url=$_SERVER['REQUEST_URI'];
-                          $arrUrl=explode("&",$url);
-                          $url=$arrUrl[0];
-                          ?>
-                  <input type="hidden" name="url" value="<?php echo $url?>">
-                  <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-                  <button type="submit" class="btn btn-primary" name="submit">Pesquisar</button>
-                  
-                </form>
+        <div class="float-right">
+          <button type="button" data-toggle="modal" data-target="#modalsearch" class="btn btn-primary">
+              <div data-toggle="tooltip" data-placement="bottom" title="Pesquisar"><i class="fa fa-search"></i></button>
+          </button>
+          <div id="modalsearch" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+            <div role="document" class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Pesquisar por um parceiro</strong>
+                  <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                  <p>Aqui pode pesquisar por um parceiro, insira um ou vários termos de pesquisa</p>
+                  <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.pesquisa.php" method="POST">
+                    <div class="form-group">
+                      <input type="text" placeholder="Pesquisar..." class="form-control" name="query">
+                    </div>
+                    <?php
+                            $url=$_SERVER['REQUEST_URI'];
+                            $arrUrl=explode("&",$url);
+                            $url=$arrUrl[0];
+                            ?>
+                    <input type="hidden" name="url" value="<?php echo $url?>">
+                    <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" name="submit">Pesquisar</button>
+                    
+                  </form>
+                </div>
               </div>
             </div>
           </div>
+          <button type="button" data-toggle="modal" data-target="#modalinsert" class="btn btn-primary">
+              <div data-toggle="tooltip" data-placement="bottom" title="Inserir"><i class="fa fa-plus"></i></button>
+          </button>
         </div>
-        <button type="button" data-toggle="modal" data-target="#modalinsert" class="btn btn-primary">
-            <div data-toggle="tooltip" data-placement="bottom" title="Inserir"><i class="fa fa-plus"></i></button>
-        </button>
         
       </div>
 
-                    <div id="modalinsert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-                      <div role="document" class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Inserir Parceiro</strong>
-                            <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                          </div>
-                          <div class="modal-body">
-                            <p>Aqui pode inserir o parceiro. Se não quiser inserir nada feche o modal.</p>
-                            <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.inserir.php'?>" method="POST" enctype="multipart/form-data">
-                            
-                            <div class="form-group">
-                                <label>Nome</label>
-                                <input type="text" placeholder="Nome" class="form-control" name="nome" required>
-                              </div>
-                            <div class="form-group">
-                                <label>Foto</label>
-                                <input type="file" name="imagem" id="imagem" required>
-                              </div>
-                              
-                              <div class="form-group">
-                                <label>Anexo</label>
-                                <input type="file" name="anexo" id="anexo" required>
-                              </div>
-                          </div>
-                          <div class="modal-footer">
-                          <?php
-                          $url=$_SERVER['REQUEST_URI'];
-                          $arrUrl=explode("&",$url);
-                          $url=$arrUrl[0];
-                          ?>
-                            <input type="hidden" name="url" value="<?php echo $url?>">
-                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-                            <button type="submit" class="btn btn-primary" name="submit">Salvar Mudanças</button>
-                          </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
+      <div id="modalinsert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+        <div role="document" class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Inserir Parceiro</strong>
+              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+            </div>
+            <div class="modal-body">
+              <p>Aqui pode inserir o parceiro. Se não quiser inserir nada feche o modal.</p>
+              <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.inserir.php'?>" method="POST" enctype="multipart/form-data">
+              
+              <div class="form-group">
+                  <label>Nome</label>
+                  <input type="text" placeholder="Nome" class="form-control" name="nome" required>
+                </div>
+              <div class="form-group">
+                  <label>Foto</label>
+                  <input type="file" name="imagem" id="imagem" required>
+                </div>
+                
+                <div class="form-group">
+                  <label>Anexo</label>
+                  <input type="file" name="anexo" id="anexo" required>
+                </div>
+            </div>
+            <div class="modal-footer">
+            <?php
+            $url=$_SERVER['REQUEST_URI'];
+            $arrUrl=explode("&",$url);
+            $url=$arrUrl[0];
+            ?>
+              <input type="hidden" name="url" value="<?php echo $url?>">
+              <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+              <button type="submit" class="btn btn-primary" name="submit">Salvar Mudanças</button>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
 
 
     </div>
