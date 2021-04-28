@@ -27,6 +27,7 @@
         <ul class="list-unstyled">
           <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=produtos'?>"> <i class="icon-grid"></i>Tabela Produtos</a></li>
           <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=parceiros'?>"> <i class="icon-grid"></i>Tabela Parceiros</a></li>
+          <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=clientes'?>"> <i class="icon-grid"></i>Tabela Clientes</a></li>
           <li> <a href="#"> <i class="icon-grid"></i>Tabela 2</a></li>
         </ul>
       </nav>
