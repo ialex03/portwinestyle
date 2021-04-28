@@ -71,7 +71,10 @@ if(isset($_POST["submit"])) {
     //imagem END
 
     //tabela produtos
-    if(strlen($_POST['castas'])>200){
+    if($_POST['castas']==""){
+            $nullstring.="&castas=null";
+
+    }elseif(strlen($_POST['castas'])>200){
         $errorstring.="&castastoolong=true";
     }
     //tabela produtos END

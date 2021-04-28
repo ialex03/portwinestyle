@@ -108,15 +108,15 @@ isset($_GET['format'])
 ?>
   <div class="alert alert-danger" role="alert">
     <h4 class="alert-heading">Algo foi mal preenchido!</h4>
-    <p>A acção não foi realizada porque um ou mais campos estão preenchidos de forma errada!</p>
+    <p>A ação não foi realizada porque um ou mais campos estão preenchidos de forma errada!</p>
     <hr>
     <?php
-    if (isset($_GET['img']) && $_GET['image']=="false") {
+    if (isset($_GET['img']) && $_GET['img']=="false") {
     ?>
     <p class="mb-0">O ficheiro anexado não é uma imagem!</p>
     <?php
     }
-    if (isset($_GET['img']) && $_GET['image']=="exists") {
+    if (isset($_GET['img']) && $_GET['img']=="exists") {
     ?>
     <p class="mb-0">Essa imagem já existe! Experimente colocar outra imagem...</p>
     <?php
@@ -305,7 +305,8 @@ isset($_GET['format'])
 
   <?php
   //sucesso
-    if (isset($_GET['success']) 
+    if (isset($_GET['success'])
+    || isset($_GET['insertsuccess'])  
     || isset($_GET['removesuccess']) 
     || isset($_GET['deletesuccess']) 
     || isset($_GET['returnsuccess'])) {
@@ -355,7 +356,7 @@ isset($_GET['format'])
 
   <div class="block margin-bottom-sm">
     <div class="row">
-      <div class="col-sm-8">
+      <div class="col-sm-7">
         <div class="title"><strong><a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=produtos'?>">Produtos</a></strong></div>
       </div>
 
@@ -372,7 +373,7 @@ isset($_GET['format'])
         </form>
 
       </div>
-      <div class="col-sm-1">
+      <div class="col-sm-2">
         <button type="button" data-toggle="modal" data-target="#modalsearch" class="btn btn-primary">
             <div data-toggle="tooltip" data-placement="bottom" title="Pesquisar"><i class="fa fa-search"></i></button>
         </button>

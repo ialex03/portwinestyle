@@ -18,13 +18,14 @@ if(isset($_POST["submit"])) {
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
     $errorstring="";
+    $errorstring="";
     // Check if image file is a actual image or fake image
+    if(basename($_FILES["imagem"]["name"])){
 
     $check = getimagesize($_FILES["imagem"]["tmp_name"]);
 
 
-    if(basename($_FILES["imagem"]["name"])){
-
+    
         if($check !== false) {
             echo "File is an image - " . $check["mime"] . ".";
             $uploadOk = 1;
@@ -74,34 +75,34 @@ if(isset($_POST["submit"])) {
 
     $file_type=$_FILES['anexo']['type'];
 
-    if ($file_type=="application/pdf") {
-    if (file_exists($targetfolder)) {
-            echo "Sorry, file already exists.";
-            $errorstring.="&pdf=exists";
-            $ok = 0;
-    }elseif(move_uploaded_file($_FILES['anexo']['tmp_name'], $targetfolder))
+        if ($file_type=="application/pdf") {
+            if (file_exists($targetfolder)) {
+                    echo "Sorry, file already exists.";
+                    $errorstring.="&pdf=exists";
+                    $ok = 0;
+            }elseif(move_uploaded_file($_FILES['anexo']['tmp_name'], $targetfolder))
 
-    {
+            {
 
-    echo "The file ". basename( $_FILES['anexo']['name']). " is uploaded";
+            echo "The file ". basename( $_FILES['anexo']['name']). " is uploaded";
 
-    }
+            }
 
-    else {
+            else {
 
-    echo "Problem uploading file";
-    $errorstring.="&pdferror=true";
+            echo "Problem uploading file";
+            $errorstring.="&pdferror=true";
 
-    }
+            }
 
-    }
+        }
 
-    else {
+        else {
 
-    echo "You may only upload PDFs<br>";
-    $errorstring.="&pdfformat=false";
+        echo "You may only upload PDFs<br>";
+        $errorstring.="&pdfformat=false";
 
-    }
+        }
 
     
 
@@ -110,30 +111,36 @@ if(isset($_POST["submit"])) {
         $errorstring.="&nometoolong=true";
     }
     
+    
 
     
 
     if($errorstring == ""){
 
-        $query = "UPDATE parceiros SET ";
+        $query = "INSERT INTO `parceiros`(
+            `nome`, 
+            `foto`, 
+            `anexo`, 
+            `is_active`) VALUES (";
         $string="";
-        if(basename($_FILES["imagem"]["name"])!= ""){
-            $string.="foto='".basename($_FILES["imagem"]["name"])."',";
-        }
         if($_POST['nome']!= ""){
-            $string.="nome=".$_POST['nome'].",";
+            $string.="'".$_POST['nome']."',";
+        }
+        if(basename($_FILES["imagem"]["name"])!= ""){
+            $string.="'".basename($_FILES["imagem"]["name"])."',";
         }
         if(basename($_FILES["anexo"]["name"])!= ""){
-            $string.="anexo='".basename($_FILES["anexo"]["name"])."',";
+            $string.="'".basename($_FILES["anexo"]["name"])."',1,";
         }
+        
         
         $string=substr($string, 0, strlen($string) - 1);
 
-        $query.=$string." WHERE id=".$_POST['id'].";";
+        $query.=$string.");";
 
         if($string!=""){
             $confirm=db_query($query);
-            header('Location:'.$_POST['url'].'&success=true');
+            header('Location:'.$_POST['url'].'&insertsuccess=true');
         }
     
 
@@ -144,6 +151,6 @@ if(isset($_POST["submit"])) {
     
 
 }else{
-    echo "error";
+    header('Location:'.$_POST['url']."&img=toobig");
 }
 ?>
