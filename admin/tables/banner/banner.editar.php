@@ -62,115 +62,71 @@ if(isset($_POST["submit"])) {
     }
     //imagem END
 
-    //tabela produtos
-    if(strlen($_POST['castas'])>200){
-        $errorstring.="&castastoolong=true";
+    //tabela banner
+    if(strlen($_POST['route_botao'])>100){
+        $errorstring.="&route_botaotoolong=true";
     }
-    //tabela produtos END
+    if(strlen($_POST['is_active'])>1){
+        $errorstring.="&is_activetoolong=true";
+    }
+    //tabela banner END
 
-    //tabela produtos_idiomas
-    if(strlen($_POST['nome'])>100){
-        $errorstring.="&nometoolong=true";
+    //tabela banner_idiomas
+    if(strlen($_POST['texto'])>50){
+        $errorstring.="&textotoolong=true";
     }
-    if(strlen($_POST['produtor'])>150){
-        $errorstring.="&produtortoolong=true";
+    if(strlen($_POST['texto_botao'])>20){
+        $errorstring.="&texto_botaotoolong=true";
     }
-    if(strlen($_POST['desginacao_origem'])>150){
-        $errorstring.="&desginacao_origemtoolong=true";
-    }
-    if(strlen($_POST['regiao'])>150){
-        $errorstring.="&regiaotoolong=true";
-    }
-    if(strlen($_POST['pais'])>100){
-        $errorstring.="&paistoolong=true";
-    }
-    if(strlen($_POST['solo'])>50){
-        $errorstring.="&solotoolong=true";
-    }
-    //tabela produtos_idiomas END
+    //tabela banner_idiomas END
 
-    //Tabela produtos
+    //Tabela banner
 
     if($errorstring == ""){
 
-        $query = "UPDATE produtos SET ";
+        $query = "UPDATE banner SET ";
         $string="";
         if(basename($_FILES["imagem"]["name"])!= ""){
             $string.="foto='".basename($_FILES["imagem"]["name"])."',";
         }
-        if($_POST['ano_colheita']!= ""){
-            $string.="ano_colheita=".$_POST['ano_colheita'].",";
+        if($_POST['route_botao']!= ""){
+            $string.="route_botao=".$_POST['route_botao'].",";
         }
-        if($_POST['castas']!= ""){
-            $string.="castas='".$_POST['castas']."',";
-        }
-        if($_POST['graduacao_alcoolica']!= ""){
-            $string.="graduacao_alcoolica='".$_POST['graduacao_alcoolica']." % vol',";
-        }
-        if($_POST['acidez']!= ""){
-            $string.="acidez='".$_POST['acidez']." g/l',";
-        }
-        if($_POST['acucar']!= ""){
-            $string.="acucar='".$_POST['acucar']." g/l',";
-        }
-        if($_POST['temperatura_consumo']!= ""){
-            $string.="temperatura_consumo='".$_POST['tempmin']."-".$_POST['tempmax']." °C',";
-        }
-        if($_POST['categoria']!= 0){
-            $string.="id_categoria=".$_POST['categoria'].",";
+        if($_POST['is_active']!= ""){
+            $string.="is_active=".$_POST['is_active'].",";
         }
         $string=substr($string, 0, strlen($string) - 1);
 
         $query.=$string." WHERE id=".$_POST['id'].";";
 
         if($string!=""){
-            $confirm=db_query($query);
+            $confirm1=db_query($query);
         }
 
-        //Tabela produtos END
+        //Tabela banner END
 
-        //tabela produtos_idiomas
-        $query = "UPDATE produtos_idiomas SET ";
+        //tabela banner_idiomas
+        $query = "UPDATE banner_idiomas SET ";
         $string="";
-        if($_POST['nome']!= ""){
-            $string.="nome=".$_POST['nome'].",";
+        if($_POST['texto']!= ""){
+            $string.="texto=".$_POST['texto'].",";
         }
-        if($_POST['produtor']!= ""){
-            $string.="produtor='".$_POST['produtor']."',";
-        }
-        if($_POST['cor']!= ""){
-            $string.="cor='".$_POST['cor']."',";
-        }
-        if($_POST['designacao_origem']!= ""){
-            $string.="designacao_origem='".$_POST['designacao_origem']."',";
-        }
-        if($_POST['pais']!= ""){
-            $string.="pais='".$_POST['pais']."',";
-        }
-        if($_POST['regiao']!= ""){
-            $string.="regiao='".$_POST['regiao']."',";
-        }
-        if($_POST['solo']!= ""){
-            $string.="solo=".$_POST['solo'].",";
-        }
-        if($_POST['processo_vinificacao']!= ""){
-            $string.="processo_vinificacao='".$_POST['processo_vinificacao']."',";
-        }
-        if($_POST['notas_prova']!= ""){
-            $string.="notas_prova='".$_POST['notas_prova']."',";
-        }
-        if($_POST['info_adicional']!= ""){
-            $string.="info_adicional='".$_POST['info_adicional']."',";
+        if($_POST['texto_botao']!= ""){
+            $string.="texto_botao='".$_POST['texto_botao']."',";
         }
         $string=substr($string, 0, strlen($string) - 1);
 
         $query.=$string." WHERE idioma='".$_SESSION['idioma']."' AND id=".$_POST['id'].";";
 
-        //tabela produtos_idiomas END
+        //tabela banner_idiomas END
 
         if($string!=""){
-            $confirm=db_query($query);
+            $confirm2=db_query($query);
+            
+        }
+        if($confirm1 || $confirm2){
             header('Location:'.$_POST['url'].'&success=true');
+
         }
     
 

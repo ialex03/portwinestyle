@@ -124,7 +124,7 @@ if(isset($_POST["submit"])) {
         $query.=$string." WHERE id=".$_POST['id'].";";
 
         if($string!=""){
-            $confirm=db_query($query);
+            $confirm1=db_query($query);
         }
 
         //Tabela produtos END
@@ -169,8 +169,11 @@ if(isset($_POST["submit"])) {
         //tabela produtos_idiomas END
 
         if($string!=""){
-            $confirm=db_query($query);
+            $confirm2=db_query($query);
+        }
+        if($confirm1 || $confirm2){
             header('Location:'.$_POST['url'].'&success=true');
+
         }
     
 

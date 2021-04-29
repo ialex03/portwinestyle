@@ -8,7 +8,7 @@ $arrlinguas= array (
 $arrCampos= array (
                       "#",
                       "Nome",
-                      "Produtor",
+                      "Bannerr",
                       "Categoria",
                       "Designação de Origem",
                       "Região",
@@ -27,7 +27,7 @@ $arrCampos= array (
                       "Informação Adicional",
                   );
 $query="SELECT * FROM banner B INNER JOIN banner_idiomas BI ON B.id=BI.id WHERE BI.idioma='$_SESSION[idioma]' AND B.is_active=1 ORDER BY B.id";
-$arrCamposProdutos=db_query($query);
+$arrCamposBanners=db_query($query);
 
 
 $strSearch="";
@@ -58,7 +58,7 @@ $arrTabelasIdiomas=array('banner'=>array(
         $strSearch.=" B.idioma='$_SESSION[idioma]'".($idcat? " AND id_categoria=".$idcat: '').' ORDER BY A.id DESC';
 
     }
-    $arrCamposProdutos=db_query($strSearch);
+    $arrCamposBanners=db_query($strSearch);
 ?>
 
 <!--produtos-->
@@ -70,29 +70,17 @@ $arrTabelasIdiomas=array('banner'=>array(
 if ( 
 isset($_GET['format']) 
 || isset($_GET['fileerror']) 
-|| isset($_GET['castastoolong']) 
+|| isset($_GET['route_botaotoolong'])
+|| isset($_GET['is_activetoolong'])
 
-|| isset($_GET['nomepttoolong'])
-|| isset($_GET['nomeentoolong'])
-|| isset($_GET['nomerutoolong'])
-|| isset($_GET['produtorpttoolong'])
-|| isset($_GET['produtorentoolong'])
-|| isset($_GET['produtorrutoolong'])
-|| isset($_GET['corpttoolong'])
-|| isset($_GET['corentoolong'])
-|| isset($_GET['corrutoolong'])
-|| isset($_GET['designacao_origempttoolong'])
-|| isset($_GET['designacao_origementoolong'])
-|| isset($_GET['designacao_origemrutoolong'])
-|| isset($_GET['regiaopttoolong'])
-|| isset($_GET['regiaoentoolong'])
-|| isset($_GET['regiaorutoolong'])
-|| isset($_GET['paispttoolong'])
-|| isset($_GET['paisentoolong'])
-|| isset($_GET['paisrutoolong'])
-|| isset($_GET['solopttoolong'])
-|| isset($_GET['soloentoolong'])
-|| isset($_GET['solorutoolong'])){
+|| isset($_GET['textotoolong'])
+|| isset($_GET['textopttoolong'])
+|| isset($_GET['textoentoolong'])
+|| isset($_GET['textorutoolong'])
+|| isset($_GET['texto_botaotoolong'])
+|| isset($_GET['texto_botaopttoolong'])
+|| isset($_GET['texto_botaoentoolong'])
+|| isset($_GET['texto_botaorutoolong'])){
 ?>
   <div class="alert alert-danger" role="alert">
     <h4 class="alert-heading">Algo foi mal preenchido!</h4>
@@ -119,49 +107,38 @@ isset($_GET['format'])
     <p class="mb-0">Ocorreu um erro ao transferir o ficheiro!</p>
     <?php
     }
-    if (isset($_GET['castastoolong']) && $_GET['castastoolong']=="true") {
+    if (isset($_GET['route_botaotoolong']) && $_GET['route_botaotoolong']=="true") {
     ?>
-    <p class="mb-0">O campo "Castas" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <p class="mb-0">O campo "Hiperligação" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }
+    if (isset($_GET['is_activetoolong']) && $_GET['is_activetoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Ativo" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }
+    if (isset($_GET['textotoolong']) && $_GET['textotoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Texto" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }
+    if (isset($_GET['texto_botaotoolong']) && $_GET['texto_botaotoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Texto do botão" é demasiado comprido! Experimente escrever algo mais curto....</p>
     <?php
     }
     foreach ($arrlinguas as $abrv=>$lingua) {
-      if (isset($_GET['nome'.$abrv.'toolong']) && $_GET['nome'.$abrv.'toolong']=="true") {
+      if (isset($_GET['texto'.$abrv.'toolong']) && $_GET['texto'.$abrv.'toolong']=="true") {
       ?>
-      <p class="mb-0">O campo "Nome" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
+      <p class="mb-0">O campo "Texto" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
       <?php
       }
-      if (isset($_GET['produtor'.$abrv.'toolong']) && $_GET['produtor'.$abrv.'toolong']=="true") {
+      if (isset($_GET['texto_botao'.$abrv.'toolong']) && $_GET['texto_botao'.$abrv.'toolong']=="true") {
       ?>
-      <p class="mb-0">O campo "Produtor" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
+      <p class="mb-0">O campo "Texto do botão" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
       <?php
       }
-      if (isset($_GET['cor'.$abrv.'toolong']) && $_GET['cor'.$abrv.'toolong']=="true") {
-      ?>
-      <p class="mb-0">O campo "Cor" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-      <?php
-      }
-      if (isset($_GET['designacao_origem'.$abrv.'toolong']) && $_GET['designacao_origem'.$abrv.'toolong']=="true") {
-      ?>
-      <p class="mb-0">O campo "Designação de origem" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-      <?php
-      }
-      if (isset($_GET['regiao'.$abrv.'toolong']) && $_GET['regiao'.$abrv.'toolong']=="true") {
-      ?>
-      <p class="mb-0">O campo "Região" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-      <?php
-      }
-      if (isset($_GET['pais'.$abrv.'toolong']) && $_GET['pais'.$abrv.'toolong']=="true") {
-      ?>
-      <p class="mb-0">O campo "País" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-      <?php
-      }
-      if (isset($_GET['solo'.$abrv.'toolong']) && $_GET['solo'.$abrv.'toolong']=="true") {
-        ?>
-        <p class="mb-0">O campo "Solo" no idioma "<?php echo $lingua?>" é demasiado comprido! Experimente escrever algo mais curto....</p>
-        <?php
-    
     }
-  }
     ?>
   </div>
   <?php
@@ -247,7 +224,7 @@ isset($_GET['format'])
     
     if (isset($_GET['produtor'.$abrv]) && $_GET['produtor'.$abrv]=="null") {
     ?>
-    <p class="mb-0">O campo "Produtor" no idioma "<?php echo $lingua?>" não foi preenchido</p>
+    <p class="mb-0">O campo "Bannerr" no idioma "<?php echo $lingua?>" não foi preenchido</p>
     <?php
     }
     
@@ -305,34 +282,34 @@ isset($_GET['format'])
     if (isset($_GET['success']) && $_GET['success']=="true") {
     ?>
     
-    <p class="mb-0">Editou o produto com sucesso!</p>
+    <p class="mb-0">Editou a banner com sucesso!</p>
     <?php
     }
     if (isset($_GET['insertsuccess']) && $_GET['insertsuccess']=="true") {
     ?>
     
-    <p class="mb-0">Inseriu o produto com sucesso!</p>
+    <p class="mb-0">Inseriu a banner com sucesso!</p>
     <?php
     }
     if (isset($_GET['removesuccess'])) {
     ?>
     
     
-    <p class="mb-0">Removeu o produto com sucesso! Se não tiver a certeza e quiser voltar atrás, clique no botão "Voltar Atrás". Para eliminar permanentemente clique em "Remover Produto"</p>
+    <p class="mb-0">Removeu a banner com sucesso! Se não tiver a certeza e quiser voltar atrás, clique no botão "Voltar Atrás". Para eliminar permanentemente clique em "Remover Banner"</p>
     <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.retornar.php?id='.$_GET['removesuccess']?>" class="btn btn-success">Voltar Atrás</a>
-    <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.eliminar.php?id='.$_GET['removesuccess']?>" class="btn btn-danger">Remover Produto</a>
+    <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.eliminar.php?id='.$_GET['removesuccess']?>" class="btn btn-danger">Remover Banner</a>
     <?php
     }
     if (isset($_GET['deletesuccess'])) {
     ?>
     
-    <p class="mb-0">Removeu o produto permanentemente com sucesso!</p>
+    <p class="mb-0">Removeu a banner permanentemente com sucesso!</p>
     <?php
     }
     if (isset($_GET['returnsuccess'])) {
     ?>
     
-    <p class="mb-0">Voltou atrás e o produto não foi eliminado!</p>
+    <p class="mb-0">Voltou atrás e a banner não foi eliminado!</p>
     <?php
     }
     ?>
@@ -345,7 +322,7 @@ isset($_GET['format'])
   <div class="block margin-bottom-sm">
     <div class="row">
       <div class="col-sm-7">
-        <div class="title"><strong><a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=produtos'?>">Produtos</a></strong></div>
+        <div class="title"><strong><a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=produtos'?>">Banners</a></strong></div>
       </div>
 
       <div class="col-sm-3">
@@ -401,7 +378,7 @@ isset($_GET['format'])
       <div id="modalinsert" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
         <div role="document" class="modal-dialog">
           <div class="modal-content">
-            <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Inserir Produto</strong>
+            <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Inserir Banner</strong>
               <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
             </div>
             <div class="modal-body">
@@ -501,10 +478,6 @@ isset($_GET['format'])
                       <label>Nome</label>
                       <input type="text" placeholder="Nome" class="form-control" name="nome<?php echo $abrv?>">
                     </div>
-                    <div class="form-group">
-                      <label>Produtor</label>
-                      <input type="text" placeholder="Produtor" class="form-control" name="produtor<?php echo $abrv?>">
-                    </div>
                     
                     <div class="form-group">
                       <label>Designação de origem</label>
@@ -553,7 +526,7 @@ isset($_GET['format'])
                   <input type="hidden" name="id" value="<?php echo $id?>">
                   <input type="hidden" name="url" value="<?php echo $url?>">
                   <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-                  <button type="submit" class="btn btn-primary" name="submit">Inserir Produto</button>
+                  <button type="submit" class="btn btn-primary" name="submit">Inserir Banner</button>
                 </div>
               </form>
             </div>
@@ -571,39 +544,22 @@ isset($_GET['format'])
             <th>Texto</th>
             <th>Texto do botão</th>
             <th>Hiperligação</th>
+            <th>Ativo</th>
             <th>Ações</th>
           </tr>
         </thead>
         <tbody>
         <?php
-        foreach ($arrCamposProdutos as $key => $produto) {
+        foreach ($arrCamposBanners as $key => $produto) {
           $id=$produto['id'];
           echo'<tr>
                 <th scope="row">'.$id.'</th>
                 <td><img src="'.$arrSETTINGS['url_site'].'img/hero/'.$produto['foto'].'"></img></td>
-                <td>'.$produto['nome'].'</td>
-                <td>'.FormatField($produto['produtor'],$id).'</td>';
+                <td>'.FormatField($produto['texto'],$id).'</td>
+                <td>'.FormatField($produto['texto_botao'],$id).'</td>
 
-                $query="SELECT * FROM categorias_idiomas WHERE id=".$produto['id_categoria']." AND idioma='$_SESSION[idioma]' ORDER BY id";
-                $categoria=db_query($query);
-
-          echo '<td>'.$categoria[0]['nome'].'</td>
-                <td>'.FormatField($produto['designacao_origem'],$id).'</td>
-                <td>'.FormatField($produto['regiao'],$id).'</td>
-                <td>'.FormatField($produto['pais'],$id).'</td>
-                <td>'.FormatField($produto['ano_colheita'],$id).'</td>
-                <td>'.FormatField($produto['castas'],$id).'</td>
-                <td>'.FormatField($produto['graduacao_alcoolica'],$id).'</td>
-                <td>'.FormatField($produto['acidez'],$id).'</td>
-                <td>'.FormatField($produto['acucar'],$id).'</td>
-                <td>'.FormatField($produto['temperatura_consumo'],$id).'</td>
-                <td>'.FormatField($produto['n_likes'],$id).'</td>
-                <td>'.FormatField($produto['views'],$id).'</td>
-                <td>'.FormatField($produto['solo'],$id).'</td>
-                <td>'.FormatField($produto['cor'],$id).'</td>
-                <td>'.FormatField($produto['processo_vinificacao'],$id).'</td>
-                <td>'.FormatField($produto['notas_prova'],$id).'</td>
-                <td>'.FormatField($produto['info_adicional'],$id).'</td>
+                <td>'.FormatField($produto['route_botao'],$id).'</td>
+                <td>'.FormatField($produto['is_active'],$id).'</td>
                 <th>';
 
                 //editar
@@ -615,137 +571,38 @@ isset($_GET['format'])
                   <div id="modal'.$id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
                       <div role="document" class="modal-dialog">
                         <div class="modal-content">
-                          <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Editar Produto</strong>
+                          <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Editar Banner</strong>
                             <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                           </div>
                           <div class="modal-body">
-                            <p>Aqui pode editar o produto. Se não quiser alterar nada feche o modal. Se quiser alterar apenas alguns, simplesmente altere os campos que quiser e não preencha os outros.</p>
+                            <p>Aqui pode editar a banner. Se não quiser alterar nada feche o modal. Se quiser alterar apenas alguns, simplesmente altere os campos que quiser e não preencha os outros.</p>
                             <p>Atenção! Editar informação neste modal, apenas altera a informação relativa a esta língua!</p>
-                            <form action="'.$arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.editar.php" method="POST" enctype="multipart/form-data">
+                            <form action="'.$arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.editar.php" method="POST" enctype="multipart/form-data">';
+                            ?>
                             
                             <div class="form-group">
                                 <label>Foto</label>
                                 <input type="file" name="imagem" id="imagem">
                               </div>
                               <div class="form-group">
-                                <label>Nome</label>
-                                <input type="text" placeholder="'.$produto['nome'].'" class="form-control name="nome">
+                                <label>Texto</label>
+                                <input type="text" placeholder="<?php echo $produto['texto']?>" class="form-control name="texto">
                               </div>
                               <div class="form-group">
-                                <label>Produtor</label>
-                                <input type="text" placeholder="'.FormatField($produto['produtor'],$id).'" class="form-control" name="produtor">
+                                <label>Texto do botão</label>
+                                <input type="text" placeholder="<?php echo FormatField($produto['texto_botao'],$id)?>" class="form-control" name="texto_botao">
                               </div>
                               <div class="form-group">
-                                <label>Categoria</label>
-                                  <select class="form-control" name="categoria">';
-
-                              $query="SELECT * FROM categorias_idiomas WHERE idioma='".$_SESSION[idioma]."' ORDER BY id";
-                              $categorias=db_query($query);
-                              echo "<option value='0'>Não alterar categoria</option>";
-
-                              foreach ($categorias as $categoria) {
-                                echo '<option value="'.$categoria['id'].'">'.$categoria['nome'].'</option>';
-                              }
-                              ?>
-                                  </select>
+                                <label>Hiperligação</label>
+                                <input type="text" placeholder="<?php echo FormatField($produto['route_botao'],$id)?>" class="form-control" name="route_botao">
                               </div>
+                              
                               <div class="form-group">
-                                <label>Designação de origem</label>
-                                <input type="text" placeholder="<?php echo FormatField($produto['designacao_origem'],$id)?>" class="form-control" name="designacao_origem">
+                                <label>Ativo</label>
+                                <input type="text" placeholder="<?php echo FormatField($produto['is_active'],$id)?>" class="form-control" name="is_active">
                               </div>
-                              <div class="form-group">
-                                <label>Região</label>
-                                <input type="text" placeholder="<?php echo FormatField($produto['regiao'],$id)?>" class="form-control" name="regiao">
-                              </div>
-                              <div class="form-group">
-                                <label>País</label>
-                                <input type="text" placeholder="<?php echo FormatField($produto['pais'],$id)?>" class="form-control" name="pais">
-                              </div>
-                              <div class="form-group">
-                                <label>Ano de colheita</label>
-                                <input type="number" placeholder="<?php echo FormatField($produto['ano_colheita'],$id)?>" class="form-control" name="ano_colheita" min ="1000"max="<?php echo date("Y")+10?>">
-                              </div>
-                              <div class="form-group">
-                                <label>Castas</label>
-                                <textarea placeholder="<?php echo $produto['castas']?>" class="form-control" name="castas"></textarea>
-                              </div>
-                              <div class="form-group">
-                                <label>Graduação Alcoólica</label>
-                                <div class="row">
-                                  <div class="col-3">
-                                    <input type="number" step="0.01" placeholder="<?php echo FormatField($produto['graduacao_alcoolica'],$id)?>" class="form-control" name="graduacao_alcoolica" min="0" max="99">
-                                  </div>
-                                  <div class="col-2">
-                                  <p>% vol</p>
-                                  </div>
-                                  <div class="col-7">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label>Acidez</label>
-                                <div class="row">
-                                  <div class="col-3">
-                                    <input type="number" step="0.01" placeholder="<?php echo FormatField($produto['acidez'],$id)?>" class="form-control" name="acidez" min="0" max="99">
-                                  </div>
-                                  <div class="col-2">
-                                  <p>g/l</p>
-                                  </div>
-                                  <div class="col-7">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label>Açucar</label>
-                                <div class="row">
-                                  <div class="col-3">
-                                    <input type="number" step="0.01" placeholder="<?php echo FormatField($produto['acucar'],$id)?>" class="form-control" name="acucar" min="0" max="999">
-                                  </div>
-                                  <div class="col-2">
-                                  <p>g/l</p>
-                                  </div>
-                                  <div class="col-7">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label>Temperatura de consumo</label>
-                                <div class="row">
-                                  <div class="col-3">
-                                  <?php $temp=explode("-",FormatField($produto['temperatura_consumo'],$id));?>
-                                    <input type="number" placeholder="<?php echo $temp[0]?>" class="form-control" name="tempmin" min="-20" max="80">
-                                  </div>
-                                  <div class="col-1">
-                                  <p>-</p>
-                                  </div>
-                                  <div class="col-3">
-                                    <input type="number" placeholder="<?php echo $temp[1]?>" class="form-control" name="tempmax" min="-20" max="80">
-                                  </div>
-                                  <div class="col-5">
-                                  <p>°C</p>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label>Solo</label>
-                                <input type="text" placeholder="<?php echo FormatField($produto['solo'],$id)?>" class="form-control" name="solo">
-                              </div>
-                              <div class="form-group">
-                                <label>Cor</label>
-                                <textarea placeholder="<?php echo $produto['cor']?>" class="form-control" name="cor"></textarea>
-                              </div>
-                              <div class="form-group">
-                                <label>Processo de Vinificação</label>
-                                <textarea placeholder="<?php echo $produto['processo_vinificacao']?>" class="form-control" name="processo_vinificacao"></textarea>
-                              </div>
-                              <div class="form-group">
-                                <label>Notas de Prova</label>
-                                <textarea placeholder="<?php echo $produto['notas_prova']?>" class="form-control" name="notas_prova"></textarea>
-                              </div>
-                              <div class="form-group">
-                                <label>Informação Adicional</label>
-                                <textarea placeholder="<?php echo $produto['info_adicional']?>" class="form-control" name="info_adicional"></textarea>
-                              </div>
+                              
+                              
                             
                           </div>
                           <div class="modal-footer">
@@ -773,11 +630,11 @@ isset($_GET['format'])
                       <div id="modalremove<?php echo $id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
                         <div role="document" class="modal-dialog modal-sm">
                           <div class="modal-content">
-                            <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Remover Produto</strong>
+                            <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Remover Banner</strong>
                               <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                             </div>
                             <div class="modal-body">
-                              <p>De certeza que deseja remover o produto "<?php echo $produto['nome'] ?>"?</p>
+                              <p>De certeza que deseja remover a banner "<?php echo $produto['texto'] ?>"?</p>
                               <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.remover.php" method="POST" enctype="multipart/form-data">
                               <?php
                           $url=$_SERVER['REQUEST_URI'];
@@ -787,7 +644,7 @@ isset($_GET['format'])
                               <input type="hidden" name="id" value="<?php echo $id?>">
                               <input type="hidden" name="url" value="<?php echo $url?>">
                               <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-                            <button type="submit" class="btn btn-primary" name="submit">Remover Produto</button>
+                            <button type="submit" class="btn btn-primary" name="submit">Remover Banner</button>
                               </form>
                             </div>
                           </div>

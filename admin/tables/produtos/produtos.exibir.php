@@ -85,6 +85,14 @@ isset($_GET['format'])
 || isset($_GET['img']) 
 || isset($_GET['castastoolong']) 
 
+|| isset($_GET['nometoolong'])
+|| isset($_GET['produtortoolong'])
+|| isset($_GET['cortoolong'])
+|| isset($_GET['designacao_origemtoolong'])
+|| isset($_GET['regiaotoolong'])
+|| isset($_GET['paistoolong'])
+|| isset($_GET['solotoolong'])
+
 || isset($_GET['nomepttoolong'])
 || isset($_GET['nomeentoolong'])
 || isset($_GET['nomerutoolong'])
@@ -137,9 +145,34 @@ isset($_GET['format'])
     <p class="mb-0">Ocorreu um erro ao transferir o ficheiro!</p>
     <?php
     }
-    if (isset($_GET['castastoolong']) && $_GET['castastoolong']=="true") {
+    if (isset($_GET['produtortoolong']) && $_GET['produtortoolong']=="true") {
     ?>
-    <p class="mb-0">O campo "Castas" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <p class="mb-0">O campo "Produtor" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }
+    if (isset($_GET['cortoolong']) && $_GET['cortoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Cor" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }if (isset($_GET['designacao_origemtoolong']) && $_GET['designacao_origemtoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Designação de origem" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }if (isset($_GET['regiaotoolong']) && $_GET['regiaotoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Região" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }if (isset($_GET['paistoolong']) && $_GET['paistoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "País" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }if (isset($_GET['solotoolong']) && $_GET['solotoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Solo" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <?php
+    }if (isset($_GET['nometoolong']) && $_GET['nometoolong']=="true") {
+    ?>
+    <p class="mb-0">O campo "Nome" é demasiado comprido! Experimente escrever algo mais curto....</p>
     <?php
     }
     foreach ($arrlinguas as $abrv=>$lingua) {
