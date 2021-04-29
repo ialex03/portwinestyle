@@ -97,6 +97,11 @@ isset($_GET['format'])
     <p class="mb-0">Essa imagem já existe! Experimente colocar outra imagem...</p>
     <?php
     }
+    if (isset($_GET['img']) && $_GET['img']=="toobig") {
+    ?>
+    <p class="mb-0">Essa imagem é demasiado grande! Experimente colocar outra imagem...</p>
+    <?php
+    }
     if (isset($_GET['format']) && $_GET['format']=="false") {
     ?>
     <p class="mb-0">A imagem não é do formato pedido!</p>

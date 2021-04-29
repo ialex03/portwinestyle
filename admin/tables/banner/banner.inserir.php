@@ -304,6 +304,6 @@ if(isset($_POST["submit"])) {
     
 
 }else{
-    echo "error";
+    header('Location:/portwinestyle/admin/tables.php?table=banner&img=toobig');
 }
 ?>
