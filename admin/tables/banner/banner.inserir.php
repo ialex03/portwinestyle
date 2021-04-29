@@ -18,7 +18,7 @@ if(isset($_POST["submit"])) {
 
     //imagem
 
-    $target_dir= $arrSETTINGS['dir_site']."/img/shop/";
+    $target_dir= $arrSETTINGS['dir_site']."/img/hero/";
     $target_file = $target_dir . basename($_FILES["imagem"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -70,212 +70,79 @@ if(isset($_POST["submit"])) {
     }
     //imagem END
 
-    //tabela produtos
-    if($_POST['castas']==""){
-            $nullstring.="&castas=null";
-
-    }elseif(strlen($_POST['castas'])>200){
-        $errorstring.="&castastoolong=true";
+    //tabela banner
+    if(strlen($_POST['route_botao'])>100){
+        $errorstring.="&route_botaotoolong=true";
     }
-    //tabela produtos END
+    //tabela banner END
 
-    //tabela produtos_idiomas
+    //tabela banner_idiomas
     foreach ($arrlinguas as $abrv=>$lingua) {
-        $key='nome'.$abrv;
-        if($_POST[$key]==""){
-            $nullstring.="&".$key."=null";
-
-        }elseif(strlen($_POST[$key])>100){
+        $key='texto'.$abrv;
+        if(strlen($_POST[$key])>50){
         $errorstring.="&".$key."toolong=true";
         }//fix this
-        $key='produtor'.$abrv;
-        if($_POST[$key]==""){
-            $nullstring.="&".$key."=null";
-
-        }elseif(strlen($_POST[$key])>150){
-        $errorstring.="&".$key."toolong=true";
-        }
-        $key='cor'.$abrv;
-        if($_POST[$key]==""){
-            $nullstring.="&".$key."=null";
-
-        }elseif(strlen($_POST[$key])>100){
-        $errorstring.="&".$key."toolong=true";
-        }
-        $key='designacao_origem'.$abrv;
-        if($_POST[$key]==""){
-            $nullstring.="&".$key."=null";
-
-        }elseif(strlen($_POST[$key])>150){
-        $errorstring.="&".$key."toolong=true";
-        }
-        $key='regiao'.$abrv;
-        $field=$_POST[$key];
-        if($_POST[$key]==""){
-            $nullstring.="&".$key."=null";
-
-        }elseif(strlen($_POST[$key])>150){
-        $errorstring.="&".$key."toolong=true";
-        }
-        $key='pais'.$abrv;
-        if($_POST[$key]==""){
-            $nullstring.="&".$key."=null";
-
-        }elseif(strlen($_POST[$key])>100){
-        $errorstring.="&".$key."toolong=true";
-        }
-        $key='solo'.$abrv;
-        if($_POST[$key]==""){
-            $nullstring.="&".$key."=null";
-
-        }elseif(strlen($_POST[$key])>50){
+        $key='texto_botao'.$abrv;
+        if(strlen($_POST[$key])>20){
         $errorstring.="&".$key."toolong=true";
         }
     }
-    echo "here:".$nullstring;
-    //tabela produtos_idiomas END
+    //tabela banner_idiomas END
 
-    //Tabela produtos
+    //Tabela banner
 
     if($errorstring == ""){
 
-        $query = "INSERT INTO `produtos`(
+        $query = "INSERT INTO `banner`(
+            `route_botao`, 
             `foto`, 
-            `ano_colheita`, 
-            `castas`, 
-            `graduacao_alcoolica`, 
-            `acidez`, 
-            `acucar`, 
-            `temperatura_consumo`, 
-            `n_likes`, 
-            `views`, 
-            `id_categoria`, 
             `is_active`) VALUES (";
         $string="";
-
+        
+        if($_POST['route_botao']!= ""){
+            $string.="'".$_POST['route_botao']."',";
+        }else{
+            $string.="NULL,";
+        }
         if(basename($_FILES["imagem"]["name"])!= ""){
             $string.="'".basename($_FILES["imagem"]["name"])."',";
         }else{
             $string.="NULL,";
-            $nullstring.="&img=null";
         }
-        if($_POST['ano_colheita']!= ""){
-            $string.=$_POST['ano_colheita'].",";
-        }else{
-            $string.="NULL,";
-            $nullstring.="&ano_colheita=null";
-        }
-        if($_POST['castas']!= ""){
-            $string.="'".$_POST['castas']."',";
-            $nullstring.="&castas=null";
-        }else{
-            $string.="NULL,";
-        }
-        if($_POST['graduacao_alcoolica']!= ""){
-            $string.="'".$_POST['graduacao_alcoolica']." % vol',";
-        }else{
-            $string.="NULL,";
-            $nullstring.="&graduacao_alcoolica=null";
-        }
-        if($_POST['acidez']!= ""){
-            $string.="'".$_POST['acidez']." g/l',";
-        }else{
-            $string.="NULL,";
-            $nullstring.="&acidez=null";
-        }
-        if($_POST['acucar']!= ""){
-            $string.="'".$_POST['acucar']." g/l',";
-            
-        }else{
-            $string.="NULL,";
-            $nullstring.="&acucar=null";
-        }
-        if($_POST['temp_min']!= "" || $_POST['temp_max']!= "" ){
-            $string.="'".$_POST['tempmin']."-".$_POST['tempmax']." °C',";
-        }else{
-            $string.="NULL,";
-            $nullstring.="&temperatura_consumo=null";
-        }
-        $string.="0,0,";
-        if($_POST['categoria']!= ""){
-            $string.=$_POST['categoria'].",1,";
-        }
+        
+        
+            $string.=$_POST['is_active'].",";
+        
         $string=substr($string, 0, strlen($string) - 1);
 
         echo $query.=$string.");";
 
         if($string!=""){
-            $confirm=db_query($query);
+            $confirm1=db_query($query);
         }
+        $ok=1;
 
-        //Tabela produtos END
+        //Tabela banner END
         foreach ($arrlinguas as $abrv=>$lingua) {
 
-        //tabela produtos_idiomas
-         $query = "INSERT INTO `produtos_idiomas`(
+
+        //tabela banner_idiomas
+         $query = "INSERT INTO `banner_idiomas`(
             `id`, 
             `idioma`, 
-            `nome`, 
-            `produtor`, 
-            `cor`, 
-            `designacao_origem`, 
-            `pais`, 
-            `regiao`, 
-            `solo`, 
-            `processo_vinificacao`, 
-            `notas_prova`, 
-            `info_adicional`) VALUES (";
+            `texto`, 
+            `texto_botao`) VALUES (";
         $string="";
         
-            $string.=$confirm.",";
+            $string.=$confirm1.",";
             $string.="'".$abrv."',";
-        if($_POST['nome'.$abrv]!= ""){
-            $string.=$_POST['nome'.$abrv].",";
+        if($_POST['texto'.$abrv]!= ""){
+            $string.="'".$_POST['texto'.$abrv]."',";
         }else{
             $string.="NULL,";
         }
-        if($_POST['produtor'.$abrv]!= ""){
-            $string.="'".$_POST['castas'.$abrv]."',";
-        }else{
-            $string.="NULL,";
-        }
-        if($_POST['cor']!= ""){
-            $string.="'".$_POST['cor'.$abrv]."',";
-        }else{
-            $string.="NULL,";
-        }
-        if($_POST['designacao_origem'.$abrv]!= ""){
-            $string.="'".$_POST['designacao_origem'.$abrv]."',";
-        }else{
-            $string.="NULL,";
-        }
-        if($_POST['pais'.$abrv]!= ""){
-            $string.="'".$_POST['pais'.$abrv]."',";
-        }else{
-            $string.="NULL,";
-        }
-        if($_POST['regiao'.$abrv]!= ""){
-            $string.="'".$_POST['regiao'.$abrv]."',";
-        }else{
-            $string.="NULL,";
-        }
-        if($_POST['solo'.$abrv]!= ""){
-            $string.="".$_POST['solo'.$abrv].",";
-        }else{
-            $string.="NULL,";
-        }
-        if($_POST['processo_vinificacao'.$abrv]!= ""){
-            $string.="'".$_POST['processo_vinificacao'.$abrv]."',";
-        }else{
-            $string.="NULL,";
-        }
-        if($_POST['notas_prova'.$abrv]!= ""){
-            $string.="'".$_POST['notas_prova'.$abrv]."',";
-        }else{
-            $string.="NULL,";
-        }
-        if($_POST['info_adicional'.$abrv]!= ""){
-            $string.="'".$_POST['info_adicional'.$abrv]."',";
+        if($_POST['texto_botao'.$abrv]!= ""){
+            $string.="'".$_POST['texto_botao'.$abrv]."',";
         }else{
             $string.="NULL,";
         }
@@ -283,16 +150,25 @@ if(isset($_POST["submit"])) {
 
         echo $query.=$string.");";
         $nullstring;
-        
 
-        //tabela produtos_idiomas END
+        //tabela banner_idiomas END
 
         if($string!=""){
-            db_query($query);
+            $confirm2=db_query($query);
+            if($confirm2 && $ok=1){
+                $ok=1;
+            }else{
+                $ok=0;
+            }
             
         }
+        
     }
-    header('Location:'.$_POST['url'].'&insertsuccess=true'.$nullstring);
+    if($confirm1 || $ok){
+           header('Location:'.$_POST['url'].'&insertsuccess=true');
+
+    }
+    
     
 
     }else{

@@ -264,7 +264,7 @@ db_connect();
                             <label for="checkboxCustom1">Option one</label>
                           </div>
                           <div class="i-checks">
-                            <input id="checkboxCustom2" type="checkbox" value="" checked="" class="checkbox-template">
+                             <input id="checkboxCustom2" type="checkbox" value="" checked="" class="checkbox-template">
                             <label for="checkboxCustom2">Option two checked</label>
                           </div>
                           <div class="i-checks">
