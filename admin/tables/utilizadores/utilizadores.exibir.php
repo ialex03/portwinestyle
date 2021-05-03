@@ -14,8 +14,13 @@ $arrSearch=explode(" ",$_GET['query']);
 
 $arrTabelasIdiomas=array('utilizadores'=>array(
                                     'nome',
-                                    'foto',
-                                    'anexo',
+                                    'username',
+                                    'email',
+                                    'endereco_juridico',
+                                    'endereco_comercial',
+                                    'telefone',
+                                    'NIF',
+                                    'is_active',
                                     ));
                                     
     foreach ($arrTabelasIdiomas as $nome_tabela=>$tabela) {
@@ -43,81 +48,13 @@ $arrTabelasIdiomas=array('utilizadores'=>array(
 <!--utilizadores-->
 
 <div class="col-lg-12">
-<?php
 
-//algo correu mal
-if ( 
-isset($_GET['format']) 
-|| isset($_GET['fileerror']) 
-|| isset($_GET['img']) 
-|| isset($_GET['pdf']) 
-|| isset($_GET['pdferror'])
-|| isset($_GET['pdfformat'])
-|| isset($_GET['nometoolong'])){
-?>
-  <div class="alert alert-danger" role="alert">
-    <h4 class="alert-heading">Algo foi mal preenchido!</h4>
-    <p>A ação não foi realizada porque um ou mais campos estão preenchidos de forma errada!</p>
-    <hr>
-    <?php
-    if (isset($_GET['img']) && $_GET['img']=="false") {
-    ?>
-    <p class="mb-0">O ficheiro anexado não é uma imagem!</p>
-    <?php
-    }
-    if (isset($_GET['img']) && $_GET['img']=="exists") {
-    ?>
-    <p class="mb-0">Essa imagem já existe! Experimente colocar outra imagem...</p>
-    <?php
-    }
-    if (isset($_GET['img']) && $_GET['img']=="toobig") {
-    ?>
-    <p class="mb-0">Essa imagem é demasiado grande! Experimente colocar outra imagem...</p>
-    <?php
-    }
-    if (isset($_GET['format']) && $_GET['format']=="false") {
-    ?>
-    <p class="mb-0">A imagem não é do formato pedido!</p>
-    <?php
-    }
-    if (isset($_GET['fileerror']) && $_GET['fileerror']=="true") {
-    ?>
-    <p class="mb-0">Ocorreu um erro ao transferir o ficheiro da imagem!</p>
-    <?php
-    }
-    if (isset($_GET['pdf']) && $_GET['pdf']=="exists") {
-    ?>
-    <p class="mb-0">Esse anexo já existe! Experimente colocar outro ficheiro...</p>
-    <?php
-    }
-    if (isset($_GET['pdferror']) && $_GET['pdferror']=="exists") {
-    ?>
-    <p class="mb-0">Ocorreu um erro ao transferir o anexo pdf!</p>
-    <?php
-    }
-    if (isset($_GET['pdfformat']) && $_GET['pdfformat']=="false") {
-    ?>
-    <p class="mb-0">O anexo não é do formato pdf!</p>
-    <?php
-    }
-    if (isset($_GET['nometoolong']) && $_GET['nometoolong']=="true") {
-    ?>
-    <p class="mb-0">O campo "Nome" é demasiado comprido! Experimente escrever algo mais curto....</p>
-    <?php
-    }
-    
-    ?>
-  </div>
-  <?php
-}
-  ?>
   
 
 
   <?php
   //sucesso
-    if (isset($_GET['success']) 
-    || isset($_GET['insertsuccess']) 
+    if (isset($_GET['success'])
     || isset($_GET['removesuccess']) 
     || isset($_GET['deletesuccess']) 
     || isset($_GET['returnsuccess'])) {
@@ -129,12 +66,6 @@ isset($_GET['format'])
     ?>
     
     <p class="mb-0">Editou o utilizador com sucesso!</p>
-    <?php
-    }
-    if (isset($_GET['insertsuccess']) && $_GET['insertsuccess']=="true") {
-    ?>
-    
-    <p class="mb-0">Inseriu o utilizador com sucesso!</p>
     <?php
     }
     if (isset($_GET['removesuccess'])) {
