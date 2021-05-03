@@ -14,6 +14,6 @@ error_reporting(E_ALL);
     db_query($query);
     $query="DELETE FROM banner_idiomas WHERE id=".$_GET['id']." AND idioma=".$_SESSION['idioma'];
     db_query($query);
-    header('Location:/portwinestyle/admin/tables.php?table=produtos&deletesuccess=true');
+    header('Location:/portwinestyle/admin/tables.php?table=banner&deletesuccess=true');
 
 ?>

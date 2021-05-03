@@ -90,7 +90,7 @@ if(isset($_POST["submit"])) {
             $string.="foto='".basename($_FILES["imagem"]["name"])."',";
         }
         if($_POST['route_botao']!= ""){
-            $string.="route_botao=".$_POST['route_botao'].",";
+            $string.="route_botao='".$_POST['route_botao']."',";
         }
         if($_POST['is_active']!= ""){
             $string.="is_active=".$_POST['is_active'].",";
@@ -109,21 +109,22 @@ if(isset($_POST["submit"])) {
         $query = "UPDATE banner_idiomas SET ";
         $string="";
         if($_POST['texto']!= ""){
-            $string.="texto=".$_POST['texto'].",";
+            $string.="texto='".$_POST['texto']."',";
         }
         if($_POST['texto_botao']!= ""){
             $string.="texto_botao='".$_POST['texto_botao']."',";
         }
         $string=substr($string, 0, strlen($string) - 1);
 
-        $query.=$string." WHERE idioma='".$_SESSION['idioma']."' AND id=".$_POST['id'].";";
+            echo $query.=$string." WHERE idioma='".$_SESSION['idioma']."' AND id=".$_POST['id'].";";
+            if($string!=""){
+                $confirm2=db_query($query);
+            
+            }
 
         //tabela banner_idiomas END
 
-        if($string!=""){
-            $confirm2=db_query($query);
-            
-        }
+        
         if($confirm1 || $confirm2){
             header('Location:'.$_POST['url'].'&success=true');
 

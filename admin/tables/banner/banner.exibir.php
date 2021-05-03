@@ -374,19 +374,19 @@ isset($_GET['format'])
                             <div class="form-group">
                                 <label>Foto</label>
                                 <input type="file" name="imagem" id="imagem">
-                              </div>
-                              <div class="form-group">
-                                <label>Texto</label>
-                                <input type="text" placeholder="<?php echo $produto['texto']?>" class="form-control" name="texto">
-                              </div>
-                              <div class="form-group">
-                                <label>Texto do botão</label>
-                                <input type="text" placeholder="<?php echo FormatField($produto['texto_botao'],$id)?>" class="form-control" name="texto_botao">
-                              </div>
-                              <div class="form-group">
-                                <label>Hiperligação</label>
-                                <input type="text" placeholder="<?php echo FormatField($produto['route_botao'],$id)?>" class="form-control" name="route_botao">
-                              </div>
+                            </div>
+                            <div class="form-group">
+                              <label>Texto</label>
+                              <input type="text" placeholder="<?php echo $produto['texto']?>" class="form-control" name="texto">
+                            </div>
+                            <div class="form-group">
+                              <label>Texto do botão</label>
+                              <input type="text" placeholder="<?php echo FormatField($produto['texto_botao'],$id)?>" class="form-control" name="texto_botao">
+                            </div>
+                            <div class="form-group">
+                              <label>Hiperligação</label>
+                              <input type="text" placeholder="<?php echo FormatField($produto['route_botao'],$id)?>" class="form-control" name="route_botao">
+                            </div>
                               
                               <label>Ativo</label>
                                 <div class="i-checks">
@@ -397,22 +397,21 @@ isset($_GET['format'])
                                   <input id="radioCustom2" type="radio" checked="" value="0" name="is_active" class="radio-template">
                                   <label for="radioCustom2">Desativo</label>
                                 </div>
-                              </div>
                               
                               
                             
                           </div>
-                          <div class="modal-footer">
-                          <?php
-                          $url=$_SERVER['REQUEST_URI'];
-                          $arrUrl=explode("&",$url);
-                          $url=$arrUrl[0];
-                          ?>
-                            <input type="hidden" name="id" value="<?php echo $id?>">
-                            <input type="hidden" name="url" value="<?php echo $url?>">
-                            <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-                            <button type="submit" class="btn btn-primary" name="submit">Salvar Mudanças</button>
-                          </div>
+                            <div class="modal-footer">
+                              <?php
+                              $url=$_SERVER['REQUEST_URI'];
+                              $arrUrl=explode("&",$url);
+                              $url=$arrUrl[0];
+                              ?>
+                                <input type="hidden" name="id" value="<?php echo $id?>">
+                                <input type="hidden" name="url" value="<?php echo $url?>">
+                                <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+                                <button type="submit" class="btn btn-primary" name="submit">Salvar Mudanças</button>
+                            </div>
                           </form>
                         </div>
                       </div>
