@@ -26,9 +26,14 @@ function FormatField($fieldname,$id){
                 </div>
             </div>';
 
+        }elseif($fieldname=="1"){
+            return "Ativo";
+        }
+        elseif($fieldname=="0"){
+            return "Desativo";
         }else{
             return $fieldname;
-        };
+        }
     }else{
         return "Campo não preenchido";
     }

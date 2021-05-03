@@ -5,27 +5,6 @@ $arrlinguas= array (
                       "en"=>"Inglês",
                       "ru"=>"Russo",
                   );
-$arrCampos= array (
-                      "#",
-                      "Nome",
-                      "Bannerr",
-                      "Categoria",
-                      "Designação de Origem",
-                      "Região",
-                      "Ano de Colheita",
-                      "Castas",
-                      "Graduação Alcoólica",
-                      "Acidez",
-                      "Açúcar",
-                      "Temperatura de Consumo",
-                      "Favoritados",
-                      "Visualizações",
-                      "Fornecedor",
-                      "Solo",
-                      "Processo de vinificação",
-                      "Notas de Prova",
-                      "Informação Adicional",
-                  );
 $query="SELECT * FROM banner B INNER JOIN banner_idiomas BI ON B.id=BI.id WHERE BI.idioma='$_SESSION[idioma]' AND B.is_active=1 ORDER BY B.id";
 $arrCamposBanners=db_query($query);
 
@@ -119,7 +98,7 @@ isset($_GET['format'])
     }
     if (isset($_GET['is_activetoolong']) && $_GET['is_activetoolong']=="true") {
     ?>
-    <p class="mb-0">O campo "Ativo" é demasiado comprido! Experimente escrever algo mais curto....</p>
+    <p class="mb-0">O campo "Estado" é demasiado comprido! Experimente escrever algo mais curto....</p>
     <?php
     }
     if (isset($_GET['textotoolong']) && $_GET['textotoolong']=="true") {
@@ -278,7 +257,7 @@ isset($_GET['format'])
                   <input type="text" placeholder="Hiperligação" class="form-control" name="route_botao" required>
               </div>
               <div class="form-group">
-              <label>Ativo</label>
+              <label>Estado</label>
                 <div class="i-checks">
                   <input id="radioCustom1" type="radio" value="1" name="is_active" class="radio-template" required>
                   <label for="radioCustom1">Ativo</label>
@@ -335,7 +314,7 @@ isset($_GET['format'])
             <th>Texto</th>
             <th>Texto do botão</th>
             <th>Hiperligação</th>
-            <th>Ativo</th>
+            <th>Estado</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -388,7 +367,7 @@ isset($_GET['format'])
                               <input type="text" placeholder="<?php echo FormatField($produto['route_botao'],$id)?>" class="form-control" name="route_botao">
                             </div>
                               
-                              <label>Ativo</label>
+                              <label>Estado</label>
                                 <div class="i-checks">
                                   <input id="radioCustom1" type="radio" value="1" name="is_active" class="radio-template">
                                   <label for="radioCustom1">Ativo</label>

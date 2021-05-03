@@ -5,27 +5,7 @@ $arrlinguas= array (
                       "en"=>"Inglês",
                       "ru"=>"Russo",
                   );
-$arrCampos= array (
-                      "#",
-                      "Nome",
-                      "Produtor",
-                      "Categoria",
-                      "Designação de Origem",
-                      "Região",
-                      "Ano de Colheita",
-                      "Castas",
-                      "Graduação Alcoólica",
-                      "Acidez",
-                      "Açúcar",
-                      "Temperatura de Consumo",
-                      "Favoritados",
-                      "Visualizações",
-                      "Fornecedor",
-                      "Solo",
-                      "Processo de vinificação",
-                      "Notas de Prova",
-                      "Informação Adicional",
-                  );
+
 $query="SELECT * FROM parceiros WHERE is_active=1 ORDER BY id DESC";
 $arrCamposProdutos=db_query($query);
 
@@ -149,20 +129,20 @@ isset($_GET['format'])
     if (isset($_GET['success']) && $_GET['success']=="true") {
     ?>
     
-    <p class="mb-0">Editou o produto com sucesso!</p>
+    <p class="mb-0">Editou o parceiro com sucesso!</p>
     <?php
     }
     if (isset($_GET['insertsuccess']) && $_GET['insertsuccess']=="true") {
     ?>
     
-    <p class="mb-0">Inseriu o produto com sucesso!</p>
+    <p class="mb-0">Inseriu o parceiro com sucesso!</p>
     <?php
     }
     if (isset($_GET['removesuccess'])) {
     ?>
     
     
-    <p class="mb-0">Removeu o produto com sucesso! Se não tiver a certeza e quiser voltar atrás, clique no botão "Voltar Atrás". Para eliminar permanentemente clique em "Remover Produto"</p>
+    <p class="mb-0">Removeu o parceiro com sucesso! Se não tiver a certeza e quiser voltar atrás, clique no botão "Voltar Atrás". Para eliminar permanentemente clique em "Remover Produto"</p>
     <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.retornar.php?id='.$_GET['removesuccess']?>" class="btn btn-success">Voltar Atrás</a>
     <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.eliminar.php?id='.$_GET['removesuccess']?>" class="btn btn-danger">Remover Produto</a>
     <?php
@@ -170,13 +150,13 @@ isset($_GET['format'])
     if (isset($_GET['deletesuccess'])) {
     ?>
     
-    <p class="mb-0">Removeu o produto permanentemente com sucesso!</p>
+    <p class="mb-0">Removeu o parceiro permanentemente com sucesso!</p>
     <?php
     }
     if (isset($_GET['returnsuccess'])) {
     ?>
     
-    <p class="mb-0">Voltou atrás e o produto não foi eliminado!</p>
+    <p class="mb-0">Voltou atrás e o parceiro não foi eliminado!</p>
     <?php
     }
     ?>
@@ -352,7 +332,7 @@ isset($_GET['format'])
                               <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                             </div>
                             <div class="modal-body">
-                              <p>De certeza que deseja remover o produto "<?php echo $produto['nome'] ?>"?</p>
+                              <p>De certeza que deseja remover o parceiro "<?php echo $produto['nome'] ?>"?</p>
                               <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.remover.php" method="POST" enctype="multipart/form-data">
                               <?php
                           $url=$_SERVER['REQUEST_URI'];
