@@ -10,8 +10,8 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 
-    $query="DELETE FROM parceiros WHERE id=".$_GET['id'];
+    $query="DELETE FROM utilizadores WHERE id=".$_GET['id'];
     db_query($query);
-    header('Location:/portwinestyle/admin/tables.php?table=parceiros&deletesuccess=true');
+    header('Location:/portwinestyle/admin/tables.php?table=utilizadores&deletesuccess=true');
 
 ?>

@@ -200,7 +200,7 @@ $arrTabelasIdiomas=array('utilizadores'=>array(
                               <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                             </div>
                             <div class="modal-body">
-                              <p>De certeza que deseja remover o utilizador "<?php echo $utilizador['nome'] ?>"?</p>
+                              <p>De certeza que deseja remover o utilizador "<?php echo $produto['nome'] ?>"?</p>
                               <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.remover.php" method="POST" enctype="multipart/form-data">
                               <?php
                           $url=$_SERVER['REQUEST_URI'];
