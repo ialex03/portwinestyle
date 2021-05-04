@@ -112,6 +112,11 @@ isset($_GET['format'])
     <p class="mb-0">Ocorreu um erro ao transferir o ficheiro!</p>
     <?php
     }
+    if (isset($_GET['subtitulotoolong']) && $_GET['subtitulotoolong']=="true") {
+      ?>
+      <p class="mb-0">O campo "Pergunta" é demasiado comprido! Experimente escrever algo mais curto....</p>
+      <?php
+      }
     
     foreach ($arrlinguas as $abrv=>$lingua) {
       if (isset($_GET['subtitulo'.$abrv.'toolong']) && $_GET['subtitulo'.$abrv.'toolong']=="true") {
@@ -288,7 +293,7 @@ isset($_GET['format'])
                     </div>
                     <div class="form-group">
                       <label>Resposta</label>
-                      <input type="text" placeholder="Resposta" class="form-control" name="texto<?php echo $abrv?>" required>
+                      <textarea placeholder="Resposta" class="form-control" name="texto<?php echo $abrv?>" required></textarea>
                     </div>
                 <?php
               }
@@ -365,37 +370,41 @@ isset($_GET['format'])
                             ?>
                             <div class="form-group">
                               <label>Foto</label>
-                              <input type="file" name="imagem" id="imagem" required>
+                              <input type="file" name="imagem" id="imagem">
                             </div>
                             <div class="form-group">
                               <label>Posição da Foto</label>
                                 <div class="i-checks">
-                                <input id="radioCustom1" type="radio" value="right" name="foto_pos" class="radio-template" required>
-                                <label for="radioCustom1">Direita</label>
-                              </div>
-                              <div class="i-checks">
-                                <input id="radioCustom2" type="radio" checked="" value="center" name="foto_pos" class="radio-template" required>
-                                <label for="radioCustom2">Centro (grande plano)</label>
-                              </div>
+                                  <input id="radioCustom2" type="radio" checked="" value="NULL" name="foto_pos" class="radio-template">
+                                  <label for="radioCustom2">Não carreguei foto</label>
+                                </div>
+                                  <div class="i-checks">
+                                  <input id="radioCustom1" type="radio" value="right" name="foto_pos" class="radio-template">
+                                  <label for="radioCustom1">Direita</label>
+                                </div>
+                                <div class="i-checks">
+                                  <input id="radioCustom2" type="radio" checked="" value="center" name="foto_pos" class="radio-template">
+                                  <label for="radioCustom2">Centro (grande plano)</label>
+                                </div>
                             </div>
                             <div class="form-group">
                             <label>Estado</label>
                               <div class="i-checks">
-                                <input id="radioCustom1" type="radio" value="1" name="is_active" class="radio-template" required>
+                                <input id="radioCustom1" type="radio" value="1" name="is_active" class="radio-template">
                                 <label for="radioCustom1">Ativo</label>
                               </div>
                               <div class="i-checks">
-                                <input id="radioCustom2" type="radio" checked="" value="0" name="is_active" class="radio-template" required>
+                                <input id="radioCustom2" type="radio" checked="" value="0" name="is_active" class="radio-template">
                                 <label for="radioCustom2">Desativo</label>
                               </div>
                             </div>
                             <div class="form-group">
                               <label>Pergunta</label>
-                              <input type="text" placeholder="<?php echo FormatField($produto['subtitulo'],$id)?>" class="form-control" name="subtitulo" required>
+                              <input type="text" placeholder="<?php echo FormatField($produto['subtitulo'],$id)?>" class="form-control" name="subtitulo">
                             </div>
                             <div class="form-group">
                               <label>Resposta</label>
-                              <textarea placeholder="<?php echo $produto['texto']?>" class="form-control" name="texto" required></textarea>
+                              <textarea placeholder="<?php echo $produto['texto']?>" class="form-control" name="texto"></textarea>
                             </div>
                               
                             

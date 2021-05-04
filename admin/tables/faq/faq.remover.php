@@ -10,7 +10,7 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 if(isset($_POST["submit"])) {
-    $query="UPDATE banner SET is_active=0 WHERE id=".$_POST['id'];
+    $query="UPDATE paginas SET is_active=0 WHERE id=".$_POST['id'];
     header('Location:'.$_POST['url'].'&removesuccess='.$_POST['id']);
 
 }

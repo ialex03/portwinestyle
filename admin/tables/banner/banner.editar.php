@@ -92,9 +92,9 @@ if(isset($_POST["submit"])) {
         if($_POST['route_botao']!= ""){
             $string.="route_botao='".$_POST['route_botao']."',";
         }
-        if($_POST['is_active']!= ""){
+        
             $string.="is_active=".$_POST['is_active'].",";
-        }
+        
         $string=substr($string, 0, strlen($string) - 1);
 
         $query.=$string." WHERE id=".$_POST['id'].";";

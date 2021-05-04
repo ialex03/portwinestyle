@@ -62,58 +62,51 @@ if(isset($_POST["submit"])) {
     }
     //imagem END
 
-    //tabela banner
-    if(strlen($_POST['route_botao'])>100){
-        $errorstring.="&route_botaotoolong=true";
-    }
-    if(strlen($_POST['is_active'])>1){
-        $errorstring.="&is_activetoolong=true";
-    }
-    //tabela banner END
+    //tabela faq
+    
+    //tabela faq END
 
-    //tabela banner_idiomas
-    if(strlen($_POST['texto'])>50){
-        $errorstring.="&textotoolong=true";
+    //tabela faq_idiomas
+    if(strlen($_POST['subtitulo'])>250){
+        $errorstring.="&subtitulotoolong=true";
     }
-    if(strlen($_POST['texto_botao'])>20){
-        $errorstring.="&texto_botaotoolong=true";
-    }
-    //tabela banner_idiomas END
+    //tabela faq_idiomas END
 
-    //Tabela banner
+    //Tabela faq
 
     if($errorstring == ""){
 
-        $query = "UPDATE banner SET ";
+        $query = "UPDATE paginas SET ";
         $string="";
         if(basename($_FILES["imagem"]["name"])!= ""){
             $string.="foto='".basename($_FILES["imagem"]["name"])."',";
         }
-        if($_POST['route_botao']!= ""){
-            $string.="route_botao='".$_POST['route_botao']."',";
+        if($_POST['foto_pos']== "NULL"){
+            $string.="foto_pos='".$_POST['foto_pos']."',";
         }
-        if($_POST['is_active']!= ""){
+        
             $string.="is_active=".$_POST['is_active'].",";
-        }
+        
         $string=substr($string, 0, strlen($string) - 1);
 
-        $query.=$string." WHERE id=".$_POST['id'].";";
+        $query.=$string." WHERE id=".$_POST['id']." AND route='FAQ.php';";
 
         if($string!=""){
             $confirm1=db_query($query);
         }
 
-        //Tabela banner END
+        //Tabela faq END
 
-        //tabela banner_idiomas
-        $query = "UPDATE banner_idiomas SET ";
+        //tabela faq_idiomas
+        $query = "UPDATE paginas_idiomas SET ";
         $string="";
+        if($_POST['subtitulo']!= ""){
+            $string.="subtitulo='".$_POST['subtitulo']."',";
+        }
         if($_POST['texto']!= ""){
             $string.="texto='".$_POST['texto']."',";
         }
-        if($_POST['texto_botao']!= ""){
-            $string.="texto_botao='".$_POST['texto_botao']."',";
-        }
+        
         $string=substr($string, 0, strlen($string) - 1);
 
             echo $query.=$string." WHERE idioma='".$_SESSION['idioma']."' AND id=".$_POST['id'].";";
@@ -122,7 +115,7 @@ if(isset($_POST["submit"])) {
             
             }
 
-        //tabela banner_idiomas END
+        //tabela faq_idiomas END
 
         
         if($confirm1 || $confirm2){
@@ -138,6 +131,6 @@ if(isset($_POST["submit"])) {
     
 
 }else{
-    header('Location:/portwinestyle/admin/tables.php?table=banner&img=toobig');
+    header('Location:/portwinestyle/admin/tables.php?table=faq&img=toobig');
 }
 ?>
