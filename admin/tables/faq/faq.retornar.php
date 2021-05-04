@@ -10,6 +10,6 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 
-    $query="UPDATE banner SET is_active=1 WHERE id=".$_GET['id'];
-    header('Location:/portwinestyle/admin/tables.php?table=banner&returnsuccess=true');
+    $query="UPDATE paginas SET is_active=1 WHERE id=".$_GET['id'];
+    header('Location:/portwinestyle/admin/tables.php?table=faq&returnsuccess=true');
 ?>

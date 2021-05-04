@@ -10,10 +10,10 @@ ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
 
 
-    $query="DELETE FROM banner WHERE id=".$_GET['id'];
+    $query="DELETE FROM paginas WHERE id=".$_GET['id'];
     db_query($query);
-    $query="DELETE FROM banner_idiomas WHERE id=".$_GET['id']." AND idioma=".$_SESSION['idioma'];
+    $query="DELETE FROM paginas_idiomas WHERE id=".$_GET['id']." AND idioma=".$_SESSION['idioma'];
     db_query($query);
-    header('Location:/portwinestyle/admin/tables.php?table=banner&deletesuccess=true');
+    header('Location:/portwinestyle/admin/tables.php?table=faq&deletesuccess=true');
 
 ?>
