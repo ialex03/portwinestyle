@@ -30,5 +30,6 @@
           <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=clientes'?>"> <i class="icon-grid"></i>Tabela Clientes</a></li>
           <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=banner'?>"> <i class="icon-grid"></i>Tabela Banner</a></li>
           <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=utilizadores'?>"> <i class="icon-grid"></i>Tabela Utilizadores</a></li>
+          <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=faq'?>"> <i class="icon-grid"></i>Tabela FAQ</a></li>
         </ul>
       </nav>
