@@ -223,6 +223,12 @@ isset($_GET['format'])
   <div class="col-lg-12">
     <?php
     if (isset($_GET['img'])
+    ||isset($_GET['ano_colheita'])
+    || isset($_GET['castas'])
+    || isset($_GET['graduacao_alcoolica'])
+    || isset($_GET['acidez'])
+    || isset($_GET['acucar'])
+    || isset($_GET['temperatura_consumo'])
     || isset($_GET['nomept'])
     || isset($_GET['nomeen'])
     || isset($_GET['nomeru'])
