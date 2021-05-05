@@ -133,7 +133,7 @@ if(isset($_POST["submit"])) {
         $query = "UPDATE produtos_idiomas SET ";
         $string="";
         if($_POST['nome']!= ""){
-            $string.="nome=".$_POST['nome'].",";
+            $string.="nome='".$_POST['nome']."',";
         }
         if($_POST['produtor']!= ""){
             $string.="produtor='".$_POST['produtor']."',";

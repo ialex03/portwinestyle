@@ -669,134 +669,55 @@ isset($_GET['format'])
                             <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                           </div>
                           <div class="modal-body">
-                            <p>Aqui pode editar a encomenda. Se não quiser alterar nada feche o modal. Se quiser alterar apenas alguns, simplesmente altere os campos que quiser e não preencha os outros.</p>
-                            <p>Atenção! Editar informação neste modal, apenas altera a informação relativa a esta língua!</p>
-                            <form action="'.$arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.editar.php" method="POST" enctype="multipart/form-data">
+                            <p>Aqui pode editar a encomenda. Se não quiser alterar nada feche o modal. </p>
+                            <p>Pode alterar ou deixar a quantidade e o contrato, mas tenha atenção qual estado prefere para a encomenda!</p>
                             
-                              <div class="form-group">
-                                <label>Foto</label>
-                                <input type="file" name="imagem" id="imagem">
-                              </div>
-                              <div class="form-group">
-                                <label>Nome</label>
-                                <input type="text" placeholder="'.$produto['nome'].'" class="form-control name="nome">
-                              </div>
-                              <div class="form-group">
-                                <label>Produtor</label>
-                                <input type="text" placeholder="'.FormatField($produto['produtor'],$id).'" class="form-control" name="produtor">
-                              </div>
-                              <div class="form-group">
-                                <label>Categoria</label>
-                                  <select class="form-control" name="categoria">';
-
-                              $query="SELECT * FROM categorias_idiomas WHERE idioma='".$_SESSION[idioma]."' ORDER BY id";
-                              $categorias=db_query($query);
-                              echo "<option value='0'>Não alterar categoria</option>";
-
-                              foreach ($categorias as $categoria) {
-                                echo '<option value="'.$categoria['id'].'">'.$categoria['nome'].'</option>';
-                              }
-                              ?>
-                                  </select>
-                              </div>
-                              <div class="form-group">
-                                <label>Designação de origem</label>
-                                <input type="text" placeholder="<?php echo FormatField($produto['designacao_origem'],$id)?>" class="form-control" name="designacao_origem">
-                              </div>
-                              <div class="form-group">
-                                <label>Região</label>
-                                <input type="text" placeholder="<?php echo FormatField($produto['regiao'],$id)?>" class="form-control" name="regiao">
-                              </div>
-                              <div class="form-group">
-                                <label>País</label>
-                                <input type="text" placeholder="<?php echo FormatField($produto['pais'],$id)?>" class="form-control" name="pais">
-                              </div>
-                              <div class="form-group">
-                                <label>Ano de colheita</label>
-                                <input type="number" placeholder="<?php echo FormatField($produto['ano_colheita'],$id)?>" class="form-control" name="ano_colheita" min ="1000"max="<?php echo date("Y")+10?>">
-                              </div>
-                              <div class="form-group">
-                                <label>Castas</label>
-                                <textarea placeholder="<?php echo $produto['castas']?>" class="form-control" name="castas"></textarea>
-                              </div>
-                              <div class="form-group">
-                                <label>Graduação Alcoólica</label>
-                                <div class="row">
-                                  <div class="col-3">
-                                    <input type="number" step="0.01" placeholder="<?php echo FormatField($produto['graduacao_alcoolica'],$id)?>" class="form-control" name="graduacao_alcoolica" min="0" max="99">
-                                  </div>
-                                  <div class="col-2">
-                                  <p>% vol</p>
-                                  </div>
-                                  <div class="col-7">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label>Acidez</label>
-                                <div class="row">
-                                  <div class="col-3">
-                                    <input type="number" step="0.01" placeholder="<?php echo FormatField($produto['acidez'],$id)?>" class="form-control" name="acidez" min="0" max="99">
-                                  </div>
-                                  <div class="col-2">
-                                  <p>g/l</p>
-                                  </div>
-                                  <div class="col-7">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label>Açucar</label>
-                                <div class="row">
-                                  <div class="col-3">
-                                    <input type="number" step="0.01" placeholder="<?php echo FormatField($produto['acucar'],$id)?>" class="form-control" name="acucar" min="0" max="999">
-                                  </div>
-                                  <div class="col-2">
-                                  <p>g/l</p>
-                                  </div>
-                                  <div class="col-7">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label>Temperatura de consumo</label>
-                                <div class="row">
-                                  <div class="col-3">
-                                  <?php $temp=explode("-",FormatField($produto['temperatura_consumo'],$id));?>
-                                    <input type="number" placeholder="<?php echo $temp[0]?>" class="form-control" name="tempmin" min="-20" max="80">
-                                  </div>
-                                  <div class="col-1">
-                                  <p>-</p>
-                                  </div>
-                                  <div class="col-3">
-                                    <input type="number" placeholder="<?php echo $temp[1]?>" class="form-control" name="tempmax" min="-20" max="80">
-                                  </div>
-                                  <div class="col-5">
-                                  <p>°C</p>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <label>Solo</label>
-                                <input type="text" placeholder="<?php echo FormatField($produto['solo'],$id)?>" class="form-control" name="solo">
-                              </div>
-                              <div class="form-group">
-                                <label>Cor</label>
-                                <textarea placeholder="<?php echo $produto['cor']?>" class="form-control" name="cor"></textarea>
-                              </div>
-                              <div class="form-group">
-                                <label>Processo de Vinificação</label>
-                                <textarea placeholder="<?php echo $produto['processo_vinificacao']?>" class="form-control" name="processo_vinificacao"></textarea>
-                              </div>
-                              <div class="form-group">
-                                <label>Notas de Prova</label>
-                                <textarea placeholder="<?php echo $produto['notas_prova']?>" class="form-control" name="notas_prova"></textarea>
-                              </div>
-                              <div class="form-group">
-                                <label>Informação Adicional</label>
-                                <textarea placeholder="<?php echo $produto['info_adicional']?>" class="form-control" name="info_adicional"></textarea>
-                              </div>
                             
+                            <form action="'.$arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.editar.php" method="POST" enctype="multipart/form-data">';
+                            
+                            foreach ($linhas as $key => $linha) {
+                              
+                             
+                      echo "<h4>Produto ".($key+1)."</h4>";
+                        $query="SELECT * FROM produtos P INNER JOIN produtos_idiomas PI ON P.id=PI.id WHERE PI.idioma='$_SESSION[idioma]' AND P.is_active=1 AND P.id=".$linha['id_produto']." ORDER BY P.id";
+                        $produto=db_query($query);
+                        
+                        
+                      echo "<p>Número do produto: ".$produto[0]['id']."</p>";
+                      echo "<p>Nome do produto: ".$produto[0]['nome']."</p>";
+                      ?>
+                        <div class="form-group">
+                          <label>Quantidade sugerida</label>
+                          <input type="number" placeholder="<?php echo intval($linha['quantidade'])?>" class="form-control" name="quantidade<?php echo $key?>" min ="1">
+                        </div>
+                        <label>Estado</label>
+                        <div class="i-checks">
+                          <input id="radioCustom1" type="radio" value="1" name="is_active<?php echo $key?>" class="radio-template" >
+                          <label for="radioCustom1">Finalizado!</label>
+                        </div>
+                        <div class="i-checks">
+                          <input id="radioCustom2" type="radio" checked="" value="2" name="is_active<?php echo $key?>" class="radio-template" >
+                          <label for="radioCustom2">Em progresso...</label>
+                        </div>
+                        <div class="i-checks">
+                          <input id="radioCustom2" type="radio" checked="" value="0" name="is_active<?php echo $key?>" class="radio-template" >
+                          <label for="radioCustom2">Desativo</label>
+                        </div>
+                        <div class="form-group">
+                          <label>Contrato</label>
+                          <input type="file" name="anexo<?php echo $key?>" id="anexo<?php echo $key?>">
+                        </div>
+                        <br>
+                        <input type="hidden" value="<?php echo $linha['id_contrato']?>" name="id_contrato<?php echo $key?>">
+                        <input type="hidden" value="<?php echo $linha['id_produto']?>" name="id_prod<?php echo $key?>">
+                        <input type="hidden" value="<?php echo $linha['id_encomenda']?>" name="id_encomenda<?php echo $key?>">
+                        <?php
+                        
+                        
+                        }
+                        ?>
+                        <input type="hidden" value="<?php echo count($linhas)?>" name="count">
+                          
                           </div>
                           <div class="modal-footer">
                           <?php
@@ -804,7 +725,7 @@ isset($_GET['format'])
                           $arrUrl=explode("&",$url);
                           $url=$arrUrl[0];
                           ?>
-                            <input type="hidden" name="id" value="<?php echo $id?>">
+                            
                             <input type="hidden" name="url" value="<?php echo $url?>">
                             <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
                             <button type="submit" class="btn btn-primary" name="submit">Salvar Mudanças</button>
