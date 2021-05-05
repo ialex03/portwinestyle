@@ -4,11 +4,11 @@ function FormatField($fieldname,$id){
     if(isset($fieldname)){
         if(strlen($fieldname)>$limit){
             $shortfield=substr($fieldname, 0, $limit-19);
-        return '<div id="accordion">
+        return '<div id="accordion1">
                 <div class="card">
-                    <div class="card-header" id="heading'.$id.'">
+                    <div class="card-header" id="headingformat'.$id.'">
                     <h5 class="mb-0">
-                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapse'.$id.'" aria-expanded="false" aria-controls="collapse'.$id.'">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseformat'.$id.'" aria-expanded="false" aria-controls="collapseformat'.$id.'">
                         
                         '.$shortfield."...".'
                         
@@ -16,7 +16,7 @@ function FormatField($fieldname,$id){
                     </h5>
                     </div>
 
-                    <div id="collapse'.$id.'" class="collapse" aria-labelledby="heading'.$id.'" data-parent="#accordion">
+                    <div id="collapseformat'.$id.'" class="collapse" aria-labelledby="headingformat'.$id.'" data-parent="#accordion1">
                     <div class="card-body">
                         
                         '.$fieldname.'
@@ -31,7 +31,10 @@ function FormatField($fieldname,$id){
         }
         elseif($fieldname=="0"){
             return "Desativo";
-        }else{
+        }elseif($fieldname=="2"){
+            return "Em progresso...";
+        }
+        else{
             return $fieldname;
         }
     }else{

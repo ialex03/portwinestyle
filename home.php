@@ -25,10 +25,7 @@
         $_SESSION['searchViewType'] = 1;
         
     }
-    if(!isset($_SESSION['favorites_id'])) {
-        $_SESSION['favorites_id'] = '';
-        
-    }
+    
     db_connect();
     
      

@@ -147,13 +147,13 @@ db_connect();
                                             <h6><?php echo $arrProduto[0]['nome']?></h6>
                                         </div>
                                     </td>
-                                    <td class="cart__price"><?php echo $arrLinha[0]['quantidade']?></td>
+                                    <td class="cart__price"><?php echo isset($arrLinha[0]['quantidade'])?$arrLinha[0]['quantidade']:"Sem quantidade definida";?></td>
                                     <td class="cart__stock"><?php echo $arrLang[orderstate($arrLinha[0]['estado'])]?></td>
                                     <?php
                                     if (isset($arrLinha[0]['contrato'])) {
                                     ?>
 
-                                    <td class="cart__btn"><a href="<?php echo include $arrSETTINGS['dir_site'];?>/Docs/"<?php echo $arrLinha[0]['contrato'];?>" class="primary-btn">contrato</a></td>
+                                    <td class="cart__btn"><a href="<?php echo $arrSETTINGS['dir_site'];?>/Docs/"<?php echo $arrLinha[0]['contrato'];?>" class="primary-btn">contrato</a></td>
                                     <?php
                                     }
                                     ?>

@@ -13,6 +13,7 @@ $strSearch="";
 $arrSearch=explode(" ",$_GET['query']);
 
 $arrTabelasIdiomas=array('utilizadores'=>array(
+                                    'id',
                                     'nome',
                                     'username',
                                     'email',
