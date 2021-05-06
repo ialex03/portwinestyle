@@ -152,7 +152,7 @@ $arrTabelasIdiomas=array('utilizadores'=>array(
             <th>Telefone</th>
             <th>NIF</th>
             <th>Ativo</th>
-            <th>Ativar ou Desativar Utilizador</th>
+            <th>Mudar Estado</th>
             <th>Remover</th>
           </tr>
         </thead>

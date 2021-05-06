@@ -6,7 +6,7 @@ $arrlinguas= array (
                       "ru"=>"Russo",
                   );
 
-$query="SELECT * FROM encomendas  WHERE is_active=1 ORDER BY id DESC";
+$query="SELECT * FROM encomendas ORDER BY id DESC";
 $arrCamposProdutos=db_query($query);
 $arrCampos=array('E'=>array(
                                 'id',
@@ -107,131 +107,7 @@ if (isset($_GET['pdf'])
   </div>
 <!--aviso de algo-->
   <div class="col-lg-12">
-    <?php
-    if (isset($_GET['img'])
-    ||isset($_GET['ano_colheita'])
-    || isset($_GET['castas'])
-    || isset($_GET['graduacao_alcoolica'])
-    || isset($_GET['acidez'])
-    || isset($_GET['acucar'])
-    || isset($_GET['temperatura_consumo'])
-    || isset($_GET['nomept'])
-    || isset($_GET['nomeen'])
-    || isset($_GET['nomeru'])
-    || isset($_GET['produtorpt'])
-    || isset($_GET['produtoren'])
-    || isset($_GET['produtorru'])
-    || isset($_GET['corpt'])
-    || isset($_GET['coren'])
-    || isset($_GET['corru'])
-    || isset($_GET['designacao_origempt'])
-    || isset($_GET['designacao_origemen'])
-    || isset($_GET['designacao_origemru'])
-    || isset($_GET['regiaopt'])
-    || isset($_GET['regiaoen'])
-    || isset($_GET['regiaoru'])
-    || isset($_GET['paispt'])
-    || isset($_GET['paisen'])
-    || isset($_GET['paisru'])
-    || isset($_GET['solopt'])
-    || isset($_GET['soloen'])
-    || isset($_GET['soloru'])){
-    ?>
-  <div class="alert alert-warning" role="alert">
-    <h4 class="alert-heading">Aviso!</h4>
-    <p>Alguns campos não foram preenchidos...Recomendamos vivamente que preencha todos os campos, para proporcionar uma boa experiência ao utilizador e evitar erros no website.</p>
-    <hr>
-    <?php
-    if (isset($_GET['img']) && $_GET['img']=="null") {
-    ?>
-    <p class="mb-0">O campo "Foto" não foi preenchido</p>
-    <?php
-    }
-    if (isset($_GET['ano_colheita']) && $_GET['ano_colheita']=="null") {
-    ?>
-    <p class="mb-0">O campo "Ano de colheita" não foi preenchido</p>
-    <?php
-    }
-    if (isset($_GET['castas']) && $_GET['castas']=="null") {
-    ?>
-    <p class="mb-0">O campo "Castas" não foi preenchido</p>
-    <?php
-    }
-    if (isset($_GET['graduacao_alcoolica']) && $_GET['graduacao_alcoolica']=="null") {
-    ?>
-    <p class="mb-0">O campo "Graduação Alcoólica" não foi preenchido</p>
-    <?php
-    }
-    if (isset($_GET['acidez']) && $_GET['acidez']=="null") {
-    ?>
-    <p class="mb-0">O campo "Acidez" não foi preenchido</p>
-    <?php
-    }
-    if (isset($_GET['acucar']) && $_GET['acucar']=="null") {
-    ?>
-    <p class="mb-0">O campo "Açúcar" não foi preenchido</p>
-    <?php
-    }
-    if (isset($_GET['temperatura_consumo']) && $_GET['temperatura_consumo']=="null") {
-    ?>
-    <p class="mb-0">O campo "Temperatura de consumo" não foi preenchido</p>
-    <?php
-    }
-
-
-
-    foreach ($arrlinguas as $abrv=>$lingua) {
-      
-    if (isset($_GET['nome'.$abrv]) && $_GET['nome'.$abrv]=="null") {
-    ?>
-    <p class="mb-0">O campo "Nome" no idioma "<?php echo $lingua?>" não foi preenchido</p>
-    <?php
-    }
-    
-    if (isset($_GET['produtor'.$abrv]) && $_GET['produtor'.$abrv]=="null") {
-    ?>
-    <p class="mb-0">O campo "Produtor" no idioma "<?php echo $lingua?>" não foi preenchido</p>
-    <?php
-    }
-    
-    if (isset($_GET['cor'.$abrv]) && $_GET['cor'.$abrv]=="null") {
-    ?>
-    <p class="mb-0">O campo "Cor" no idioma "<?php echo $lingua?>" não foi preenchido</p>
-    <?php
-    }
-    
-    if (isset($_GET['designacao_origem'.$abrv]) && $_GET['designacao_origem'.$abrv]=="null") {
-    ?>
-    <p class="mb-0">O campo "Designação de origem" no idioma "<?php echo $lingua?>" não foi preenchido</p>
-    <?php
-    }
-    
-    if (isset($_GET['regiao'.$abrv]) && $_GET['regiao'.$abrv]=="null") {
-    ?>
-    <p class="mb-0">O campo "Região" no idioma "<?php echo $lingua?>" não foi preenchido</p>
-    <?php
-    }
-    
-    if (isset($_GET['pais'.$abrv]) && $_GET['pais'.$abrv]=="null") {
-    ?>
-    <p class="mb-0">O campo "País" no idioma "<?php echo $lingua?>" não foi preenchido</p>
-    <?php
-    }
-    
-    if (isset($_GET['solo'.$abrv]) && $_GET['solo'.$abrv]=="null") {
-    ?>
-    <p class="mb-0">O campo "Solo" no idioma "<?php echo $lingua?>" não foi preenchido</p>
-    <?php
-    }
-    
-    
-  }
-    ?>
-
-  </div>
-  <?php
-}
-  ?>
+  
 
 
   <?php
@@ -340,6 +216,8 @@ if (isset($_GET['pdf'])
             <th>Data e Hora</th>
             <th>Utilizador</th>
             <th>Detalhes</th>
+            <th>Estado</th>
+            <th>Mudar Estado</th>
             <th>Ações</th>
           </tr>
         </thead>
@@ -348,6 +226,7 @@ if (isset($_GET['pdf'])
         foreach ($arrCamposProdutos as $key => $produto) {
           $id=$produto['id'];
           echo'<tr>
+          
                 <th scope="row">'.$id.'</th>
                 <td>'.$produto['data_hora'].'</td>';
                 $query="SELECT * FROM utilizadores WHERE id=".$produto['id_utilizador']." ORDER BY id";
@@ -373,9 +252,9 @@ if (isset($_GET['pdf'])
                         foreach ($linhas as $key => $linha) {
                       echo "<h4>Produto ".($key+1)."</h4>";
                         $query="SELECT * FROM produtos P INNER JOIN produtos_idiomas PI ON P.id=PI.id WHERE PI.idioma='$_SESSION[idioma]' AND P.is_active=1 AND P.id=".$linha['id_produto']." ORDER BY P.id";
-                        $produto=db_query($query);
-                      echo "<p>Número do produto: ".$produto[0]['id']."</p>";
-                      echo "<p>Nome do produto: ".FormatField($produto[0]['nome'],$id)."</p>";
+                        $produtos=db_query($query);
+                      echo "<p>Número do produto: ".$produtos[0]['id']."</p>";
+                      echo "<p>Nome do produto: ".FormatField($produtos[0]['nome'],$id)."</p>";
                       echo "<p>Quantidade sugerida: ".FormatField($linha['quantidade'],$id)."</p>";
                         $query="SELECT * FROM contratos WHERE id=".$linha['id_contrato']." ORDER BY id";
                         $contrato=db_query($query);
@@ -400,17 +279,27 @@ if (isset($_GET['pdf'])
                         
                         }
                         
-
-                            
-                            
-                            
+                         
                         '</div>
                       </div>
-                  </div>
-              </div>
+                  </div>';
+          echo '</div>
             </td>';
-      echo '<th>';
+      echo '<th>'.FormatField($produto['is_active'],$id).'</th>
+                <th>';
 
+                //editar
+                $checkvaluefill=($produto['is_active']=='1'?' checked':'');
+                
+             echo '<form action="'.$arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table'].'.editar.php" method="POST" enctype="multipart/form-data">
+                      <div class="i-checks">
+                        <input type="hidden" name="id" value="'.$id.'">
+                        <input type="hidden" name="url" value="'.$url.'">
+                        <input id="checkboxCustom1" type="checkbox" name="is_active_order" class="checkbox-template" onChange="this.form.submit()"'.$checkvaluefill.'>
+                      </div>
+                  </form>
+                </th>';
+      echo '<th>';
                 //editar
                   
              echo '
@@ -499,35 +388,13 @@ if (isset($_GET['pdf'])
                     ?>
 
                   
-                    <button type="button" data-toggle="modal" data-target="#modalremove<?php echo $id?>" class="btn btn-primary"><div data-toggle="tooltip" data-placement="bottom" title="Remover"><i class="fa fa-remove"></i></div></button>
-                      <div id="modalremove<?php echo $id?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-                        <div role="document" class="modal-dialog modal-sm">
-                          <div class="modal-content">
-                            <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Remover Produto</strong>
-                              <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                            </div>
-                            <div class="modal-body">
-                              <p>De certeza que deseja remover a encomenda "<?php echo $produto['nome'] ?>"?</p>
-                              <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.remover.php" method="POST" enctype="multipart/form-data">
-                              <?php
-                          $url=$_SERVER['REQUEST_URI'];
-                          $arrUrl=explode("&",$url);
-                          $url=$arrUrl[0];
-                          ?>
-                              <input type="hidden" name="id" value="<?php echo $id?>">
-                              <input type="hidden" name="url" value="<?php echo $url?>">
-                              <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-                            <button type="submit" class="btn btn-primary" name="submit">Remover Produto</button>
-                              </form>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                    
                   
                   </th>
               </tr>
               <?php
         }
+        
         ?>
         
         </tbody>
