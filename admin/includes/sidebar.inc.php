@@ -1,9 +1,8 @@
 <nav id="sidebar">
         <!-- Sidebar Header-->
         <div class="sidebar-header d-flex align-items-center">
-          <div class="avatar" ><a href="#"><img src="img/avatar-6.jpg" alt="..." class="img-fluid rounded-circle"></a></div>
           <div class="title">
-            <h1 class="h5">Nome de utilizador</h1>
+            <h1 class="h5">Bem vindo!</h1>
             <p>Administrador</p>
           </div>
         </div>

@@ -70,7 +70,7 @@ if(!isset($_SESSION['idioma'])) {
         <!-- Page Header-->
         <div class="page-header no-margin-bottom">
           <div class="container-fluid">
-            <h2 class="h5 no-margin-bottom">Tables</h2>
+            <h2 class="h5 no-margin-bottom">Tabelas</h2>
           </div>
         </div>
         <!-- Breadcrumb-->
