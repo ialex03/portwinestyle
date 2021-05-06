@@ -95,9 +95,6 @@ if(isset($_POST["submit"])) {
 
                 if(basename($_FILES[$key]["name"])!= ""){
                     $string.="'".basename($_FILES[$key]["name"])."',";
-                }else{
-                    $string.="NULL,";
-                    $nullstring.="&contrato=null";
                 }
                 $string=substr($string, 0, strlen($string) - 1);
 
@@ -123,7 +120,10 @@ if(isset($_POST["submit"])) {
                 $string.="quantidade=".$_POST[$key].",";
             }
             $key='is_active'.$i;
-            $string.="estado=".$_POST[$key].",";
+            if($_POST[$key]!= "null"){
+                $string.="estado=".$_POST[$key].",";
+            }
+            
             $string=substr($string, 0, strlen($string) - 1);
             $key1='id_prod'.$i;
             $key='id_encomenda'.$i;
