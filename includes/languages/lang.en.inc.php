@@ -128,6 +128,7 @@ $arrLang['mantenha premido']="Keep mouse pressed to stop card";
 $arrLang['inscrever-se']="Sign up";
 $arrLang['desc_news']="Receive news about events and new products!";
 $arrLang['newsletter_sucesso']="You have successfully subscribed to the newsletter!";
+$arrLang ['newsletter_thanks'] = "Thank you for subscribing to our newletter! You will receive company notifications here!.";
 $arrLang['newsletter_fail']="Something went wrong! Try again ...";
 $arrLang['newsletter_existe']="This email is already subscribed to the newsletter";
 
