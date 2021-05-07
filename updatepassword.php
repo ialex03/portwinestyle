@@ -73,7 +73,7 @@ $email=$_POST['email'];
                 if ($result) {
                     $query="DELETE FROM password_reset WHERE email='".$email."'";
                     db_query($query);
-                    header('Location: '.($admin?"admin/":"").'reset'.($admin?"admin":"").'.php?success=true');
+                    header('Location: '.($admin?"admin/":"").'reset'.($admin?"admin":"").'.php?success=true&email='.$email);
                 }
     }else{
         header('Location: '.($admin?"admin/":"").'reset'.($admin?"admin":"").'.php'.$stringPass."&selector=".$_POST['selector']."&validator=".$_POST['validator']);

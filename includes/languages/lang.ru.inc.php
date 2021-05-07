@@ -50,6 +50,10 @@ $arrLang["alterarpassword"]="Изменить пароль";
 $arrLang['insiraemail']="Введите адрес электронной почты своего аккаунта, а затем проверьте его, чтобы изменить пароль!";
 $arrLang['passalterada']="Пароль успешно изменен!";
 
+$arrLang['link_forgot']="Запрос на смену пароля portwinestyle";
+$arrLang ['instructions_forgot'] = "Мы получили запрос на смену пароля. Ссылка для сброса пароля находится ниже. Если вы не отправляли этот запрос, вы можете проигнорировать это письмо";
+$arrLang ['showlink_forgot'] = "Вот ваша ссылка:";
+$arrLang ['thank_forgot'] = "Спасибо!";
 //encomendas
 $arrLang['finalizada']="Законченный!";
 $arrLang['em progresso']="В ходе выполнения...";

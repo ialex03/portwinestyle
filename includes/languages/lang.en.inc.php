@@ -52,6 +52,11 @@ $arrLang["forgotpassword"]="Forgot password?";
 $arrLang["alterarpassword"]="Change palavra-passe";
 $arrLang['insiraemail']="Insert your email and check for a request to change the password";
 $arrLang['passalterada']="Password changed!";
+
+$arrLang['link_forgot']="Password reset request from portwinestyle";
+$arrLang['instructions_forgot']="We received a password reset request. The link to reset your password is below. If you did not make this request, you can ignore this email";
+$arrLang['showlink_forgot']="Here is your password reset link:";
+$arrLang['thank_forgot']="Thank you!";
 //encomendas
 $arrLang['finalizada']="Finished!";
 $arrLang['em progresso']="In progress...";

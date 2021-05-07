@@ -8,6 +8,14 @@ if(!isset($_SESSION['attempts'])) {
     $_SESSION['attempts'] = 0;
 } 
 include 'includes/languages/lang.'.$_SESSION['idioma'].'.inc.php';
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+require_once $arrSETTINGS['dir_site']."/vendor/autoload.php";
+
+//PHPMailer Object
+$mail = new PHPMailer(true);
 db_connect();
  
 /*
@@ -56,35 +64,63 @@ $hashed_token=hash('sha256',$token);
 $expires=$expires->format('U');
 $query="INSERT INTO password_reset(email,selector,token,expires) VALUES ('".$email."','".$selector."','".$hashed_token."',$expires)";
 db_query($query);
-// ? Since we're already connected, let's get the informations from the post method
+$date= date('Y-m-d H:i:s');
 
-$title = "Hiperligação para mudança de palavra_passe";
 
-$message = '<p>We received a password reset request. The link to reset your password is below. ';
-$message .= 'If you did not make this request, you can ignore this email</p>';
-$message .= '<p>Here is your password reset link:</br>';
+
+
+
+
+
+//Set PHPMailer to use SMTP.
+$mail->isSMTP();            
+//Set SMTP host name                          
+$mail->Host = "smtp.gmail.com";
+//Set this to true if SMTP host requires authentication to send email
+$mail->SMTPAuth = true;                          
+//Provide username and password     
+$mail->Username = "ialexandra2003@gmail.com";                 
+$mail->Password = "Ialex.2003";                           
+//If SMTP requires TLS encryption then set it
+$mail->SMTPSecure = "tls";                           
+//Set TCP port to connect to
+$mail->Port = 587;                                   
+
+// Define o remetente
+
+//From email address and name
+$mail->From = "ialexandra2003@gmail.com";
+$mail->FromName = "Alexandra";
+
+//To address and name
+$mail->addAddress($email, "User");
+$mail->addAddress($email); //Recipient name is optional
+
+//Address to which recipient will reply
+$mail->addReplyTo("ialexandra2003@gmail.com", "Alexandra");
+
+//CC and BCC
+//$mail->addCC("cc@example.com");
+//$mail->addBCC("bcc@example.com");
+
+//Send HTML or Plain Text email
+$mail->isHTML(true);
+
+$message = "<p>".$arrLang['instructions_forgot']."</p><p>".$arrLang['showlink_forgot']."</p></br>";
 $message .= sprintf('<a href="%s">%s</a></p>', $url, $url);
-$message .= '<p>Thanks!</p>';
+$message .= '<p>'.$arrLang['thanks_forgot'].'</p>';
 
-// Headers
-$headers = "From: ialexandra2003@gmail.com <ialexandra2003@gmail.com>\r\n";
-$headers .= "Reply-To: ialexandra2003@gmail.com\r\n";
-$headers .= "Content-type: text/html\r\n";
-$emailSent=mail($email, $title, $message, $headers);
-$date = date('Y-m-d H:i:s');
-if ($emailSent) {
-    echo "success!";
+$mail->Subject = $arrLang['link_forgot'];
+$mail->Body = $message;
+$mail->AltBody = $arrLang['instructions_forgot'].$arrLang['showlink_forgot'].sprintf('<a href="%s">%s</a></p>', $url, $url).$arrLang['thanks_forgot'];
+
+$emailsQuery = "INSERT INTO emails (title,subject,to_email,from_email,sent_at) VALUES (".$arrLang['link_forgot'].", '$message','$email','ialexandra2003@gmail.com','$date')";
+$emailsResult = db_query($emailsQuery);
+if($mail->Send()){
+header("Location: recover.php?success=true");
+}else{
+header("Location: recover.php?success=false");
 }
-echo $message;
-$emailsQuery = "INSERT INTO emails (title, subject,to_email,from_email,sent_at) VALUES ('$title', '$message','$email','ialexandra2003@gmail.com','$date')";
-//$emailsResult = db_query($emailsQuery);
-
-
-// ? And, finally, using the mail() function, native to PHP
-
- 
-// ? To finish off, we simply register in our table the email that was sent
-
 
 
 

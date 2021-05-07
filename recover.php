@@ -118,12 +118,12 @@ db_connect();
 
                echo '<div class="row">
                     <div class="col-lg-8 col-md-6">
-                        <h6 class="checkout__title">'.$arrLang['login'].'</h6>
+                        <h6 class="checkout__title">'.$arrLang['forgotpassword'].'</h6>
                     </div>
                 </div>';
                 echo'<div class="checkout__input__checkbox">
                         <div class="success">
-                            <p>'.$arrLang["login_sucesso"].'</p>
+                            <p>'.$arrLang["mensagem_sucesso"].'</p>
                         </div>
                     </div>';
             }else{

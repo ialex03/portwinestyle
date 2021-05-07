@@ -56,6 +56,11 @@ $arrLang['insiraemail']="Insira o email da sua conta e depois verifique o email 
 $arrLang['loginaqui']="Clique aqui para iniciar sessão";
 $arrLang['passalterada']="Palavra-passe alterada com sucesso!";
 
+$arrLang['link_forgot']="Pedido de alteração de palavra-passe da portwinestyle";
+$arrLang['instructions_forgot']="Recebemos um pedido de alteração de palavra-passe. A hiperligação para repôr a palavra-passe encontra-se abaixo.Se não fez este pedido, pode ignorar o email";
+$arrLang['showlink_forgot']="Aqui está a sua hiperligação:";
+$arrLang['thank_forgot']="Obrigada!";
+
 //encomendas
 $arrLang['finalizada']="Finalizada!";
 $arrLang['em progresso']="Em progresso...";
