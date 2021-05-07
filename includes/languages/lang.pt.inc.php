@@ -670,8 +670,7 @@ $arrLang['termostexto']="<div class='section-title'>
                                                         Site de Portugal, localizado em http://www.portwinestyle.com. </p>
                                                 
                                                     <p> Ao acessar este site, presumimos que você aceita estes termos e condições. Não continue a usar o Portline se
-                                                        você fizer
-                                                        não concorda em aceitar todos os termos e condições declarados nesta página. </p>
+                                                        você não concorda em aceitar todos os termos e condições declarados nesta página. </p>
                                                 
                                                     <p> A terminologia a seguir se aplica a estes Termos e Condições, Declaração de Privacidade e Aviso de Isenção de
                                                         Responsabilidade e todos
