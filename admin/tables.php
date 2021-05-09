@@ -31,6 +31,13 @@ if(!isset($_SESSION['idioma'])) {
     <link rel="stylesheet" href="css/custom.css">
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/portlinefav.png">
+    <script src="https://cdn.tiny.cloud/1/3ht9rx5uy67q2hrgq1gekhq31c79kfxgozi73kng0e9zpavp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+      tinymce.init({
+        selector: '#mytextarea'
+      });
+    </script>
+
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -265,5 +272,6 @@ if(!isset($_SESSION['idioma'])) {
     <script src="vendor/chart.js/Chart.min.js"></script>
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="js/front.js"></script>
+    
   </body>
 </html>

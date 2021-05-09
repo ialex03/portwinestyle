@@ -42,9 +42,67 @@ $arrTabelasIdiomas=array('mensagens_newsletter'=>array(
 }
     
 ?>
+<script>
+    tinymce.init({
+      selector: '#mytextarea'
+    });
+  </script>
 
 <!--emails-->
+<div class="col-lg-12">
+  <div class="block margin-bottom-sm">
+    <div class="row">
+      <div class="table-responsive"> 
+        <form method="post" action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.enviaremails.php">
+        <div class="col-12">
+        <h1>Enviar uma mensagem da newsletter</h1>
+        
+          <textarea id="mytextarea">Hello, World!</textarea>
+        </form>
+      </div>
 
+        <div class="col-12">
+          <div class="float-right">
+          
+        
+            <button type="button" data-toggle="modal" data-target="#modalletter" class="btn btn-primary mt-3">
+                Enviar Mensagem
+            </button>
+            <div id="modalletter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+              <div role="document" class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Enviar uma mensagem da newsletter</strong>
+                    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>De certeza que deseja enviar esta mensagem?</p>
+                    
+                      <?php
+                      
+                              $url=$_SERVER['REQUEST_URI'];
+                              $arrUrl=explode("&",$url);
+                              $url=$arrUrl[0];
+                              ?>
+                      <input type="hidden" name="url" value="<?php echo $url?>">
+                      <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+                      <button type="submit" class="btn btn-primary" name="submit">Enviar</button>
+                      
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+        </div>
+        </form>
+
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
 <div class="col-lg-6">
 
   <div class="block margin-bottom-sm">
@@ -190,7 +248,7 @@ $arrTabelasIdiomas=array('emails_newsletter'=>array(
                 </div>
                 <div class="modal-body">
                   <p>Aqui pode pesquisar por um email, insira um ou vários termos de pesquisa.</p>
-                  <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.pesquisa.php" method="POST">
+                  <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.enviaremails.php" method="POST">
                     <div class="form-group">
                       <input type="text" placeholder="Pesquisar..." class="form-control" name="queryconta">
                     </div>
@@ -242,5 +300,6 @@ $arrTabelasIdiomas=array('emails_newsletter'=>array(
       
     </div>
   </div>
+</div>
 </div>
 <!--produtos-->
