@@ -21,17 +21,12 @@ require_once $arrSETTINGS['dir_site']."/vendor/autoload.php";
 //PHPMailer Object
 $mail = new PHPMailer(true);
 db_connect();
-$email = $_POST['email'];
 $date = date('Y-m-d H:i:s');
  
 
+$emailsQuery = "SELECT * FROM emails_newsletter WHERE id=".$_GET['id'];
+$email= db_query($emailsQuery);
 
-$emailsQuery = "SELECT * FROM emails_newsletter WHERE email='$email'";
-$emailsExists= db_query($emailsQuery);
-print_r($emailsExists);
-if($emailsExists){
-    header("Location:home.php?exists=true");
-}else{
     //Disable SMTP debugging.
     $mail->SMTPDebug = 0;                               
     //Set PHPMailer to use SMTP.
@@ -46,8 +41,7 @@ if($emailsExists){
     //If SMTP requires TLS encryption then set it
     $mail->SMTPSecure = "tls";                           
     //Set TCP port to connect to
-    $mail->Port = 587;   
-    $mail->IsHTML(true);                                
+    $mail->Port = 587;                                   
 
     // Define o remetente
 
@@ -56,8 +50,8 @@ if($emailsExists){
     $mail->FromName = "Alexandra";
 
     //To address and name
-    $mail->addAddress($_POST['email'], "User");
-    $mail->addAddress($_POST['email']); //Recipient name is optional
+    $mail->addAddress($email[0]['email'], "User");
+    $mail->addAddress($email[0]['email']); //Recipient name is optional
 
     //Address to which recipient will reply
     $mail->addReplyTo("ialexandra2003@gmail.com", "Alexandra");
@@ -65,20 +59,16 @@ if($emailsExists){
     //CC and BCC
     //$mail->addCC("cc@example.com");
     //$mail->addBCC("bcc@example.com");
-
-    //Send HTML or Plain Text email
-    $emailsQuery = "INSERT INTO emails_newsletter (email) VALUES ('$email')";
-    $emailsInserted= db_query($emailsQuery);
-    $mail->isHTML(true);
-    $body="<html><body>".$arrLang['newsletter_sucesso'].$arrLang['newsletter_thanks'].'<a href="http://localhost:8888/portwinestyle/deletenewsletteremail.php?id='.$emailsInserted.'">Link</a></body></html>';
     
-    $to_email=$_POST['email'];
+    //Send HTML or Plain Text email
+    $mail->isHTML(true);
+    $body=$arrLang['newsletter_removido'].$arrLang['newsletter_add'];
+    $to_email=$email[0]['email'];
     $date= date('Y-m-d H:i:s');
 
     $mail->Subject = "Newsletter portwinestyle";
     $mail->Body = $body;
     $mail->AltBody = $body;
-
 
     $emailsQuery = "INSERT INTO emails (title, subject,to_email,from_email,sent_at) VALUES 
     ('Newsletter portwinestyle',
@@ -87,17 +77,13 @@ if($emailsExists){
     'ialexandra2003@gmail.com',
     '$date')";
     
-    $emailsResult = db_query($emailsQuery);
-
-    
+    $emailsQuery = "DELETE FROM emails_newsletter WHERE id=".$_GET['id'];
+    $emailsInserted= db_query($emailsQuery);
     if($emailsInserted && $mail->send()){
-        header("Location:home.php?newslettersuccess=true");
-    }else{
-        header("Location:home.php?newslettersuccess=false");
-
+        header("Location:home.php?newslettersuccess=removed");
     }
     
-}
+
 
 
 ?>

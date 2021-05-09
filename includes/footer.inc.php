@@ -114,6 +114,13 @@ $arrContactos=db_query($query);
                                 </div>
                             </div>';
         
+                    }else if(isset($_GET['newslettersuccess']) && $_GET['newslettersuccess']=="removed"){
+                        echo'<div class="checkout__input__checkbox">
+                                <div class="warning">
+                                    <p>'.$arrLang["newsletter_removido"].'</p>
+                                </div>
+                            </div>';
+
                     }else if(isset($_GET['exists']) && $_GET['exists']=="true"){
                         echo'<div class="checkout__input__checkbox">
                                 <div class="warning">

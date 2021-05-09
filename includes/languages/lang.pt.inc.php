@@ -136,9 +136,11 @@ $arrLang['mantenha premido']="Mantenha o rato premido para parar cartão";
 $arrLang['inscrever-se']="Inscrever-se";
 $arrLang['desc_news']="Receba notícias sobre eventos e novos produtos!";
 $arrLang['newsletter_sucesso']="Inscreveu-se na newsletter com sucesso!";
-$arrLang['newsletter_thanks']="Obrigada por se ter inscrito no nosso newletter! Receberá para este email notificações da empresa.";
+$arrLang['newsletter_thanks']="Obrigada por se ter inscrito no nosso newletter! Receberá para este email notificações da empresa. Caso queira desinscrever-se, clique nesta hipeligação:";
 $arrLang['newsletter_fail']="Algo correu mal! Experimente novamente...";
 $arrLang['newsletter_existe']="Esse email já está inscrito na newsletter";
+$arrLang['newsletter_removido']="Email removido da newsletter! Não receberá mais emails.";
+$arrLang['newsletter_add']="Pode sempre reinscrever-se se mudar de ideias!";
 
 
 
