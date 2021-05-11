@@ -50,15 +50,48 @@ $arrTabelasIdiomas=array('mensagens_newsletter'=>array(
 
 <!--emails-->
 <div class="col-lg-12">
+<?php
+//sucesso
+if ( 
+isset($_GET['success'])&& $_GET['success']=="true"){
+?>
+  <div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Enviou uma mensagem da newsletter com sucesso!</h4>
+    <p>As mensagens serão enviadas para os emails ao longo do tempo, para evitar que estes acabem na caixa de spam.</p>
+  </div>
+  <?php
+}
+  ?>
+</div>
+<div class="col-lg-12">
+<?php
+
+//algo correu mal
+if ( 
+isset($_GET['success'])&& $_GET['success']=="false"){
+?>
+  <div class="alert alert-danger" role="alert">
+    <h4 class="alert-heading">Algo correu mal!</h4>
+    <p>As mensagens não foram enviadas, tente novamente.</p>
+  </div>
+  <?php
+}
+  ?>
+</div>
+<div class="col-lg-12">
   <div class="block margin-bottom-sm">
     <div class="row">
       <div class="table-responsive"> 
-        <form method="post" action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.enviaremails.php">
+        <form method="post" action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.guardaremail.php">
         <div class="col-12">
         <h1>Enviar uma mensagem da newsletter</h1>
+          <div class="form-group">
+          <p>Título</p>
+            <input type="text" placeholder="Título..." class="form-control" name="titulo">
+          </div>
         
-          <textarea id="mytextarea">Hello, World!</textarea>
-        </form>
+          <textarea id="mytextarea" name="mensagem" placeholder="Escreva aqui o conteúdo, preferencialmente em múltiplos idiomas..."></textarea>
+        
       </div>
 
         <div class="col-12">
@@ -102,6 +135,7 @@ $arrTabelasIdiomas=array('mensagens_newsletter'=>array(
     </div>
   </div>
 </div>
+
 <div class="row">
 <div class="col-lg-6">
 
