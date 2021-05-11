@@ -57,7 +57,7 @@ isset($_GET['success'])&& $_GET['success']=="true"){
 ?>
   <div class="alert alert-success" role="alert">
     <h4 class="alert-heading">Enviou uma mensagem da newsletter com sucesso!</h4>
-    <p>As mensagens serão enviadas para os emails ao longo do tempo, para evitar que estes acabem na caixa de spam.</p>
+    <p>As mensagens serão enviadas para os emails ao longo do tempo, para evitar que estas acabem na caixa de spam.</p>
   </div>
   <?php
 }
