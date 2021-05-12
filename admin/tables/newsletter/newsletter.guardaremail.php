@@ -24,7 +24,7 @@ $body="<html><body>".$_POST['mensagem']."</body></html>";
 $date= date('Y-m-d H:i:s');
 $subject=$_POST['titulo']." - Newsletter Portwinestyle";
 
-$emailsQuery = "INSERT INTO mensagens_newsletter (titulo, mensagem,sent_date) VALUES 
+$emailsQuery = "INSERT INTO mensagens_newsletter (titulo,mensagem,sent_date) VALUES 
     ('$subject',
     '$body',
     '$date')";
@@ -42,8 +42,6 @@ foreach ($emails as $email) {
     $email_confirm = db_query($emailsQuery);
 
 }
-
-echo $emailsResult;
 
 if($emailsResult) {
     header("Location:".$_POST['url']."&success=true");

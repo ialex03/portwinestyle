@@ -16,9 +16,29 @@ use PHPMailer\PHPMailer\Exception;
 use PHPMailer\PHPMailer\SMTP;
 
 require_once $arrSETTINGS['dir_site']."/vendor/autoload.php";
+        
+
+    
 
 
-//Disable SMTP debugging.
+//PHPMailer Object
+ //Argument true in constructor enables exceptions
+db_connect();
+$query="SELECT * FROM envios_confirmados WHERE confirmado=0 ORDER BY id_mensagem ASC LIMIT 0,20 ";
+$envios=db_query($query);
+print_r($envios);
+$anterior=0;
+
+foreach ($envios as $envio) {
+    
+
+    $query="SELECT * FROM emails_newsletter WHERE id=".$envio['id_conta'];
+    $conta=db_query($query);
+    $query="SELECT * FROM mensagens_newsletter WHERE id=".$envio['id_mensagem'];
+    $mensagem=db_query($query);
+    $mail = new PHPMailer(true);
+
+    //Disable SMTP debugging.
     $mail->SMTPDebug =0;                               
     //Set PHPMailer to use SMTP.
     $mail->isSMTP();            
@@ -43,35 +63,32 @@ require_once $arrSETTINGS['dir_site']."/vendor/autoload.php";
     
     //Address to which recipient will reply
     $mail->addReplyTo("ialexandra2003@gmail.com", "Alexandra");
-
-
-//PHPMailer Object
-$mail = new PHPMailer(true); //Argument true in constructor enables exceptions
-db_connect();
-$query="SELECT * FROM envios_confirmados WHERE confirmado=0 LIMIT 0,20";
-$envios=db_query($query);
-foreach ($envios as $envio) {
-    $query="SELECT * FROM emails_newsletter WHERE id=".$envio['id_conta'];
-    $conta=db_query($query);
-    $query="SELECT * FROM mensagens_newsletter WHERE id=".$envio['id_mensagem'];
-    $mensagem=db_query($query);
-    
-    $mail->addBcc($conta[0]['email']);
-
-
-}
-
-    //Send HTML or Plain Text email
+    $mail->addAddress($conta[0]['email']);
     $mail->isHTML(true);
-    $body="<html><body>".$_POST['mensagem']."</body></html>";
+    $body="<html><body>".$mensagem[0]['mensagem']."</body></html>";
     $from_email="ialexandra2003@gmail.com";
     $date= date('Y-m-d H:i:s');
-    $subject=$_POST['titulo']." - Newsletter Portwinestyle";
+    $subject=$mensagem[0]['titulo']." - Newsletter Portwinestyle";
     $mail->Subject = $subject;
     $mail->Body = $body;
     $mail->AltBody = "Use um email compatível com HTML para visualizar a mensagem";
-        
-    $mail->send();
-
+    
+    
+        if($mail->send()){
+            $query="UPDATE envios_confirmados SET confirmado=1 WHERE id=".$envio['id'];
+            $confirmado=db_query($query);
+            $mail->clearAddresses();
+            $mail->clearAttachments();
+            $mail->ClearAllRecipients();
+            echo "success";
+        }else{
+            echo "fail";
+            $mail->clearAddresses();
+            $mail->clearAttachments();
+            $mail->ClearAllRecipients();
+            
+        }
+    
+}
 
 ?>

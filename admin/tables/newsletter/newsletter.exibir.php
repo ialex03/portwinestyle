@@ -56,7 +56,7 @@ if (
 isset($_GET['success'])&& $_GET['success']=="true"){
 ?>
   <div class="alert alert-success" role="alert">
-    <h4 class="alert-heading">Enviou uma mensagem da newsletter com sucesso!</h4>
+    <h4 class="alert-heading">Guardou uma mensagem da newsletter com sucesso!</h4>
     <p>As mensagens serão enviadas para os emails ao longo do tempo, para evitar que estas acabem na caixa de spam.</p>
   </div>
   <?php
@@ -72,7 +72,7 @@ isset($_GET['success'])&& $_GET['success']=="false"){
 ?>
   <div class="alert alert-danger" role="alert">
     <h4 class="alert-heading">Algo correu mal!</h4>
-    <p>As mensagens não foram enviadas, tente novamente.</p>
+    <p>As mensagens não foram guardadas, tente novamente.</p>
   </div>
   <?php
 }
@@ -84,7 +84,7 @@ isset($_GET['success'])&& $_GET['success']=="false"){
       <div class="table-responsive"> 
         <form method="post" action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.guardaremail.php">
         <div class="col-12">
-        <h1>Enviar uma mensagem da newsletter</h1>
+        <h1>Guardar e enviar uma mensagem da newsletter</h1>
           <div class="form-group">
           <p>Título</p>
             <input type="text" placeholder="Título..." class="form-control" name="titulo">
@@ -104,7 +104,7 @@ isset($_GET['success'])&& $_GET['success']=="false"){
             <div id="modalletter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
               <div role="document" class="modal-dialog modal-lg">
                 <div class="modal-content">
-                  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Enviar uma mensagem da newsletter</strong>
+                  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Guardar e enviar uma mensagem da newsletter</strong>
                     <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
                   </div>
                   <div class="modal-body">
