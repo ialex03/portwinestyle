@@ -96,7 +96,27 @@ $arrTabelasIdiomas=array('utilizadores'=>array(
   <?php
     }
     ?>
-
+    
+          
+  <div class="row no-gutters">
+    <div class="col-md-3 col-sm-6">
+      <div class="statistic-block block">
+        <div class="progress-details d-flex align-items-end justify-content-between">
+          <div class="title">
+            <div class="icon"><i class="icon-user-1"></i></div><strong>Número total de utilizadores ativos</strong>
+          </div>
+          <?php
+          $query="SELECT COUNT(*)
+            FROM utilizadores
+            WHERE is_active=1";
+            $count=db_query($query);
+          ?>
+          <div class="number dashtext-1"><?php echo $count[0]['COUNT(*)']?></div>
+        </div>
+      </div>
+    </div>
+  </div>
+        
   <div class="block margin-bottom-sm">
     <div class="row">
       <div class="col-sm-10">
