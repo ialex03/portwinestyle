@@ -160,6 +160,78 @@ if (isset($_GET['pdf'])
   <?php
     }
     ?>
+    
+    <div class="row">
+      <div class="col-md-3 col-sm-6">
+        <div class="statistic-block block">
+          <div class="progress-details d-flex align-items-end justify-content-between">
+            <div class="title">
+              <div class="icon"><i class="fa fa-check"></i></div><strong>finalizadas</strong>
+            </div>
+            <?php
+            $query="SELECT COUNT(*)
+              FROM linhas_encomenda
+              WHERE estado=1";
+              $count=db_query($query);
+            ?>
+            <div class="number dashtext-1"><?php echo $count[0]['COUNT(*)']?></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="statistic-block block">
+          <div class="progress-details d-flex align-items-end justify-content-between">
+            <div class="title">
+              <div class="icon"><i class="fa fa-tasks"></i></div><strong>em progresso</strong>
+            </div>
+            <?php
+            $query="SELECT COUNT(*)
+              FROM linhas_encomenda
+              WHERE estado=2";
+              $count=db_query($query);
+            ?>
+            <div class="number dashtext-2"><?php echo $count[0]['COUNT(*)']?></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="statistic-block block">
+          <div class="progress-details d-flex align-items-end justify-content-between">
+            <div class="title">
+              <div class="icon"><i class="icon-contract"></i></div><strong>contratos</strong>
+            </div>
+            <?php
+            $query="SELECT COUNT(*)
+              FROM contratos";
+              $count=db_query($query);
+            ?>
+            <div class="number dashtext-3"><?php echo $count[0]['COUNT(*)']?></div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 col-sm-6">
+        <div class="statistic-block block">
+          <div class="progress-details d-flex align-items-end justify-content-between">
+            <div class="title">
+              <div class="icon"><i class="fa fa-star"></i></div><strong>Produto</strong>
+            </div>
+            <?php
+            $query="SELECT       `id_produto`
+                    FROM     `linhas_encomenda`
+                    GROUP BY `id_produto`
+                    ORDER BY COUNT(*) DESC
+                    LIMIT    1;
+                ";
+              $count=db_query($query);
+              $query="SELECT * FROM produtos P INNER JOIN produtos_idiomas PI ON P.id=PI.id WHERE PI.idioma='$_SESSION[idioma]' AND P.is_active=1 AND P.id=".$count[0]['id_produto']." ORDER BY P.id";
+              $produto=db_query($query);
+
+            ?>
+            <h4 class="number dashtext-4"><font size="+1"><?php echo $produto[0]['nome']?></font></h4>
+          </div>
+        </div>
+      </div>
+  </div>
 
   <div class="block margin-bottom-sm">
     <div class="row">

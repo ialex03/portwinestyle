@@ -1016,6 +1016,7 @@ nav#sidebar.shrinked a[aria-expanded="true"]::after {
 
 .statistic-block .title {
   margin-bottom: 0;
+  margin-right: 15px;
 }
 
 .statistic-block strong,
