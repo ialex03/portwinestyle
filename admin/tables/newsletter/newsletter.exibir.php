@@ -87,10 +87,10 @@ isset($_GET['success'])&& $_GET['success']=="false"){
         <h1>Guardar e enviar uma mensagem da newsletter</h1>
           <div class="form-group">
           <p>Título</p>
-            <input type="text" placeholder="Título..." class="form-control" name="titulo">
+            <input type="text" placeholder="Título..." class="form-control" name="titulo" maxlength="100" required>
           </div>
         
-          <textarea id="mytextarea" name="mensagem" placeholder="Escreva aqui o conteúdo, preferencialmente em múltiplos idiomas..."></textarea>
+          <textarea id="mytextarea" name="mensagem" placeholder="Escreva aqui o conteúdo, preferencialmente em múltiplos idiomas..." required></textarea>
         
       </div>
 

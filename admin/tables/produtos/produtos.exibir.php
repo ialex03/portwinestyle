@@ -508,7 +508,7 @@ isset($_GET['format'])
                       <label>Acidez</label>
                       <div class="row">
                         <div class="col-3">
-                          <input type="number" step="0.01" placeholder="Acidez" class="form-control" name="acidez" min="0" max="99">
+                          <input type="number" step="0.01" placeholder="Acidez" class="form-control" name="acidez" min="0" max="999">
                         </div>
                         <div class="col-2">
                         <p>g/l</p>
