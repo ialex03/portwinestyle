@@ -61,6 +61,42 @@ db_connect();
         <!-- Page Header-->
         <div class="page-header no-margin-bottom">
           <div class="container-fluid">
+            <h2 class="h5 no-margin-bottom">Tabelas</h2>
+          </div>
+        </div>
+        <!-- Breadcrumb-->
+        <div class="container-fluid">
+          <ul class="breadcrumb">
+            <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
+            <li class="breadcrumb-item active"><?php echo $_GET['chart']?></li>
+          </ul>
+        </div>
+        
+
+
+
+        <section class="no-padding-top">
+          <div class="container-fluid">
+            <div class="row">
+              <?php
+              include $arrSETTINGS['dir_site_admin'].'/charts/'.$_GET['chart'].'.exibir.php';
+              ?>
+              </div>
+        </section>
+        <footer class="footer">
+          <div class="footer__block block no-margin-bottom">
+            <div class="container-fluid text-center">
+              <!-- Please do not remove the backlink to us unless you support us at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
+              <p class="no-margin-bottom">2020 &copy; Portline. Design by <a href="https://bootstrapious.com/p/bootstrap-4-dark-admin">Bootstrapious</a>.</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+      <div class="page-content">
+        <!-- Page Header-->
+        <div class="page-header no-margin-bottom">
+          <div class="container-fluid">
             <h2 class="h5 no-margin-bottom">Charts</h2>
           </div>
         </div>

@@ -5,10 +5,47 @@ $(document).ready(function () {
 
     Chart.defaults.global.defaultFontColor = '#75787c';
 
+
+
     // ------------------------------------------------------- //
     // Line Chart Custom 1
     // ------------------------------------------------------ //
+    
+    function getLargest(a){
+        var list = {
+            0: "Janeiro",
+            1: "Fevereiro",
+            2: "Março",
+            3: "Abril",
+            4: "Maio",
+            5: "Junho",
+            6: "Julho",
+            7: "Agosto",
+            8: "Setembro",
+            9: "Outubro",
+            10: "Novemnbro",
+            11: "Dezembro"
+        };
+
+        let max = parseInt(a[list[0]]);
+
+
+        for (let i = 1; i < 12; i++) {
+
+            if(parseInt(a[list[i]]) > max) {
+                max = parseInt(a[list[i]]);
+            }
+            
+        }
+
+
+
+        return max + 1;
+        }
+
     var LINECHARTEXMPLE   = $('#lineChartCustom1');
+    const getMax = getLargest(jArrMonths);
+
     var lineChartExample = new Chart(LINECHARTEXMPLE, {
         type: 'line',
         options: {
@@ -22,7 +59,7 @@ $(document).ready(function () {
                 }],
                 yAxes: [{
                     ticks: {
-                        max: 60,
+                        max: getMax,
                         min: 0
                     },
                     display: true,
@@ -33,33 +70,10 @@ $(document).ready(function () {
             },
         },
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
             datasets: [
                 {
-                    label: "Data Set One",
-                    fill: true,
-                    lineTension: 0,
-                    backgroundColor: "rgba(94, 11, 21, 0.88)",
-                    borderColor: "rrgba(78, 9, 17, 0.88)",
-                    borderCapStyle: 'butt',
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    borderJoinStyle: 'miter',
-                    borderWidth: 1,
-                    pointBorderColor: "rgba(94, 11, 21, 0.88)",
-                    pointBackgroundColor: "#fff",
-                    pointBorderWidth: 1,
-                    pointHoverRadius: 5,
-                    pointHoverBackgroundColor: "rgba(94, 11, 21, 0.88)",
-                    pointHoverBorderColor: "rgba(94, 11, 21, 0.88)",
-                    pointHoverBorderWidth: 2,
-                    pointRadius: 1,
-                    pointHitRadius: 10,
-                    data: [0, 20, 17, 40, 30, 22, 30],
-                    spanGaps: false
-                },
-                {
-                    label: "Data Set Two",
+                    label: "Número de encomendas",
                     fill: true,
                     lineTension: 0,
                     backgroundColor: "rgba(98, 98, 98, 0.5)",
@@ -78,7 +92,7 @@ $(document).ready(function () {
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
-                    data: [0, 30, 22, 20, 35, 25, 50],
+                    data: [jArrMonths['Janeiro'],jArrMonths['Fevereiro'],jArrMonths['Março'],jArrMonths['Abril'],jArrMonths['Maio'],jArrMonths['Junho'],jArrMonths['Julho'],jArrMonths['Agosto'],jArrMonths['Setembro'],jArrMonths['Outubro'],jArrMonths['Novembro'],jArrMonths['Dezembro']],
                     spanGaps: false
                 }
             ]

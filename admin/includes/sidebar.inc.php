@@ -12,8 +12,9 @@
           <li class="active"><a href="dashboard.php"> <i class="icon-home"></i>Home </a></li>
           <li><a href="#statsdropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-bar-chart"></i>Estatísticas</a>
             <ul id="statsdropdown" class="collapse list-unstyled ">
-              <li><a href="#"><i class="fa fa-product-hunt"></i>Produtos</a></li>
-              <li><a href="#"><i class="fa fa-exclamation"></i>Encomendas</a></li>
+              <li><a href="<?php echo $arrSETTINGS['url_site_admin'].'/charts.php?chart=encomendas'?>"><i class="fa fa-exclamation"></i>Encomendas</a></li>
+              <li><a href="<?php echo $arrSETTINGS['url_site_admin'].'/charts.php?chart=produtos'?>"><i class="fa fa-product-hunt"></i>Produtos</a></li>
+              <li><a href="<?php echo $arrSETTINGS['url_site_admin'].'/charts.php?chart=emails'?>"><i class="fa fa-envelope-o"></i>Emails</a></li>
             </ul>
           </li>
           <li><a href="#historydropdown" aria-expanded="false" data-toggle="collapse"> <i class="fa fa-history"></i>Histórico de emails</a>
@@ -25,11 +26,13 @@
         </ul><span class="heading">Tabelas</span>
         <ul class="list-unstyled">
           <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=produtos'?>"> <i class="icon-grid"></i>Tabela Produtos</a></li>
+          <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=encomendas'?>"> <i class="icon-grid"></i>Tabela Encomendas</a></li>
+          <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=utilizadores'?>"> <i class="icon-grid"></i>Tabela Utilizadores</a></li>
           <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=parceiros'?>"> <i class="icon-grid"></i>Tabela Parceiros</a></li>
           <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=clientes'?>"> <i class="icon-grid"></i>Tabela Clientes</a></li>
           <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=banner'?>"> <i class="icon-grid"></i>Tabela Banner</a></li>
-          <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=utilizadores'?>"> <i class="icon-grid"></i>Tabela Utilizadores</a></li>
+          
           <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=faq'?>"> <i class="icon-grid"></i>Tabela FAQ</a></li>
-          <li> <a href="<?php echo $arrSETTINGS['url_site_admin'].'/tables.php?table=encomendas'?>"> <i class="icon-grid"></i>Tabela Encomendas</a></li>
+          
         </ul>
       </nav>
