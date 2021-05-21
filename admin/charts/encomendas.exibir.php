@@ -9,12 +9,12 @@ $year=date("Y");
 </div>
 </div>
 <div class="col-lg-4">
-<div class="pie-chart chart block">
-    <div class="title"><strong>Estado das linhas da encomenda em <?php echo $year?></strong></div>
-    <div class="pie-chart chart margin-bottom-sm">
-    <canvas id="pieChartCustom1"></canvas>
+    <div class="pie-chart chart block">
+        <div class="title"><strong>Estado das linhas da encomenda em <?php echo $year?></strong></div>
+        <div class="pie-chart chart margin-bottom-sm">
+        <canvas id="pieChartCustom1"></canvas>
+        </div>
     </div>
-</div>
 </div>
 <?php
 $year=date("Y");

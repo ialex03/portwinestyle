@@ -82,6 +82,7 @@ db_connect();
               include $arrSETTINGS['dir_site_admin'].'/charts/'.$_GET['chart'].'.exibir.php';
               ?>
               </div>
+            </div>
         </section>
         <footer class="footer">
           <div class="footer__block block no-margin-bottom">
@@ -138,14 +139,7 @@ db_connect();
                   </div>
                 </div>
               </div>
-              <div class="col-lg-8">
-                <div class="bar-chart block chart">
-                  <div class="title"><strong>Bar Chart Example</strong></div>
-                  <div class="bar-chart chart">
-                    <canvas id="barChartCustom3"></canvas>
-                  </div>
-                </div>
-              </div>
+              
               <div class="col-lg-6">
                 <div class="pie-chart chart block">
                   <div class="title"><strong>Pie Chart Example</strong></div>

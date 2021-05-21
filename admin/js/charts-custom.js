@@ -407,6 +407,7 @@ $(document).ready(function () {
     // ------------------------------------------------------- //
     // Bar Chart
     // ------------------------------------------------------ //
+    
     var BARCHARTEXMPLE    = $('#barChartCustom3');
     var barChartExample = new Chart(BARCHARTEXMPLE, {
         type: 'bar',
@@ -427,71 +428,28 @@ $(document).ready(function () {
             },
         },
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: jArrNames,
             datasets: [
                 {
-                    label: "Data Set 1",
-                    backgroundColor: [
+                    label: "Favoritos no produto",
+                    backgroundColor: 
                         "#bc8034",
+                    hoverBackgroundColor: 
                         "#bc8034",
-                        "#bc8034",
-                        "#bc8034",
-                        "#bc8034",
-                        "#bc8034",
-                        "#bc8034"
-                    ],
-                    hoverBackgroundColor: [
-                        "#bc8034",
-                        "#bc8034",
-                        "#bc8034",
-                        "#bc8034",
-                        "#bc8034",
-                        "#bc8034",
-                        "#bc8034"
-                    ],
-                    borderColor: [
-                        "#bc8034",
-                        "#bc8034",
-                        "#bc8034",
-                        "#bc8034",
-                        "#bc8034",
-                        "#bc8034",
-                        "#bc8034"
-                    ],
+                    borderColor: "#bc8034",
                     borderWidth: 0.5,
-                    data: [65, 59, 80, 81, 56, 55, 40],
+                    data: jArrLikes,
                 },
                 {
-                    label: "Data Set 2",
-                    backgroundColor: [
+                    label: "Visualizações do produto",
+                    backgroundColor: 
                         "rgba(98, 98, 98, 0.5)",
+                    hoverBackgroundColor: 
                         "rgba(98, 98, 98, 0.5)",
+                    borderColor: 
                         "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)"
-                    ],
-                    hoverBackgroundColor: [
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)"
-                    ],
-                    borderColor: [
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)",
-                        "rgba(98, 98, 98, 0.5)"
-                    ],
                     borderWidth: 0.5,
-                    data: [35, 40, 60, 47, 88, 27, 30],
+                    data: jArrViews,
                 }
             ]
         }
