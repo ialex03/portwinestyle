@@ -64,7 +64,7 @@ $(document).ready(function () {
                     },
                     display: true,
                     gridLines: {
-                        color: 'transparent'
+                        color: 'rgba(94, 11, 21, 0.1)'
                     }
                 }]
             },
@@ -76,19 +76,19 @@ $(document).ready(function () {
                     label: "Número de encomendas",
                     fill: true,
                     lineTension: 0,
-                    backgroundColor: "rgba(98, 98, 98, 0.5)",
-                    borderColor: "rgba(98, 98, 98, 0.5)",
+                    backgroundColor: "rgba(94, 11, 21, 0.5)",
+                    borderColor: "rgba(94, 11, 21, 0.5)",
                     borderCapStyle: 'butt',
                     borderDash: [],
                     borderDashOffset: 0.0,
                     borderJoinStyle: 'miter',
                     borderWidth: 1,
-                    pointBorderColor: "rgba(98, 98, 98, 0.5)",
-                    pointBackgroundColor: "#fff",
+                    pointBorderColor: "rgba(94, 11, 21, 0.5)",
+                    pointBackgroundColor: "#5e0b15",
                     pointBorderWidth: 1,
                     pointHoverRadius: 5,
-                    pointHoverBackgroundColor: "rgba(98, 98, 98, 0.5)",
-                    pointHoverBorderColor: "rgba(98, 98, 98, 0.5)",
+                    pointHoverBackgroundColor: "rgba(94, 11, 21, 0.5)",
+                    pointHoverBorderColor: "rgba(94, 11, 21, 0.5)",
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 10,
@@ -200,32 +200,32 @@ $(document).ready(function () {
                 {
                     label: "Data Set 1",
                     backgroundColor: [
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034'
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034'
                     ],
                     borderColor: [
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034',
-                        '##bc8034'
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034',
+                        '#bc8034'
                     ],
                     borderWidth: 0.2,
                     data: [30, 40, 45, 55, 70, 45, 60, 35, 50, 63, 40, 70]
@@ -512,14 +512,12 @@ $(document).ready(function () {
         },
         data: {
             labels: [
-                "A",
-                "B",
-                "C",
-                "D"
+                "Em progresso",
+                "Finalizada"
             ],
             datasets: [
                 {
-                    data: [300, 50, 100, 80],
+                    data: [total_progresso, total_finalizado],
                     borderWidth: 0,
                     backgroundColor: [
                         '#BC8034',
