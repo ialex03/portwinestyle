@@ -17,7 +17,6 @@ $year=date("Y");
     </div>
 </div>
 <?php
-$year=date("Y");
 $months = array(
     'Janeiro'=>'January',
     'Fevereiro'=>'February',
@@ -77,8 +76,13 @@ $total=0;
 foreach ($num_total as $key => $count) {
     $total+=$count['num_total'];
 }
+
 ?>
 <script type="text/javascript">const jArrMonths = <?php echo json_encode($stats); ?>;
 const total_progresso=<?php echo json_encode($total_p); ?>;
-const total_finalizado=<?php echo json_encode($total); ?>;</script>
+const total_finalizado=<?php echo json_encode($total); ?>;
+const jArrNames=0;
+const jArrLikes=0;
+const jArrViews=0;
+const jArrEmails=0;</script>
 <script type="text/javascript" src="charts-customs.js"></script>

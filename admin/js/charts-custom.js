@@ -104,6 +104,7 @@ $(document).ready(function () {
     // ------------------------------------------------------- //
     // Bar Chart Custom 1
     // ------------------------------------------------------ //
+    
     var BARCHART1 = $('#barChartCustom1');
     var barChartHome = new Chart(BARCHART1, {
         type: 'bar',
@@ -117,7 +118,7 @@ $(document).ready(function () {
                 }],
                 yAxes: [{
                     ticks: {
-                        max: 100,
+                        max: getLargest(jArrEmails),
                         min: 0
                     },
                     display: false
@@ -128,10 +129,10 @@ $(document).ready(function () {
             }
         },
         data: {
-            labels: ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"],
+            labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
             datasets: [
                 {
-                    label: "Data Set 1",
+                    label: "Número de emails por mês",
                     backgroundColor: [
                         '#bc8034',
                         '#bc8034',
@@ -161,7 +162,7 @@ $(document).ready(function () {
                         '#bc8034'
                     ],
                     borderWidth: 0.3,
-                    data: [35, 55, 65, 85, 40, 30, 50, 35, 50, 70, 60, 50]
+                    data: [jArrEmails['Janeiro'],jArrEmails['Fevereiro'],jArrEmails['Março'],jArrEmails['Abril'],jArrEmails['Maio'],jArrEmails['Junho'],jArrEmails['Julho'],jArrEmails['Agosto'],jArrEmails['Setembro'],jArrEmails['Outubro'],jArrEmails['Novembro'],jArrEmails['Dezembro']],
                 }
             ]
         }
@@ -443,11 +444,11 @@ $(document).ready(function () {
                 {
                     label: "Visualizações do produto",
                     backgroundColor: 
-                        "rgba(98, 98, 98, 0.5)",
+                        "rgba(255, 255, 255, 0.5)",
                     hoverBackgroundColor: 
-                        "rgba(98, 98, 98, 0.5)",
+                        "rgba(255, 255, 255, 0.5)",
                     borderColor: 
-                        "rgba(98, 98, 98, 0.5)",
+                        "rgba(255, 255, 255, 0.5)",
                     borderWidth: 0.5,
                     data: jArrViews,
                 }
@@ -459,6 +460,7 @@ $(document).ready(function () {
     // ------------------------------------------------------- //
     // Pie Chart Custom 1
     // ------------------------------------------------------ //
+    
     var PIECHARTEXMPLE    = $('#pieChartCustom1');
     var pieChartExample = new Chart(PIECHARTEXMPLE, {
         type: 'pie',

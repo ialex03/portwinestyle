@@ -3,7 +3,7 @@ $year=date("Y");
 ?>
 <div class="col-lg-12">
     <div class="bar-chart block chart">
-        <div class="title"><strong>Bar Chart Example</strong></div>
+        <div class="title"><strong>Número de favoritos e visualizações</strong></div>
         <div class="bar-chart chart">
         <canvas id="barChartCustom3"></canvas>
         </div>
@@ -45,5 +45,7 @@ const jArrLikes=<?php echo json_encode($likes);?>.map(Number);
 const jArrViews=<?php echo json_encode($views);?>.map(Number);
 const jArrMonths =0;
 const total_progresso=0;
-const total_finalizado=0;</script>
+const total_finalizado=0;
+const jArrEmails=0;
+const media=0;</script>
 <script type="text/javascript" src="charts-customs.js"></script>
