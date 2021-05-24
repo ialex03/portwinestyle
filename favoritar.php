@@ -3,7 +3,7 @@ require 'includes/settings.inc.php';
 include $arrSETTINGS['dir_site'].'/includes/db.inc.php';
 db_connect();
     @session_start();
-        $idcat=$_GET['idcat'];
+        $idcat=$_GET['id'];
         $keyword=$_GET['keyword'];
         $page=$_GET['page'];
         $idfav=$_GET['idfav'];

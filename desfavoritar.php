@@ -1,6 +1,6 @@
 <?php
     @session_start();
-        $idcat=$_GET['idcat'];
+        $idcat=$_GET['id'];
         $keyword=$_GET['keyword'];
         $page=$_GET['page'];
         $idfav=$_GET['idfav'];
