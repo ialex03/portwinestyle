@@ -18,11 +18,7 @@
           </div>
 
           <div class="right-menu list-inline no-margin-bottom">    
-            <div class="list-inline-item">
-              <a href="#" class="search-open nav-link">
-                <i class="icon-magnifying-glass-browser"></i>
-              </a>
-            </div>
+            
             
             <div class="list-inline-item logout">
               <a id="logout" href="endsession.php" class="nav-link">
