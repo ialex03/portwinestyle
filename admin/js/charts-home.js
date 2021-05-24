@@ -12,7 +12,46 @@ $(document).ready(function () {
     if ($(window).outerWidth() < 576) {
         legendState = false;
     }
+function getLargest(a){
+        var list = {
+            0: "Janeiro",
+            1: "Fevereiro",
+            2: "Março",
+            3: "Abril",
+            4: "Maio",
+            5: "Junho",
+            6: "Julho",
+            7: "Agosto",
+            8: "Setembro",
+            9: "Outubro",
+            10: "Novemnbro",
+            11: "Dezembro"
+        };
 
+        let max = parseInt(a[list[0]]);
+
+
+        for (let i = 1; i < 12; i++) {
+
+            if(parseInt(a[list[i]]) > max) {
+                max = parseInt(a[list[i]]);
+            }
+            
+        }
+
+
+
+        return max + 1;
+        }
+        function largest(t){
+            let maximum = t[0];   // start with the first value
+            for (let i=1; i<t.length; i++) {
+                if (t[i] > maximum) {
+                    maximum = t[i];   // new maximum
+                }
+            }
+            return maximum+1;
+        }
     var LINECHART = $('#lineCahrt');
     var myLineChart = new Chart(LINECHART, {
         type: 'line',
@@ -26,8 +65,8 @@ $(document).ready(function () {
                 }],
                 yAxes: [{
                     ticks: {
-                        max: 60,
-                        min: 10
+                        max: getLargest(jArrEmails),
+                        min: 0
                     },
                     display: true,
                     gridLines: {
@@ -40,10 +79,10 @@ $(document).ready(function () {
             }
         },
         data: {
-            labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9"],
+            labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
             datasets: [
                 {
-                    label: "Page Visitors",
+                    label: "Número de emails por mês",
                     fill: true,
                     lineTension: 0.2,
                     backgroundColor: "transparent",
@@ -62,32 +101,9 @@ $(document).ready(function () {
                     pointHoverBorderWidth: 2,
                     pointRadius: 1,
                     pointHitRadius: 0,
-                    data: [20, 27, 20, 35, 30, 40, 33, 25, 39],
+                    data: [jArrEmails['Janeiro'],jArrEmails['Fevereiro'],jArrEmails['Março'],jArrEmails['Abril'],jArrEmails['Maio'],jArrEmails['Junho'],jArrEmails['Julho'],jArrEmails['Agosto'],jArrEmails['Setembro'],jArrEmails['Outubro'],jArrEmails['Novembro'],jArrEmails['Dezembro']],
                     spanGaps: false
                 },
-                {
-                    label: "Page Views",
-                    fill: true,
-                    lineTension: 0.2,
-                    backgroundColor: "transparent",
-                    borderColor: "#bc8034",
-                    pointBorderColor: '#bc8034',
-                    pointHoverBackgroundColor: "#bc8034",
-                    borderCapStyle: 'butt',
-                    borderDash: [],
-                    borderDashOffset: 0.0,
-                    borderJoinStyle: 'miter',
-                    borderWidth: 2,
-                    pointBackgroundColor: "#fff",
-                    pointBorderWidth: 5,
-                    pointHoverRadius: 5,
-                    pointHoverBorderColor: "#fff",
-                    pointHoverBorderWidth: 2,
-                    pointRadius: 1,
-                    pointHitRadius: 10,
-                    data: [25, 17, 28, 25, 33, 27, 30, 33, 27],
-                    spanGaps: false
-                }
             ]
         }
     });
@@ -117,71 +133,28 @@ $(document).ready(function () {
             },
         },
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: jArrNames,
             datasets: [
                 {
-                    label: "Data Set 1",
-                    backgroundColor: [
+                    label: "Favoritos no produto",
+                    backgroundColor: 
                         "rgba(96, 11, 21, 0.57)",
+                    hoverBackgroundColor: 
                         "rgba(96, 11, 21, 0.57)",
-                        "rgba(96, 11, 21, 0.57)",
-                        "rgba(96, 11, 21, 0.57)",
-                        "rgba(96, 11, 21, 0.57)",
-                        "rgba(96, 11, 21, 0.57)",
-                        "rgba(96, 11, 21, 0.57)"
-                    ],
-                    hoverBackgroundColor: [
-                        "rgba(96, 11, 21, 0.57)",
-                        "rgba(96, 11, 21, 0.57)",
-                        "rgba(96, 11, 21, 0.57)",
-                        "rgba(96, 11, 21, 0.57)",
-                        "rgba(96, 11, 21, 0.57)",
-                        "rgba(96, 11, 21, 0.57)",
-                        "rgba(96, 11, 21, 0.57)"
-                    ],
-                    borderColor: [
-                        "rgba(96, 11, 21, 1)",
-                        "rgba(96, 11, 21, 1)",
-                        "rgba(96, 11, 21, 1)",
-                        "rgba(96, 11, 21, 1)",
-                        "rgba(96, 11, 21, 1)",
-                        "rgba(96, 11, 21, 1)",
-                        "rgba(96, 11, 21, 1)"
-                    ],
-                    borderWidth: 1,
-                    data: [65, 59, 80, 81, 56, 55, 40],
+                    borderColor: "rgba(96, 11, 21, 1)",
+                    borderWidth: 0.5,
+                    data: jArrLikes,
                 },
                 {
-                    label: "Data Set 2",
-                    backgroundColor: [
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)"
-                    ],
-                    hoverBackgroundColor: [
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)"
-                    ],
-                    borderColor: [
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)"
-                    ],
-                    borderWidth: 1,
-                    data: [35, 40, 60, 47, 88, 27, 30],
+                    label: "Visualizações do produto",
+                    backgroundColor: 
+                        "rgba(255, 255, 255, 0.5)",
+                    hoverBackgroundColor: 
+                        "rgba(255, 255, 255, 0.5)",
+                    borderColor: 
+                        "rgba(255, 255, 255, 0.5)",
+                    borderWidth: 0.5,
+                    data: jArrViews,
                 }
             ]
         }
@@ -287,6 +260,10 @@ $(document).ready(function () {
                     }
                 }],
                 yAxes: [{
+                    ticks: {
+                        max: getLargest(jArrMonths),
+                        min: 0
+                    },
                     display: false,
                     gridLines: {
                         color: '#eee'
@@ -295,43 +272,17 @@ $(document).ready(function () {
             },
         },
         data: {
-            labels: ["January", "February", "March", "April", "May", "June", "July"],
+            labels: ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho","Agosto","Setembro","Outubro","Novembro","Dezembro"],
             datasets: [
+                
                 {
-                    label: "Data Set 1",
+                    label: "Número de encomendas por mês",
                     backgroundColor: [
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)"
-                    ],
-                    hoverBackgroundColor: [
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)"
-                    ],
-                    borderColor: [
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)",
-                        "rgba(255, 255, 255, 0.7)"
-                    ],
-                    borderWidth: 1,
-                    data: [65, 59, 80, 81, 56, 55, 40],
-                },
-                {
-                    label: "Data Set 2",
-                    backgroundColor: [
+                        "rgba(188, 128, 52, 0.7)",
+                        "rgba(188, 128, 52, 0.7)",
+                        "rgba(188, 128, 52, 0.7)",
+                        "rgba(188, 128, 52, 0.7)",
+                        "rgba(188, 128, 52, 0.7)",
                         "rgba(188, 128, 52, 0.7)",
                         "rgba(188, 128, 52, 0.7)",
                         "rgba(188, 128, 52, 0.7)",
@@ -347,9 +298,19 @@ $(document).ready(function () {
                         "rgba(188, 128, 52, 0.7)",
                         "rgba(188, 128, 52, 0.7)",
                         "rgba(188, 128, 52, 0.7)",
+                        "rgba(188, 128, 52, 0.7)",
+                        "rgba(188, 128, 52, 0.7)",
+                        "rgba(188, 128, 52, 0.7)",
+                        "rgba(188, 128, 52, 0.7)",
+                        "rgba(188, 128, 52, 0.7)",
                         "rgba(188, 128, 52, 0.7)"
                     ],
                     borderColor: [
+                        "rgba(188, 128, 52, 1)",
+                        "rgba(188, 128, 52, 1)",
+                        "rgba(188, 128, 52, 1)",
+                        "rgba(188, 128, 52, 1)",
+                        "rgba(188, 128, 52, 1)",
                         "rgba(188, 128, 52, 1)",
                         "rgba(188, 128, 52, 1)",
                         "rgba(188, 128, 52, 1)",
@@ -359,7 +320,7 @@ $(document).ready(function () {
                         "rgba(188, 128, 52, 1)"
                     ],
                     borderWidth: 1,
-                    data: [35, 40, 60, 47, 88, 27, 30],
+                    data: [jArrMonths['Janeiro'],jArrMonths['Fevereiro'],jArrMonths['Março'],jArrMonths['Abril'],jArrMonths['Maio'],jArrMonths['Junho'],jArrMonths['Julho'],jArrMonths['Agosto'],jArrMonths['Setembro'],jArrMonths['Outubro'],jArrMonths['Novembro'],jArrMonths['Dezembro']],
                 }
             ]
         }

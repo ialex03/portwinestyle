@@ -69,67 +69,48 @@ db_connect();
       <div class="page-content">
         <div class="page-header">
           <div class="container-fluid">
-            <h2 class="h5 no-margin-bottom">Dashboard</h2>
+            <h2 class="h5 no-margin-bottom">Home</h2>
           </div>
         </div>
         <section class="no-padding-top no-padding-bottom">
           <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-3 col-sm-6">
-                <div class="statistic-block block">
-                  <div class="progress-details d-flex align-items-end justify-content-between">
-                    <div class="title">
-                      <div class="icon"><i class="icon-user-1"></i></div><strong>New Clients</strong>
+          <div class="row">
+                <div class="col-lg-4">
+                  <div class="statistic-block block">
+                    <div class="progress-details d-flex align-items-end justify-content-between">
+                      <div class="title">
+                        <div class="icon"><i class="fa fa-product-hunt"></i></div><strong>Produtos</strong>
+                      </div>
+                      <a class="number dashtext-1" href="<?php echo $arrSETTINGS['url_site_admin']?>/tables.php?table=produtos">Ver</a>
                     </div>
-                    <div class="number dashtext-1">27</div>
-                  </div>
-                  <div class="progress progress-template">
-                    <div role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-1"></div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-3 col-sm-6">
-                <div class="statistic-block block">
-                  <div class="progress-details d-flex align-items-end justify-content-between">
-                    <div class="title">
-                      <div class="icon"><i class="icon-contract"></i></div><strong>New Projects</strong>
+                <div class="col-lg-4">
+                  <div class="statistic-block block">
+                    <div class="progress-details d-flex align-items-end justify-content-between">
+                      <div class="title">
+                        <div class="icon"><i class="icon-contract"></i></div><strong>Encomendas</strong>
+                      </div>
+                      <a class="number dashtext-2" href="<?php echo $arrSETTINGS['url_site_admin']?>/tables.php?table=encomendas">Ver</a>
                     </div>
-                    <div class="number dashtext-2">375</div>
-                  </div>
-                  <div class="progress progress-template">
-                    <div role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-2"></div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-3 col-sm-6">
-                <div class="statistic-block block">
-                  <div class="progress-details d-flex align-items-end justify-content-between">
-                    <div class="title">
-                      <div class="icon"><i class="icon-paper-and-pencil"></i></div><strong>New Invoices</strong>
+                <div class="col-lg-4">
+                  <div class="statistic-block block">
+                    <div class="progress-details d-flex align-items-end justify-content-between">
+                      <div class="title">
+                        <div class="icon"><i class="icon-user-1"></i></div><strong>Utilizadores</strong>
+                      </div>
+                      <a class="number dashtext-3" href="<?php echo $arrSETTINGS['url_site_admin']?>/tables.php?table=utilizadores">Ver</a>
                     </div>
-                    <div class="number dashtext-3">140</div>
-                  </div>
-                  <div class="progress progress-template">
-                    <div role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-3"></div>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-3 col-sm-6">
-                <div class="statistic-block block">
-                  <div class="progress-details d-flex align-items-end justify-content-between">
-                    <div class="title">
-                      <div class="icon"><i class="icon-writing-whiteboard"></i></div><strong>All Projects</strong>
-                    </div>
-                    <div class="number dashtext-4">41</div>
-                  </div>
-                  <div class="progress progress-template">
-                    <div role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-4"></div>
-                  </div>
-                </div>
-              </div>
             </div>
+          
+            
           </div>
         </section>
+        
         <section class="no-padding-bottom">
           <div class="container-fluid">
             <div class="row">
@@ -457,6 +438,102 @@ db_connect();
     <?php
       }
     ?>
+    <?php
+            $year=date("Y");
+            $query="";
+
+
+            $query="SELECT    (nome)
+                    FROM      produtos P 
+                    INNER JOIN produtos_idiomas PI 
+                    ON P.id=PI.id 
+                    WHERE   PI.idioma='pt' AND is_active=1 ORDER BY P.id;";
+
+            $nomes=db_query($query);
+            foreach($nomes as $key=>$nome){
+                $nomes[$key]=$nome['nome'];
+            }
+            $query="SELECT    (n_likes)
+                    FROM      produtos 
+                    WHERE     is_active=1 ORDER BY id;";
+            $likes=db_query($query);
+            foreach($likes as $key=>$like){
+                $likes[$key]=$like['n_likes'];
+            }
+            $query="SELECT    (views)
+                    FROM      produtos 
+                    WHERE     is_active=1 ORDER BY id;";
+            $views=db_query($query);
+            foreach($views as $key=>$view){
+                $views[$key]=$view['views'];
+            }
+
+            $months = array(
+                            'Janeiro'=>'January',
+                            'Fevereiro'=>'February',
+                            'Março'=>'March',
+                            'Abril'=>'April',
+                            'Maio'=>'May',
+                            'Junho'=>'June',
+                            'Julho'=>'July ',
+                            'Agosto'=>'August',
+                            'Setembro'=>'September',
+                            'Outubro'=>'October',
+                            'Novembro'=>'November',
+                            'Dezembro'=>'December',
+                        );
+                        $stats = array(
+                            'Janeiro'=>'',
+                            'Fevereiro'=>'',
+                            'Março'=>'',
+                            'Abril'=>'',
+                            'Maio'=>'',
+                            'Junho'=>'',
+                            'Julho'=>'',
+                            'Agosto'=>'',
+                            'Setembro'=>'',
+                            'Outubro'=>'',
+                            'Novembro'=>'',
+                            'Dezembro'=>'',
+                        );
+                        $query="";
+
+                        foreach ($months as $key => $month) {
+                            $query="    SELECT    COUNT(*) AS '$key'
+                                        FROM      encomendas 
+                                        WHERE   monthname(data_hora)='$month' 
+                                        AND YEAR(data_hora)=$year;";
+
+                            $month=db_query($query);
+                            $stats[$key]=$month[0][$key];
+                        }
+                        $medias = 0;
+                        $query="";
+
+                        foreach ($months as $key => $month) {
+                            $query="    SELECT    COUNT(*) AS '$key'
+                                        FROM      emails
+                                        WHERE   monthname(sent_at)='$month' 
+                                        AND YEAR(sent_at)=$year;";
+
+                            $mon=db_query($query);
+                            $stat[$key]=$mon[0][$key];
+                            $medias+=$mon[0][$key];
+                        }
+
+                        $media=$medias/12;
+
+
+            ?>
+            <script type="text/javascript">const jArrNames=<?php echo json_encode($nomes);?>;
+            const jArrLikes=<?php echo json_encode($likes);?>.map(Number);
+            const jArrViews=<?php echo json_encode($views);?>.map(Number);
+            const jArrMonths = <?php echo json_encode($stats); ?>;
+            const total_progresso=0;
+            const total_finalizado=0;
+            const jArrEmails=<?php echo json_encode($stat); ?>;
+            const media=0;</script>
+            <script type="text/javascript" src="charts-home.js"></script>
     <!-- JavaScript files-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/popper.js/umd/popper.min.js"> </script>

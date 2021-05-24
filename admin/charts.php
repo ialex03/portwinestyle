@@ -32,6 +32,12 @@ db_connect();
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
   </head>
   <body>
+  <?php
+      if(!isset($_SESSION['useridadmin'])){
+        echo "não tem sessão iniciada";
+      }else{
+      ?>
+  
     <header class="header">   
       <nav class="navbar navbar-expand-lg">
         <!--pesquisar-->
@@ -103,5 +109,8 @@ db_connect();
     <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
     <script src="js/charts-custom.js"></script>
     <script src="js/front.js"></script>
+    <?php
+    }
+    ?>
   </body>
 </html>
