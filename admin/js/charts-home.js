@@ -60,7 +60,7 @@ function getLargest(a){
                 xAxes: [{
                     display: true,
                     gridLines: {
-                        display: false
+                        display: true
                     }
                 }],
                 yAxes: [{
