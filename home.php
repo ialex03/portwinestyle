@@ -2,6 +2,7 @@
 <?php
 
     require 'includes/settings.inc.php';
+   
     @session_start();
     $_SESSION['unlocked_on']=0;
     include $arrSETTINGS['dir_site'].'/includes/db.inc.php';
@@ -65,6 +66,9 @@
     <link rel="stylesheet" href="css/style.css" type="text/css">
 
     <link rel="stylesheet" type="text/css" href="css/flaticon.css">
+    <?php 
+    include $arrSETTINGS['dir_site'].'/includes/analytics.php';
+    ?>
 </head>
 
 <body>
