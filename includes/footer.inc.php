@@ -158,6 +158,7 @@ $arrContactos=db_query($query);
                         <ul>
                             <li><a href="privacypolicy.php"><?php echo $arrLang['Política de Privacidade']?></a></li>
                             <li><a href="termsandconditions.php"><?php echo $arrLang['termos']?></a></li>
+                            <li><a href="credits.php"><?php echo $arrLang['creditos']?></a></li>
                         </ul>
                     </div>
                 </div>

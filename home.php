@@ -2,7 +2,6 @@
 <?php
 
     require 'includes/settings.inc.php';
-    
     @session_start();
     $_SESSION['unlocked_on']=0;
     include $arrSETTINGS['dir_site'].'/includes/db.inc.php';
@@ -23,6 +22,10 @@
     }
     if(!isset($_SESSION['searchViewType'])) {
         $_SESSION['searchViewType'] = 1;
+        
+    }
+    if(!isset($_SESSION['acceptterms'])) {
+        $_SESSION['acceptterms'] = 0;
         
     }
     
@@ -72,6 +75,8 @@
     <div id="preloder">
         <div class="loader"></div>
     </div>
+    <!-- Modal -->
+
     
     <!-- MENUS (Off Canvas & Normal) -->
     <?php include $arrSETTINGS['dir_site'].'/includes/offcanvasmenu.inc.php'; ?>
@@ -82,6 +87,29 @@
         <?php include $arrSETTINGS['dir_site'].'/includes/menu.inc.php'; ?>
     </header>
     <!-- Hero Section Begin -->
+    
+
+<!-- Modal -->
+
+<div class="modal fade" id="consent" tabindex="-1" role="dialog" aria-labelledby="lababel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+    
+      <div class="modal-header">
+        <h5 class="modal-title" id="lababel"><?php echo $arrLang['consenttitle']?></h5>
+      </div>
+      <div class="modal-body">
+      <?php echo $arrLang['consenttexto']?>
+      </div>
+      <div class="modal-footer">
+      <form action="<?php echo $arrSETTINGS['url_site']?>changeterms.php" method="POST">
+        <button type="submit" class="btn btn-success" name="submit" value="submit"><?php echo $arrLang['consentbutton']?></button>
+        </form>
+      </div>
+    
+    </div>
+  </div>
+</div>
     
     <section class="hero">
         <?php include $arrSETTINGS['dir_site'].'/includes/banner.inc.php'; ?>
@@ -336,9 +364,12 @@
         </div>
     </section>
     <!-- Instagram Section End -->
+    
 
     <!-- Map Begin -->
-    <?php include $arrSETTINGS['dir_site'].'/includes/map.inc.php'; ?>
+    <?php 
+    
+    include $arrSETTINGS['dir_site'].'/includes/map.inc.php'; ?>
     
     <!-- Map End -->
 
@@ -359,6 +390,17 @@
 <script src="js/owl.carousel.min.js"></script>
 <script src="js/jquery.nicescroll.min.js"></script>
 <script src="js/main.js"></script>
+<script type="text/javascript">
+<?php
+if($_SESSION['acceptterms']!=1){
+?>
+    $(window).on('load', function() {
+        $('#consent').modal('show');
+    });
+    <?php
+}
+    ?>
+</script>
 </body>
 
 </html>

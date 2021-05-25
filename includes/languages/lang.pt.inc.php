@@ -168,11 +168,23 @@ $arrLang['expressar interesse']="Expresse o seu interesse pelos seguintes produt
 
 
 
+//consent
+$arrLang['consenttitle']="Política de uso e cookies";
+$arrLang['consenttexto']="O nosso website recolhe informações do utilizador para otimizar e melhorar a experiência de navegação
+      , ao navegá-lo está a concordar com os termos e políticas aplicadas. Para saber mais, visite as páginas 
+      de política de privacidade, cookies, termos e condições e créditos.";
+$arrLang['consentbutton']="Eu aceito todas as condições";
 
 
 
 
-
+//créditos
+$arrLang['creditos']="Créditos";
+$arrLang['creditostexto']="Este website foi realizado no âmbito da Prova de Aptidão Profissional 
+para o Colégio de Gaia no ano letivo 2020/2021 por Alexandra Ipatova Nº1 12ºITM, com o objetivo 
+de aprendizagem de novos conceitos e técnicas de programação na internet. Logo, pode haver 
+falhas de segurança e privacidade. Neste sentido, ao navegar o website, o utilizador estará 
+a concordar com estes termos e todos os especificados nos termos e condições e política de privacidade e cookies.";
 
 
 

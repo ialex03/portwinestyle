@@ -152,6 +152,14 @@ $arrLang['fav_troubleshoot']="You haven't added anything to your favorites. Try 
 $arrLang['produtos favoritados']="Favorited products";
 $arrLang['expressar interesse']="Express your interest for the following products by contacting us.";
 
+//créditos
+$arrLang['creditos']="Credits";
+$arrLang['creditostexto']="This website was part of the Professional Aptitude Final Project for 
+Colégio de Gaia in the school year 2020/2021 by Alexandra Ipatova Nº1 12ºITM, as a means to learn
+ new concepts and techniques in software development for web. Therefore, there may be technical
+ , security and privacy flaws, unknown to the developer, and the user will navigate this website
+  with this knowledge, and all the terms, conditions and cookies and privacy policies applied.";
+
 //politica de privacidade
 $arrLang['Política de Privacidade']="Privacy Policy";
 $arrLang['politicatexto']="<div class='section-title'>
