@@ -152,6 +152,15 @@ $arrLang['fav_troubleshoot']="You haven't added anything to your favorites. Try 
 $arrLang['produtos favoritados']="Favorited products";
 $arrLang['expressar interesse']="Express your interest for the following products by contacting us.";
 
+
+//consent
+
+// consent
+$arrLang ['consenttitle'] = "Usage and cookies policy";
+$arrLang ['consenttext'] = "Our website collects user information to optimize and improve the browsing experience
+      , by browsing you are agreeing to the applied terms and policies. To learn more, visit the pages
+      privacy and cookies policy, terms and conditions and credits. ";
+$arrLang ['consentbutton'] = "I accept all conditions";
 //créditos
 $arrLang['creditos']="Credits";
 $arrLang['creditostexto']="This website was part of the Professional Aptitude Final Project for 
