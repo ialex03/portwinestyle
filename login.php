@@ -114,6 +114,8 @@ db_connect();
         <div class="container">
             <div class="checkout__form">
             <?php
+            echo $_SESSION['unlocked_on'];
+            echo $_SESSION['attempts'];
             if (isset($_GET['success']) && $_GET['success']=="true") {
 
                echo '<div class="row">
@@ -159,7 +161,7 @@ db_connect();
                             }
                             ?>
                             <?php
-                            if(isset($_SESSION['attempts']) && $_SESSION['attempts']>=10){
+                            if(isset($_SESSION['attempts']) && $_SESSION['attempts']>=2){
                                 echo'<div class="checkout__input__checkbox">
                                 <div class="warning">
                                 <p>'.$arrLang["demasiadas tentativas"].'</p>

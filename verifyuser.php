@@ -15,7 +15,7 @@ function checkUnlocked(){
  
     if($_SESSION['unlocked_on'] >= time() || $_SESSION['unlocked_on'] == 0) {
         if($_SESSION['attempts'] == $num_attempts)
-            $_SESSION['unlocked_on'] = time() + 30;
+            $_SESSION['unlocked_on'] = time() + (2*60*60);
     } else $_SESSION['attempts'] = 0;
 }
 

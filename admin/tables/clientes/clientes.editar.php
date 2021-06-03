@@ -11,7 +11,7 @@ error_reporting(E_ALL);
 
 if(isset($_POST["submit"])) {
 
-    //imagem
+    //imagemc 
 
     $target_dir= $arrSETTINGS['dir_site']."/img/";
     $target_file = $target_dir . basename($_FILES["imagem"]["name"]);
