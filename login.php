@@ -114,8 +114,6 @@ db_connect();
         <div class="container">
             <div class="checkout__form">
             <?php
-            echo $_SESSION['unlocked_on'];
-            echo $_SESSION['attempts'];
             if (isset($_GET['success']) && $_GET['success']=="true") {
 
                echo '<div class="row">
