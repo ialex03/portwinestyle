@@ -92,8 +92,9 @@ db_query($query);
     <!-- Related Products Section Begin -->
     
     <?php
-    $query="SELECT * FROM produtos A INNER JOIN produtos_idiomas B ON A.id=B.id WHERE B.idioma='$_SESSION[idioma]' AND A.id_categoria=$idcat";
+    $query="SELECT * FROM produtos A INNER JOIN produtos_idiomas B ON A.id=B.id WHERE B.idioma='$_SESSION[idioma]' AND A.id_categoria=$idcat GROUP BY A.id";
     $arrProd=db_query($query);
+    if(isset($arrProd[3])){
     ?>
     <section class="related-products spad">
         <div class="container">
@@ -132,7 +133,26 @@ db_query($query);
             </div>
         </div>
     </section>
-    <!-- Related Products Section End -->
+    <?php
+    }else{
+        ?>
+        <section class="related-products spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="related__products__slider owl-carousel">
+                </div>
+            </div>
+        </div>
+    </section>
+        <?php
+    }
+    ?>    <!-- Related Products Section End -->
 
     <!-- FOOTER -->
     <?php include $arrSETTINGS['dir_site'].'/includes/footer.inc.php'; ?>

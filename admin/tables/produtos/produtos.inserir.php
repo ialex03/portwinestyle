@@ -190,7 +190,7 @@ if(isset($_POST["submit"])) {
             $string.="NULL,";
             $nullstring.="&acucar=null";
         }
-        if($_POST['temp_min']!= "" || $_POST['temp_max']!= "" ){
+        if($_POST['tempmin']!= "" || $_POST['tempmax']!= "" ){
             $string.="'".$_POST['tempmin']."-".$_POST['tempmax']." °C',";
         }else{
             $string.="NULL,";
@@ -230,16 +230,16 @@ if(isset($_POST["submit"])) {
             $string.=$confirm.",";
             $string.="'".$abrv."',";
         if($_POST['nome'.$abrv]!= ""){
-            $string.=$_POST['nome'.$abrv].",";
+            $string.="'".$_POST['nome'.$abrv]."',";
         }else{
             $string.="NULL,";
         }
         if($_POST['produtor'.$abrv]!= ""){
-            $string.="'".$_POST['castas'.$abrv]."',";
+            $string.="'".$_POST['produtor'.$abrv]."',";
         }else{
             $string.="NULL,";
         }
-        if($_POST['cor']!= ""){
+        if($_POST['cor'.$abrv]!= ""){
             $string.="'".$_POST['cor'.$abrv]."',";
         }else{
             $string.="NULL,";
@@ -288,9 +288,10 @@ if(isset($_POST["submit"])) {
         //tabela produtos_idiomas END
 
         if($string!=""){
-            db_query($query);
+            echo db_query($query);
             
         }
+        
     }
     header('Location:'.$_POST['url'].'&insertsuccess=true'.$nullstring);
     
