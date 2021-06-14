@@ -157,7 +157,7 @@ $arrLang['expressar interesse']="Express your interest for the following product
 
 // consent
 $arrLang ['consenttitle'] = "Usage and cookies policy";
-$arrLang ['consenttext'] = "Our website collects user information to optimize and improve the browsing experience
+$arrLang ['consenttexto'] = "Our website collects user information to optimize and improve the browsing experience
       , by browsing you are agreeing to the applied terms and policies. To learn more, visit the pages
       privacy and cookies policy, terms and conditions and credits. ";
 $arrLang ['consentbutton'] = "I accept all conditions";
