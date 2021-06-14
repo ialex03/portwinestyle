@@ -23,7 +23,9 @@ if(isset($arrProd[0])) {
                     }
                 ?>
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/shop/<?php echo $prod['foto'] ?>" style="cursor: pointer;" onclick="window.location='<?php echo $arrSETTINGS['url_site']?>detalhes.php?id=<?php echo $prod['id']?>';">
+                            <div class="product__item__pic set-bg" data-setbg="img/shop/<?php echo $prod['foto'] ?>" style="cursor: pointer;" 
+                            onclick="window.location='<?php echo $arrSETTINGS['url_site']?>detalhes.php?id=<?php echo $prod['id']?>';" 
+                            data-toggle="tooltip" data-html="true" title="Produtor: <?php echo $prod['produtor']?>">
                                 <div class="product__label">
                                     
                                     <?php

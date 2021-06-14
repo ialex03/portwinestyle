@@ -3,16 +3,14 @@
 -----------------------*/
 .categories__slider {
   padding: 0 15px;
-  
-  &.owl-carousel {
 
+  &.owl-carousel {
     .owl-stage-outer {
       padding-bottom: 40px;
       border-bottom: 1px solid rgba(240, 135, 50, 0.5);
-  }
+    }
 
     .owl-nav {
-
       button {
         font-size: 36px;
         color: #888888;
@@ -32,7 +30,7 @@
 .categories__item {
   text-align: center;
   border-radius: 50%;
-  @include transition(all, .3s);
+  @include transition(all, 0.3s);
   height: 194px;
   width: 194px;
   padding-top: 25px;
@@ -51,7 +49,7 @@
     content: "";
     transform: rotate(-135deg);
     opacity: 0;
-    @include transition(all, .3s);
+    @include transition(all, 0.3s);
   }
 
   &:hover {
@@ -72,10 +70,9 @@
 }
 
 .categories__item__icon {
-
   span {
     color: $primary-color;
-    @include transition(all, .2s);
+    @include transition(all, 0.2s);
   }
 
   h5 {
@@ -83,7 +80,7 @@
     font-weight: 600;
     text-transform: uppercase;
     margin-top: 4px;
-    @include transition(all, .2s);
+    @include transition(all, 0.2s);
   }
 }
 
@@ -100,7 +97,6 @@
   height: 620px;
 
   form {
-
     input {
       height: 50px;
       width: 100%;
@@ -201,7 +197,6 @@
   background-size: contain;
 
   &:hover {
-
     .team__item__text {
       opacity: 1;
       bottom: 0;
@@ -220,7 +215,7 @@
   width: 100%;
   opacity: 0;
   visibility: hidden;
-  @include transition(all, .5s);
+  @include transition(all, 0.5s);
 
   h6 {
     color: $heading-color;
@@ -238,7 +233,6 @@
 }
 
 .team__item__social {
-
   a {
     display: inline-block;
     color: $heading-color;
@@ -257,13 +251,11 @@
 }
 
 .testimonial__slider {
-
   .col-lg-6 {
     max-width: 100%;
   }
 
   &.owl-carousel {
-
     .owl-dots {
       text-align: center;
       padding-top: 35px;
@@ -278,7 +270,7 @@
         &.active {
           background: rgba(17, 17, 17, 0.5);
         }
-        
+
         &:last-child {
           margin-right: 0;
         }
@@ -445,9 +437,8 @@
     text-transform: uppercase;
     margin-bottom: 20px;
   }
-  
+
   ul {
-    
     li {
       list-style: none;
       font-size: 14px;

@@ -1,4 +1,5 @@
 <!-- Team Section Begin -->
+
 <section class="team spad">
         <div class="container">
             <div class="row">
@@ -13,11 +14,13 @@
                     </div>
                 </div>
             </div>
+            
 
             <div class="row">
             <?php
             $query="SELECT * FROM $membro WHERE is_active=1 ORDER BY id";
             $arrPar=db_query($query);
+
             foreach($arrPar as $par){
             ?>
 
@@ -33,16 +36,21 @@
                             </div>
                         </div>
                     </div>
+                    <hr width="100%"></hr>
                 </div>
+                
+                
 
 
             <?php
             }
             ?>
+            
 
                 
 
 
         </div>
     </section>
+    
     <!-- Team Section End -->
