@@ -32,11 +32,13 @@ if(!isset($_SESSION['idioma'])) {
     <!-- Favicon-->
     <link rel="shortcut icon" href="img/portlinefav.png">
     <script src="https://cdn.tiny.cloud/1/3ht9rx5uy67q2hrgq1gekhq31c79kfxgozi73kng0e9zpavp/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-    <script>
-      tinymce.init({
-        selector: '#mytextarea'
-      });
-    </script>
+     <script>
+    tinymce.init({
+      selector: 'mytextarea',
+      plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+      toolbar_mode: 'floating',
+   });
+  </script>
 
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>

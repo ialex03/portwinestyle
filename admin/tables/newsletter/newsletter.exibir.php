@@ -82,55 +82,49 @@ isset($_GET['success'])&& $_GET['success']=="false"){
   <div class="block margin-bottom-sm">
     <div class="row">
       <div class="table-responsive"> 
-        <form method="post" action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.guardaremail.php">
-        <div class="col-12">
-        <h1>Guardar e enviar uma mensagem da newsletter</h1>
-          <div class="form-group">
-          <p>Título</p>
-            <input type="text" placeholder="Título..." class="form-control" name="titulo" maxlength="100" required>
-          </div>
-        
-          <textarea id="mytextarea" name="mensagem" placeholder="Escreva aqui o conteúdo, preferencialmente em múltiplos idiomas..." required></textarea>
-        
-      </div>
-
-        <div class="col-12">
-          <div class="float-right">
+        <form method="POST" action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.guardaremail.php">
+          <div class="col-12">
+            <h1>Guardar e enviar uma mensagem da newsletter</h1>
+            <div class="form-group">
+            <p>Título</p>
+              <input type="text" placeholder="Título..." class="form-control" name="titulo" maxlength="100" required>
+            </div>
           
-        
-            <button type="button" data-toggle="modal" data-target="#modalletter" class="btn btn-primary mt-3">
-                Enviar Mensagem
-            </button>
-            <div id="modalletter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
-              <div role="document" class="modal-dialog modal-lg">
-                <div class="modal-content">
-                  <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Guardar e enviar uma mensagem da newsletter</strong>
-                    <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
-                  </div>
-                  <div class="modal-body">
-                    <p>De certeza que deseja enviar esta mensagem?</p>
-                    
-                      <?php
+            <textarea id="mytextarea" name="mensagem" placeholder="Escreva aqui o conteúdo, preferencialmente em múltiplos idiomas..."></textarea>
+          
+          </div>
+
+          <div class="col-12">
+            <div class="float-right">
+              <button type="button" data-toggle="modal" data-target="#modalletter" class="btn btn-primary mt-3">
+                  Enviar Mensagem
+              </button>
+              <div id="modalletter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
+                <div role="document" class="modal-dialog modal-lg">
+                  <div class="modal-content">
+                    <div class="modal-header"><strong id="exampleModalLabel" class="modal-title">Guardar e enviar uma mensagem da newsletter</strong>
+                      <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true">×</span></button>
+                    </div>
+                    <div class="modal-body">
+                      <p>De certeza que deseja enviar esta mensagem?</p>
                       
-                              $url=$_SERVER['REQUEST_URI'];
-                              $arrUrl=explode("&",$url);
-                              $url=$arrUrl[0];
-                              ?>
-                      <input type="hidden" name="url" value="<?php echo $url?>">
-                      <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
-                      <button type="submit" class="btn btn-primary" name="submit">Enviar</button>
-                      
-                    
+                        <?php
+                        
+                                $url=$_SERVER['REQUEST_URI'];
+                                $arrUrl=explode("&",$url);
+                                $url=$arrUrl[0];
+                                ?>
+                        <input type="hidden" name="url" value="<?php echo $url?>">
+                        <button type="button" data-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+                        <button type="submit" class="btn btn-primary" name="submit">Enviar</button>
+                    </div>
                   </div>
                 </div>
               </div>
+        
             </div>
-          
           </div>
-        </div>
         </form>
-
-      </div>
       </div>
     </div>
   </div>
