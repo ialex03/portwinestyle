@@ -94,7 +94,11 @@
     
 
 <!-- Modal -->
+<?php
 
+if($_SESSION['acceptterms']!=1){
+    
+?>
 <div class="modal fade" id="consent" tabindex="-1" role="dialog" aria-labelledby="lababel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -114,6 +118,9 @@
     </div>
   </div>
 </div>
+<?php
+}
+?>
     
     <section class="hero">
         <?php include $arrSETTINGS['dir_site'].'/includes/banner.inc.php'; ?>

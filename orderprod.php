@@ -25,7 +25,7 @@ if ($_GET['idfavorites']!=";") {
         $query="";
         $success="";
         foreach ($arrFavorites as $prodid) {
-        $query="INSERT INTO `linhas_encomenda`(`id_produto`, `id_encomenda`, `quantidade`, `id_contrato`, `estado`) VALUES ($prodid,$idencomenda,NULL,NULL,1)";
+        $query="INSERT INTO `linhas_encomenda`(`id_produto`, `id_encomenda`, `quantidade`, `id_contrato`, `estado`) VALUES ($prodid,$idencomenda,NULL,NULL,2)";
         $success.=db_query($query);
         }
         

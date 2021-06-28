@@ -267,7 +267,7 @@ db_connect();
                                 </div>
                                 <div class="w-100"></div>
                                 <div class="col">
-                                        <a href="index.php" class="primary-btn"><?php echo $arrLang['terminar sessão'];?></a>
+                                        <a href="changeterms.php" onclick="<?php session_destroy();?>"class="primary-btn"><?php echo $arrLang['terminar sessão'];?></a>
                                 </div>
                                 
                             </div>
