@@ -47,7 +47,7 @@ if(!isset($_SESSION['idioma'])) {
   <body>
     <?php
       if(!isset($_SESSION['useridadmin'])){
-        echo "não tem sessão iniciada";
+        header("Location: index.php");
       }else{
       ?>
     <header class="header">   

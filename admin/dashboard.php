@@ -34,7 +34,7 @@ db_connect();
   <body>
       <?php
       if(!isset($_SESSION['useridadmin'])){
-        echo "não tem sessão iniciada";
+        header("Location: index.php");
       }else{
       ?>
     <header class="header">   
