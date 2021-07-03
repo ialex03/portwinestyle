@@ -263,11 +263,12 @@ db_connect();
                                     <button type="submit" class="site-btn"><?php echo $arrLang['atualizar'];?></button>
                                 </div>
                                 <div class="col">
+
                                     <a href="contratos.php" class="site-btn"><?php echo $arrLang['ver contratos'];?></a>
                                 </div>
                                 <div class="w-100"></div>
                                 <div class="col">
-                                        <a href="changeterms.php" onclick="<?php session_destroy();?>"class="primary-btn"><?php echo $arrLang['terminar sessão'];?></a>
+                                        <a href="changeterms.php" class="primary-btn"><?php echo $arrLang['terminar sessão'];?></a>
                                 </div>
                                 
                             </div>

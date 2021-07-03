@@ -276,7 +276,7 @@ $arrTabelasIdiomas=array('emails_newsletter'=>array(
                 </div>
                 <div class="modal-body">
                   <p>Aqui pode pesquisar por um email, insira um ou vários termos de pesquisa.</p>
-                  <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.enviaremails.php" method="POST">
+                  <form action="<?php echo $arrSETTINGS['url_site_admin'].'/tables/'.$_GET['table'].'/'.$_GET['table']?>.pesquisa.php" method="POST">
                     <div class="form-group">
                       <input type="text" placeholder="Pesquisar..." class="form-control" name="queryconta">
                     </div>

@@ -70,6 +70,14 @@ db_connect();
                                 
                   <?php
                   }
+            if (isset($_GET['success']) && $_GET['success']=="true") {
+
+               ?>
+               <div class="text-success">
+                    <p>Mensagem enviada com sucesso!</p>
+                  </div>
+               <?php
+            }
                   ?>
                   <form method="POST" class="form-validate mb-4" action="<?php echo $arrSETTINGS['url_site']?>forgotpassword.php">
                     

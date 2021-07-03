@@ -83,7 +83,7 @@ $calc = hash('sha256', hex2bin($_GET['validator']));
 
                
                 echo'<div class="checkout__input__checkbox">
-                        <div class="success">
+                        <div class="text-success">
                             <p>Palavra-passe alterada com sucesso!</p>'?>
                             <a href="<?php echo $arrSETTINGS['url_site_admin']?>/index.php">Iniciar sessão</a>
                         </div>

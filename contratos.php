@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');
 error_reporting(E_ALL);
@@ -91,7 +91,6 @@ db_connect();
     </div>
     <!-- Breadcrumb End -->
     <?php
-    
     $query="SELECT * FROM encomendas WHERE id_utilizador=".$_SESSION['userid'];
     $arrEncomendas=db_query($query);
     if(isset($arrEncomendas[0])){

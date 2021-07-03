@@ -5,7 +5,7 @@ $arrCat=db_query($query);
 if(isset($arrCat)) {
     foreach ($arrCat as $cat) {
 ?>
-<a href="<?php echo $arrSETTINGS['url_site'];?>produtos.php?id=<?php echo $cat['id']?>">
+<a href="<?php echo $arrSETTINGS['url_site'];?>produtos.php?id=<?php echo $cat['id']?>&keyword=&page=1">
 <div class="categories__item">
     <div class="categories__item__icon">
         

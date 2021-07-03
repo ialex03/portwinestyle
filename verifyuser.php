@@ -30,7 +30,7 @@ $utilizador=db_query($query);
 
     if (password_verify ($palavra_passe,$utilizador[0]['password'])) {
         $flagpassword=true;
-        $id=$utilizador[0]['id'];
+        echo $id=$utilizador[0]['id'];
         $_SESSION['userid']=$id;
         header('Location: login.php?success=true');
     }else{

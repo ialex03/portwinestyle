@@ -117,9 +117,9 @@ $mail->AltBody = $arrLang['instructions_forgot'].$arrLang['showlink_forgot'].spr
 $emailsQuery = "INSERT INTO emails (title,subject,to_email,from_email,sent_at) VALUES (".$arrLang['link_forgot'].", '$message','$email','ialexandra2003@gmail.com','$date')";
 $emailsResult = db_query($emailsQuery);
 if($mail->Send()){
-header("Location: recover.php?success=true");
+header("Location: ".($admin?"admin/":"")."recover".($admin?"admin":"").".php?success=true");
 }else{
-header("Location: recover.php?success=false");
+header("Location: ".($admin?"admin/":"")."recover".($admin?"admin":"").".php?success=false");
 }
 
 

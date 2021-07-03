@@ -64,7 +64,19 @@ $strSearch.="SELECT DISTINCT E.id,E.data_hora,E.id_utilizador,E.is_active FROM e
         $strSearch.=' ORDER BY E.id DESC';
     
     $arrCamposProdutos=db_query($strSearch);
-    
+    function orderstate($estado){
+    switch ($estado) {
+        case 0:
+            return 0;
+            break;
+        case 1:
+            return "finalizada";
+            break;
+        case 2:
+            return "em progresso";
+            break;
+    }
+}
 ?>
 
 <!--encomendas-->
@@ -331,7 +343,7 @@ if (isset($_GET['pdf'])
                         $query="SELECT * FROM contratos WHERE id=".$linha['id_contrato']." ORDER BY id";
                         $contrato=db_query($query);
                         
-                      echo "<p>Estado: ".FormatField($linha['estado'],$id)."</p>";
+                      echo "<p>Estado: ".orderstate($linha['estado'])."</p>";
                         if(isset($contrato[0]['anexo'])){
                         $path=$arrSETTINGS['url_site'].'Docs/'.$contrato[0]['anexo'];
                         ?>
